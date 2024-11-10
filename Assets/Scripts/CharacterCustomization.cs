@@ -1,15 +1,25 @@
 using NaughtyAttributes;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering;
 
 public class CharacterCustomization : MonoBehaviour
 {
     [SerializeField] private ColorPalette   originalPalette;
+    [SerializeField] private bool           randomizeAtStart;
     [SerializeField] private Color          hairColor = Color.magenta;
     [SerializeField] private Color          flightsuitColor = Color.green;
 
     ColorPalette modifiedPalette;
+
+    private void Start()
+    {
+        if (randomizeAtStart)
+        {
+            hairColor = Color.HSVToRGB(Random.Range(0.0f, 1.0f), Random.Range(0.75f, 1.0f), Random.Range(0.75f, 1.0f));
+            flightsuitColor = Color.HSVToRGB(Random.Range(0.0f, 1.0f), Random.Range(0.25f, 0.5f), Random.Range(0.5f, 0.75f));
+        }
+
+        UpdateCharacter();
+    }
 
     [Button("Update Character")]    
     void UpdateCharacter()
