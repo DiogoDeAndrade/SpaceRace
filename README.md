@@ -11,7 +11,6 @@ In this game, players will have to be doing maintenance on a starship during a r
 
 ## Todo
 
-- New input system support
 - Tileset spaceship
 - Meters: oxygen, destination, speed
   - Reach destination = finish race (time matters in tournament mode)
@@ -35,6 +34,7 @@ In this game, players will have to be doing maintenance on a starship during a r
 ## Art
 
 - [Warped Space Marine](https://ansimuz.itch.io/warped-space-marine) by [Ansimuz](https://ansimuz.itch.io/), purchased
+- [Fire Animation - Pixel Art FX Sprites](https://brullov.itch.io/fire-animation) by [Brulov](https://brullov.itch.io/), free to use
 - Everything else done by [Diogo de Andrade], licensed through the [CC0] license.
 
 ## Sound
