@@ -1,4 +1,3 @@
-using SciGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,10 +10,15 @@ public class Test : MonoBehaviour
 
     void Start()
     {
-        
+        testInputControl.playerInput = playerInput;
     }
 
     void Update()
     {
+        float v = testInputControl.GetAxis();
+        if (Mathf.Abs(v) > 1e-3)
+        {
+            Debug.Log($"{name}. testInputControl = {v}");
+        }
     }
 }
