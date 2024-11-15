@@ -68,6 +68,37 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 2
+--- !u!1 &5429138992571962543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1345904651591344655}
+  m_Layer: 0
+  m_Name: GrabPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1345904651591344655
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5429138992571962543}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.2, y: 20, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4335599572146330117}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6683781890077311939
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,6 +118,7 @@ GameObject:
   - component: {fileID: 8003383898087554967}
   - component: {fileID: 7786165041939288459}
   - component: {fileID: 3274794896074559717}
+  - component: {fileID: 5512339070101972184}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -109,6 +141,7 @@ Transform:
   m_Children:
   - {fileID: 5264028966564768200}
   - {fileID: 5851541089500732729}
+  - {fileID: 1345904651591344655}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &5912789088072041088
@@ -152,9 +185,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingLayerID: -842422217
+  m_SortingLayer: 2
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dd9ac04ccc57db246b39db931ee1edae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -459,6 +492,42 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &5512339070101972184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683781890077311939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 811ab25fd41cc5f458d40fbb12952c12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerId: 1
+  maxInventorySlots: 0
+  playerInput: {fileID: 3274794896074559717}
+  interactPoint: {fileID: 1345904651591344655}
+  interactControl:
+    _type: 3
+    axis: Horizontal
+    buttonPositive: Right
+    buttonNegative: Left
+    keyPositive: 275
+    keyNegative: 276
+    inputAction: Interact
+  interactRadius: 18.47
+  interactMask:
+    serializedVersion: 2
+    m_Bits: 256
+  dropTool:
+    _type: 3
+    axis: Horizontal
+    buttonPositive: Right
+    buttonNegative: Left
+    keyPositive: 275
+    keyNegative: 276
+    inputAction: Crouch
 --- !u!1 &6937122829356048063
 GameObject:
   m_ObjectHideFlags: 0

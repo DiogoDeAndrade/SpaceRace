@@ -1,43 +1,76 @@
-using NUnit.Framework;
+using System;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI.Extensions;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] private int            _playerId = 1;
-    [SerializeField] private Transform      grabPoint;
-    [SerializeField] private float          grabRadius = 2.0f;
-    [SerializeField] private LayerMask      grabMask;
-    [SerializeField] private Tooltip        tooltip;
+    [SerializeField] 
+    private int            _playerId = 1;
+    [SerializeField] 
+    private int            maxInventorySlots = 0;
+    [SerializeField] 
+    private PlayerInput    playerInput;
+    [SerializeField] 
+    private Transform      interactPoint;
+    [SerializeField, InputPlayer(nameof(playerInput)), InputButton] 
+    private InputControl   interactControl;
+    [SerializeField] 
+    private float          interactRadius = 2.0f;
+    [SerializeField] 
+    private LayerMask      interactMask;
+    [SerializeField, InputPlayer(nameof(playerInput)), InputButton] 
+    private InputControl   dropTool;
 
     public int  playerId => _playerId;
+
+    private Tooltip         tooltip;
+    private Item            grabbedItem;
+    private List<Pickable>  inventory = new();
+    private Tool            currentTool;
     
-    private Item grabbedItem;  
+    public bool hasTool => (currentTool != null);
+    public bool hasInventorySpace => inventory.Count < maxInventorySlots;
 
     void Start()
     {
-        
+        tooltip = TooltipManager.CreateTooltip();
+        interactControl.playerInput = playerInput;
+        dropTool.playerInput = playerInput;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Item canGrab = null;
+        Item interactionItem = null;
 
-        var colliders = Physics2D.OverlapCircleAll(grabPoint.position, grabRadius, grabMask);
+        var colliders = Physics2D.OverlapCircleAll(interactPoint.position, interactRadius, interactMask);
         foreach (var collider in colliders)
         {
             Item item = collider.GetComponent<Item>();
-            if (item != null)
+            if ((item != null) && (item.canInteract))
             {
-                canGrab = item;
-                tooltip.Set(item.transform.position, item.displayName);
+                interactionItem = item;
+                tooltip.SetText(item.displayName);
+                tooltip.SetPosition(item.tooltipPosition.position);
                 break;
             }
         }
-        if (canGrab == null)
+        if (interactionItem == null)
         {
-            tooltip.Set(tooltip.transform.position, "");
+            tooltip.SetText("");
+        }
+        else
+        {
+            if (interactControl.IsDown())
+            {
+                interactionItem.Interact(this);
+            }
+        }
+
+        if ((hasTool) && (dropTool.IsPressed()))
+        {
+            DropTool();
         }
     }
 
@@ -48,10 +81,32 @@ public class Player : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        if (grabPoint)
+        if (interactPoint)
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(grabPoint.position, grabRadius);
+            Gizmos.DrawWireSphere(interactPoint.position, interactRadius);
         }
+    }
+
+    internal void AddToInventory(Pickable pickable)
+    {
+        pickable.owner = this;
+        inventory.Add(pickable);
+    }
+
+    internal void DropTool()
+    {
+        currentTool.Throw(transform.right);
+
+        currentTool = null;
+    }
+
+    internal void SetTool(Tool tool)
+    {
+        tool.transform.SetParent(interactPoint.transform);
+        tool.transform.localPosition = Vector3.zero;
+        tool.transform.localRotation = Quaternion.identity;
+        tool.owner = this;
+        currentTool = tool;
     }
 }

@@ -35,6 +35,7 @@ In this game, players will have to be doing maintenance on a starship during a r
 
 - [Warped Space Marine](https://ansimuz.itch.io/warped-space-marine) by [Ansimuz](https://ansimuz.itch.io/), purchased
 - [Fire Animation - Pixel Art FX Sprites](https://brullov.itch.io/fire-animation) by [Brulov](https://brullov.itch.io/), free to use
+- [Fire Extinguisher](https://opengameart.org/content/fire-extinguisher-3) by [nar](https://opengameart.org/users/nar), licensed through the [CC0] license.
 - Everything else done by [Diogo de Andrade], licensed through the [CC0] license.
 
 ## Sound

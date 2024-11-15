@@ -2,15 +2,29 @@ using UnityEngine;
 
 public class Tool : Item
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    public override bool canInteract => true;
+    public override bool Interact(Player player)
     {
-        
+        if (player.hasTool)
+        {
+            player.DropTool();
+        }
+
+        player.SetTool(this);
+
+        SetPhysics(false);
+
+        return true;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Throw(Vector2 direction)
     {
-        
+        transform.SetParent(null);
+        owner = null;
+
+        SetPhysics(true);
+
+        rb.linearVelocity = direction * 100.0f + Vector2.up * 75.0f;
     }
 }
