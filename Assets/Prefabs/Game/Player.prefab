@@ -520,14 +520,22 @@ MonoBehaviour:
   interactMask:
     serializedVersion: 2
     m_Bits: 256
-  dropTool:
+  useToolCtrl:
     _type: 3
     axis: Horizontal
     buttonPositive: Right
     buttonNegative: Left
     keyPositive: 275
     keyNegative: 276
-    inputAction: Crouch
+    inputAction: UseTool
+  dropToolCtrl:
+    _type: 3
+    axis: Horizontal
+    buttonPositive: Right
+    buttonNegative: Left
+    keyPositive: 275
+    keyNegative: 276
+    inputAction: Previous
 --- !u!1 &6937122829356048063
 GameObject:
   m_ObjectHideFlags: 0

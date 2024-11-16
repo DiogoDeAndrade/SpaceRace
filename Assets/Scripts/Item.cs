@@ -27,16 +27,10 @@ public abstract class Item : MonoBehaviour
     public string displayName => _displayName;
     public Transform tooltipPosition => (_tooltipPosition != null) ? (_tooltipPosition) : (transform);
 
-    void Start()
+    protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<Collider2D>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public virtual bool canInteract => false;

@@ -20,7 +20,9 @@ public class Player : MonoBehaviour
     [SerializeField] 
     private LayerMask      interactMask;
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton] 
-    private InputControl   dropTool;
+    private InputControl   useToolCtrl;
+    [SerializeField, InputPlayer(nameof(playerInput)), InputButton] 
+    private InputControl   dropToolCtrl;
 
     public int  playerId => _playerId;
 
@@ -36,7 +38,17 @@ public class Player : MonoBehaviour
     {
         tooltip = TooltipManager.CreateTooltip();
         interactControl.playerInput = playerInput;
-        dropTool.playerInput = playerInput;
+        dropToolCtrl.playerInput = playerInput;
+        useToolCtrl.playerInput = playerInput;
+
+        var playerUIs = FindObjectsByType<PlayerUI>(FindObjectsSortMode.None);
+        foreach (var p in playerUIs)
+        {
+            if (p.player == null)
+            {
+                p.player = this;
+            }
+        }
     }
 
     // Update is called once per frame
@@ -68,9 +80,14 @@ public class Player : MonoBehaviour
             }
         }
 
-        if ((hasTool) && (dropTool.IsPressed()))
+        if (hasTool)
         {
-            DropTool();
+            currentTool.activeTool = useToolCtrl.IsPressed();
+
+            if (dropToolCtrl.IsPressed())
+            {
+                DropTool();
+            }           
         }
     }
 
@@ -109,4 +126,7 @@ public class Player : MonoBehaviour
         tool.owner = this;
         currentTool = tool;
     }
+
+    public Sprite toolImage => currentTool.toolDef.sprite;
+    public float toolCharge => currentTool.charge;
 }

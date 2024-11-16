@@ -14,7 +14,7 @@ TagManager:
   - Ground
   - Ladder
   - Items
-  - 
+  - Accidents
   - 
   - 
   - 
@@ -38,8 +38,20 @@ TagManager:
   - 
   - Postprocess
   m_SortingLayers:
+  - name: Background
+    uniqueID: 1003527509
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Scenario
+    uniqueID: 238440081
+    locked: 0
+  - name: Player
+    uniqueID: 3452545079
+    locked: 0
+  - name: Items
+    uniqueID: 2260747793
     locked: 0
   - name: UI
     uniqueID: 3523708943
