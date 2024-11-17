@@ -26,13 +26,19 @@ public class Player : MonoBehaviour
 
     public int  playerId => _playerId;
 
-    private Tooltip         tooltip;
-    private Item            grabbedItem;
-    private List<Pickable>  inventory = new();
-    private Tool            currentTool;
-    
+    private Tooltip             tooltip;
+    private Item                grabbedItem;
+    private List<Pickable>      inventory = new();
+    private Tool                currentTool;
+    private int                 _score;
+    private Animator            animator;
+    private MovementPlatformer  movementPlatformer;
+    private bool                _isDead;
+
     public bool hasTool => (currentTool != null);
     public bool hasInventorySpace => inventory.Count < maxInventorySlots;
+    public int  score => _score;
+    public bool isDead => _isDead;
 
     void Start()
     {
@@ -47,47 +53,78 @@ public class Player : MonoBehaviour
             if (p.player == null)
             {
                 p.player = this;
+                break;
             }
         }
+
+        animator = GetComponent<Animator>();
+        movementPlatformer = GetComponent<MovementPlatformer>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (_isDead) return;
+
+        if (GameManager.oxygenPercentage <= 0.0f)
+        {
+            // Asphyxiate
+            animator.SetTrigger("Asphyxiate");
+            movementPlatformer.SetActive(false);
+            _isDead = true;
+        }
+
         Item interactionItem = null;
 
         var colliders = Physics2D.OverlapCircleAll(interactPoint.position, interactRadius, interactMask);
         foreach (var collider in colliders)
         {
+            ToolContainer container = collider.GetComponent<ToolContainer>();
+            if ((container != null) && (container.hasTool))
+            {
+                interactionItem = container.tool;
+                break;
+            }
             Item item = collider.GetComponent<Item>();
             if ((item != null) && (item.canInteract))
             {
                 interactionItem = item;
-                tooltip.SetText(item.displayName);
-                tooltip.SetPosition(item.tooltipPosition.position);
                 break;
-            }
-        }
-        if (interactionItem == null)
-        {
-            tooltip.SetText("");
-        }
-        else
-        {
-            if (interactControl.IsDown())
-            {
-                interactionItem.Interact(this);
             }
         }
 
         if (hasTool)
         {
+            tooltip.SetText("");
+
             currentTool.activeTool = useToolCtrl.IsPressed();
 
             if (dropToolCtrl.IsPressed())
             {
                 DropTool();
-            }           
+            }
+            if ((interactionItem) && (interactControl.IsDown()))
+            {
+                // Exchange tool
+                interactionItem.Interact(this);
+            }
+        }
+        else
+        {
+            if (interactionItem == null)
+            {
+                tooltip.SetText("");
+            }
+            else
+            {
+                tooltip.SetText(interactionItem.displayName);
+                tooltip.SetPosition(interactionItem.tooltipPosition.position);
+
+                if (interactControl.IsDown())
+                {
+                    interactionItem.Interact(this);
+                }
+            }
         }
     }
 
@@ -111,8 +148,25 @@ public class Player : MonoBehaviour
         inventory.Add(pickable);
     }
 
-    internal void DropTool()
+    internal void DropTool(Item exchangeTool = null)
     {
+        // Check if we're at an empty container that can accept this tool
+        var colliders = Physics2D.OverlapCircleAll(interactPoint.position, interactRadius, interactMask);
+        foreach (var collider in colliders)
+        {
+            ToolContainer container = collider.GetComponent<ToolContainer>();
+            if ((container != null) && (container.toolDef == currentTool.toolDef))
+            {
+                if (((container.hasTool) && (container.tool == exchangeTool)) || (!container.hasTool))
+                {
+                    currentTool.SetContainer(container);
+                    currentTool = null;
+                    return;
+                }
+            }
+        }
+
+        // Didn't find, throw it
         currentTool.Throw(transform.right);
 
         currentTool = null;
@@ -127,6 +181,11 @@ public class Player : MonoBehaviour
         currentTool = tool;
     }
 
+    public void AddScore(int delta)
+    {
+        _score += delta;
+    }
+
     public Sprite toolImage => currentTool.toolDef.sprite;
-    public float toolCharge => currentTool.charge;
+    public float toolCharge => currentTool.chargePercentage;
 }

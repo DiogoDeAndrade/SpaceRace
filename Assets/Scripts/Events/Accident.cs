@@ -1,11 +1,14 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Accident : MonoBehaviour
 {
     [SerializeField] protected float    maxDamage = 100.0f;
     [SerializeField] protected float    fixPerSecond = 25.0f;
+    [SerializeField] protected float    damagePerSecond = 0.0f;
     [SerializeField] protected ToolDef  _fixTool;
+    [SerializeField] protected int      score = 100;
 
     public ToolDef fixTool => _fixTool;
 
@@ -16,18 +19,29 @@ public class Accident : MonoBehaviour
         currentDamage = maxDamage;
     }
 
-    public void Fix(float scale)
+    public void Fix(Player player, float scale)
     {
-        currentDamage = Mathf.Max(0, currentDamage - scale * fixPerSecond * Time.deltaTime);
-
-        if (currentDamage <= 0.0f)
+        if (currentDamage > 0)
         {
-            Complete();
+            currentDamage = Mathf.Max(0, currentDamage - scale * fixPerSecond * Time.deltaTime);
+
+            if (currentDamage <= 0.0f)
+            {
+                Complete(player);
+            }
         }
     }
 
-    protected virtual void Complete()
+    protected virtual void Update()
     {
-        Destroy(gameObject);
+        if (currentDamage > 0.0f)
+        {
+            currentDamage = Mathf.Clamp(currentDamage + damagePerSecond * Time.deltaTime, 0, maxDamage);
+        }
+    }
+
+    protected virtual void Complete(Player player)
+    {
+        player.AddScore(score);
     }
 }

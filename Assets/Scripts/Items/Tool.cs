@@ -8,8 +8,11 @@ public class Tool : Item
     [SerializeField] Transform      toolPoint;
     [SerializeField] float          toolRadius = 5.0f;
     [SerializeField] float          maxCharge = 5.0f;
+    [SerializeField] Canvas         chargeUI;
+    [SerializeField] RectTransform  chargeMeter;
 
-    private bool _toolActive = false;
+    private bool    _toolActive = false;
+    private ToolContainer currentContainer;
     private float currentCharge;
 
     public bool activeTool
@@ -19,8 +22,8 @@ public class Tool : Item
     }
     public ToolDef toolDef => _toolDef;
 
-    public bool hasCharge => (currentCharge > 0.0f);
-    public float charge => (maxCharge > 0.0f) ? (currentCharge / maxCharge) : (1.0f);
+    public bool hasCharge => chargePercentage > 0.0f;
+    public float chargePercentage => (maxCharge > 0.0f) ? (currentCharge / maxCharge) : (1.0f);
 
     protected override void Start()
     {
@@ -35,9 +38,13 @@ public class Tool : Item
     {
         if (player.hasTool)
         {
-            player.DropTool();
+            player.DropTool(this);
         }
 
+        if (currentContainer)
+        {
+            SetContainer(null);
+        }
         player.SetTool(this);
 
         SetPhysics(false);
@@ -47,7 +54,7 @@ public class Tool : Item
 
     public void Throw(Vector2 direction)
     {
-        transform.SetParent(null);
+        transform.SetParent(null, true);
         owner = null;
         _toolActive = false;
 
@@ -74,11 +81,45 @@ public class Tool : Item
                 Accident accident = collider.GetComponent<Accident>();
                 if ((accident != null) && (accident.fixTool == toolDef))
                 {
-                    accident.Fix(1.0f);
+                    accident.Fix(owner, 1.0f);
                 }
             }
 
             currentCharge = Mathf.Max(0, currentCharge - Time.deltaTime);
+        }
+
+        chargeUI.gameObject.SetActive((currentContainer != null) && (chargePercentage < 1.0f));
+        chargeMeter.localScale = new Vector2(chargePercentage, 1);
+    }
+
+    public void Charge(float amount)
+    {
+        if (maxCharge > 0.0f)
+        {
+            currentCharge = Mathf.Clamp(currentCharge + amount, 0.0f, maxCharge);
+        }
+    }
+
+    public void SetContainer(ToolContainer container)
+    {
+        var prevContainer = currentContainer;
+        currentContainer = container;
+
+        if (currentContainer)
+        {
+            SetPhysics(false);
+            transform.SetParent(container.toolPos);
+            transform.localPosition = Vector3.zero;
+            transform.localRotation = Quaternion.identity;
+
+            prevContainer?.HangTool(null);
+            currentContainer.HangTool(this);
+        }
+        else
+        {
+            transform.SetParent(null);
+            SetPhysics(true);            
+            prevContainer?.HangTool(null);
         }
     }
 

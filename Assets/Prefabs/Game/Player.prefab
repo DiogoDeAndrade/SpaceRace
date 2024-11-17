@@ -186,7 +186,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -842422217
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dd9ac04ccc57db246b39db931ee1edae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -421,7 +421,7 @@ MonoBehaviour:
     keyPositive: 275
     keyNegative: 276
     inputAction: VerticalMove
-  flipBehaviour: 6
+  flipBehaviour: 5
   useAnimator: 1
   animator: {fileID: 5746477131375014721}
   horizontalVelocityParameter: 
@@ -535,7 +535,7 @@ MonoBehaviour:
     buttonNegative: Left
     keyPositive: 275
     keyNegative: 276
-    inputAction: Previous
+    inputAction: Crouch
 --- !u!1 &6937122829356048063
 GameObject:
   m_ObjectHideFlags: 0

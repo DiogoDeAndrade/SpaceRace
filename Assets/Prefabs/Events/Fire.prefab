@@ -273,8 +273,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxDamage: 100
-  fixPerSecond: 10
+  fixPerSecond: 25
+  damagePerSecond: 5
   _fixTool: {fileID: 11400000, guid: eaa662edbfefaf244bb3f2c1705594ca, type: 2}
+  score: 100
   fires:
   - {fileID: 5027497471289782119}
   - {fileID: 218582755910797057}

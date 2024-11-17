@@ -11,14 +11,19 @@ In this game, players will have to be doing maintenance on a starship during a r
 
 ## Todo
 
+![Dev Shot 1](Screenshots/screen02.png)
+First scenario sprites and lighting
+![Dev Shot 2](Screenshots/screen03.png)
+Oxygen, two players, extinguisher
+
 - Tileset spaceship
-- Meters: oxygen, destination, speed
+- Meters: ~~oxygen~~, destination, speed
   - Reach destination = finish race (time matters in tournament mode)
-  - Oxygen reaches zero = everybody dies
+  - ~~Oxygen reaches zero = everybody dies~~
 - Event system
-  - All events grant points to player that does task
-  - Fire on board: needs extinguisher, consumes oxygen
-  - Hull breach: needs fixing (sealant), consumes oxygen, reduces integrity over time, pulls players towards it
+  - ~~All events grant points to player that does task~~
+  - ~~Fire on board: needs extinguisher, consumes oxygen~~
+  - Hull breach: needs fixing (sealant), consumes oxygen, pulls players towards it
   - Alien: can kill players
   - Blackout: turns lights on, need to go to the master switch and reset
   - Fuel: need to add fuel to the ship, so that it can speed up
@@ -36,6 +41,8 @@ In this game, players will have to be doing maintenance on a starship during a r
 - [Warped Space Marine](https://ansimuz.itch.io/warped-space-marine) by [Ansimuz](https://ansimuz.itch.io/), purchased
 - [Fire Animation - Pixel Art FX Sprites](https://brullov.itch.io/fire-animation) by [Brulov](https://brullov.itch.io/), free to use
 - [Fire Extinguisher](https://opengameart.org/content/fire-extinguisher-3) by [nar](https://opengameart.org/users/nar), licensed through the [CC0] license.
+- Font [Optimus](https://www.dafont.com/pt/optimus.font) by [Pixel Sagas](https://www.dafont.com/pt/pixel-sagas.d32), free for non-commercial use.
+- O2 icon from [FreePik](https://www.freepik.com/), free for non-commercial use.
 - Everything else done by [Diogo de Andrade], licensed through the [CC0] license.
 
 ## Sound

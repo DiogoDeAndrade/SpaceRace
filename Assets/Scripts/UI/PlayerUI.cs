@@ -1,12 +1,14 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerUI : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup    toolCanvasGroup;
-    [SerializeField] private Image          toolImage;
-    [SerializeField] private Image          toolImageMask;
-    [SerializeField] private UIImageEffect  portraitImageEffect;
+    [SerializeField] private CanvasGroup        toolCanvasGroup;
+    [SerializeField] private Image              toolImage;
+    [SerializeField] private Image              toolImageMask;
+    [SerializeField] private UIImageEffect      portraitImageEffect;
+    [SerializeField] private TextMeshProUGUI    scoreText;
     public Player player { get; set; }
 
     private CanvasGroup     playerUICanvas;
@@ -17,6 +19,7 @@ public class PlayerUI : MonoBehaviour
         playerUICanvas = GetComponent<CanvasGroup>();
         playerUICanvas.alpha = 0.0f;
         toolCanvasGroup.alpha = 0.0f;
+        scoreText.text = "000000";
     }
 
     void Update()
@@ -46,6 +49,8 @@ public class PlayerUI : MonoBehaviour
             {
                 toolCanvasGroup.alpha = Mathf.Clamp01(toolCanvasGroup.alpha - Time.deltaTime * 4.0f);
             }
+
+            scoreText.text = player.score.ToString("D6");
         }
         else
         {

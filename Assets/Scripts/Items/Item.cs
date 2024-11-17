@@ -27,17 +27,21 @@ public abstract class Item : MonoBehaviour
     public string displayName => _displayName;
     public Transform tooltipPosition => (_tooltipPosition != null) ? (_tooltipPosition) : (transform);
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         mainCollider = GetComponent<Collider2D>();
+    }
+
+    protected virtual void Start()
+    {
     }
 
     public virtual bool canInteract => false;
 
     public abstract bool Interact(Player player);
 
-    protected void SetPhysics(bool active)
+    public void SetPhysics(bool active)
     {
         rb.simulated = active;
         mainCollider.enabled = active;

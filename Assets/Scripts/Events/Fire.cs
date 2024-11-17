@@ -7,6 +7,7 @@ public class Fire : Accident
     [SerializeField] List<SpriteRenderer>   fires;
     [SerializeField] ParticleSystem         firePS;
     [SerializeField] float                  particlesPerSecond = 10.0f;
+    [SerializeField] float                  oxygenPerSecond = 10.0f;
 
     private Light2D         fireLight;
     private float           elapsedTime = 0.0f;
@@ -29,8 +30,10 @@ public class Fire : Accident
         }
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
+
         float t = currentDamage / maxDamage;
 
         if (t > 0.05f)
@@ -64,10 +67,12 @@ public class Fire : Accident
         {
             fireAnimators[i].SetBool("Burning", (i < numberOfActiveFires));
         }
+
+        GameManager.ChangeOxygen(-t * oxygenPerSecond * Time.deltaTime);
     }
 
-    protected override void Complete()
+    protected override void Complete(Player player)
     {
-        // Do nothing for now
+        base.Complete(player);
     }
 }
