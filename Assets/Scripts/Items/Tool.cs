@@ -36,15 +36,18 @@ public class Tool : Item
     public override bool canInteract => true;
     public override bool Interact(Player player)
     {
+        // If this tool is on a container, clear the container first
+        // We need to do this before we let drop the current tool
+        // because otherwise the container can't store the tool
+        if (currentContainer)
+        {
+            SetContainer(null);
+        }
         if (player.hasTool)
         {
             player.DropTool(this);
         }
 
-        if (currentContainer)
-        {
-            SetContainer(null);
-        }
         player.SetTool(this);
 
         SetPhysics(false);

@@ -836,6 +836,7 @@ GameObject:
   - component: {fileID: 664341773}
   - component: {fileID: 664341772}
   - component: {fileID: 664341771}
+  - component: {fileID: 664341774}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -890,6 +891,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &664341774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664341770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da762072d3c91ce49ab7a5a4091dbee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  retrigger: 1
+  initialInterval: {x: 74.93526, y: 174.66187}
+  repeatInterval: {x: 56.42446, y: 106.28777}
+  eventPrefab: {fileID: 2954027264837460169, guid: 66ad08d725103274c9298cec05a84f66, type: 3}
+  cheatKey: 283
 --- !u!4 &701354042 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8468513009861583024, guid: dab117cffddc653418079fe3ba51d05c, type: 3}
@@ -2653,6 +2672,38 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc634844690b5c04eaf0ccfd01eaddac, type: 3}
+--- !u!1 &1574167333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1574167334}
+  m_Layer: 0
+  m_Name: HullBreachLocations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1574167334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574167333}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1822929211}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &1592713138 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3821588357102819258, guid: fea42560a68261a40a95ce10d83f7d37, type: 3}
@@ -2720,7 +2771,7 @@ SpriteRenderer:
   m_SortingLayer: -2
   m_SortingOrder: 529
   m_Sprite: {fileID: 7482667652216324306, guid: 052a0047ed0e99c41b12feefc9bf2df5, type: 3}
-  m_Color: {r: 0, g: 0.106918186, b: 0.11320752, a: 1}
+  m_Color: {r: 0.17817727, g: 0.25822172, b: 0.26415092, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -2899,6 +2950,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
+    - target: {fileID: 6683781890077311939, guid: 2c4decd21143ce74eb39fb8947aa1b4c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2961,6 +3016,51 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc634844690b5c04eaf0ccfd01eaddac, type: 3}
+--- !u!1 &1822929210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1822929211}
+  - component: {fileID: 1822929212}
+  m_Layer: 0
+  m_Name: HullBreach (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1822929211
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822929210}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -121, y: -79.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1574167334}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1822929212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822929210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc938798f9cbdba48b70a952094371e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hypertag: {fileID: 11400000, guid: 4625c96528adc0a468e417c94437bba2, type: 2}
 --- !u!1 &1939452837
 GameObject:
   m_ObjectHideFlags: 0
@@ -3311,6 +3411,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3274794896074559717, guid: 2c4decd21143ce74eb39fb8947aa1b4c, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: Keyboard&Mouse
+      objectReference: {fileID: 0}
     - target: {fileID: 4335599572146330117, guid: 2c4decd21143ce74eb39fb8947aa1b4c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.6
@@ -3644,12 +3748,10 @@ SceneRoots:
   - {fileID: 1264127922}
   - {fileID: 1028407374}
   - {fileID: 1132236484}
+  - {fileID: 1574167334}
   - {fileID: 511304954}
   - {fileID: 3405333807989787381}
   - {fileID: 1745758291}
-  - {fileID: 53184734}
-  - {fileID: 664341773}
-  - {fileID: 596063420}
   - {fileID: 1785549301}
   - {fileID: 1196932506}
   - {fileID: 1310209528}
@@ -3659,3 +3761,6 @@ SceneRoots:
   - {fileID: 2029088960}
   - {fileID: 7577425359901432710}
   - {fileID: 984318713}
+  - {fileID: 53184734}
+  - {fileID: 664341773}
+  - {fileID: 596063420}
