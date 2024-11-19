@@ -679,7 +679,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619394800}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
@@ -688,8 +688,8 @@ MonoBehaviour:
   m_LightType: 4
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.1
+  m_Color: {r: 1, g: 0, b: 0.15351725, a: 1}
+  m_Intensity: 0.05
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 000000000f8807d237a8c9cd1146c086559dd03b914e360e7df6cfe9
@@ -697,7 +697,7 @@ MonoBehaviour:
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
-  m_OverlapOperation: 0
+  m_OverlapOperation: 1
   m_NormalMapDistance: 3
   m_NormalMapQuality: 2
   m_UseNormalMap: 0
@@ -837,6 +837,7 @@ GameObject:
   - component: {fileID: 664341772}
   - component: {fileID: 664341771}
   - component: {fileID: 664341774}
+  - component: {fileID: 664341775}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -909,6 +910,24 @@ MonoBehaviour:
   repeatInterval: {x: 56.42446, y: 106.28777}
   eventPrefab: {fileID: 2954027264837460169, guid: 66ad08d725103274c9298cec05a84f66, type: 3}
   cheatKey: 283
+--- !u!114 &664341775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664341770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da762072d3c91ce49ab7a5a4091dbee3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  retrigger: 1
+  initialInterval: {x: 68.460434, y: 118.323746}
+  repeatInterval: {x: 85.65468, y: 180.22302}
+  eventPrefab: {fileID: 6434085191867271627, guid: 39dcfe5060a321140828106dd3025ddd, type: 3}
+  cheatKey: 284
 --- !u!4 &701354042 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8468513009861583024, guid: dab117cffddc653418079fe3ba51d05c, type: 3}
