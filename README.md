@@ -23,9 +23,9 @@ Oxygen, two players, extinguisher
 - Event system
   - ~~All events grant points to player that does task~~
   - ~~Fire on board: needs extinguisher, consumes oxygen~~
-  - Hull breach: needs fixing (sealant), consumes oxygen, pulls players towards it
+  - Hull breach: needs fixing (sealant), ~~consumes oxygen~~, ~~pulls players towards it~~
   - Alien: can kill players
-  - Blackout: turns lights on, need to go to the master switch and reset
+  - Blackout: turns lights off, need to go to the master switch and reset
   - Fuel: need to add fuel to the ship, so that it can speed up
   - Nitro: need to produce nitro at a station, and then feed it to the engine, for extra boost
   - Short circuit: need to fix (wrench) or it spreads and eventually the ship explodes, reduces integrity over time

@@ -1,8 +1,10 @@
 using UnityEngine;
 
-public class HullBreach : Accident
+public class HullBreach : Accident, GameManager.Force
 {
     [SerializeField] float oxygenPerSecond = 10.0f;
+    [SerializeField] float attractionStrength = 25;
+    [SerializeField] float attractionRange = 200;
 
     SpriteRenderer spriteRenderer;
     ParticleSystem ps;
@@ -15,6 +17,8 @@ public class HullBreach : Accident
         spriteRenderer = GetComponent<SpriteRenderer>();
         ps = GetComponentInChildren<ParticleSystem>();
         defaultEmissionRate = ps.emission.rateOverTimeMultiplier;
+
+        GameManager.AddForce(this);
     }
 
     protected override void Update()
@@ -37,5 +41,19 @@ public class HullBreach : Accident
         spriteRenderer.color = spriteRenderer.color.ChangeAlpha(t);
 
         GameManager.ChangeOxygen(-t * oxygenPerSecond * Time.deltaTime);
+    }
+
+    public Vector2 GetForce(Vector2 pos)
+    {
+        Vector2 direction = transform.position.xy() - pos;
+        float dist = direction.magnitude;
+        if (dist < 5.0f) return Vector2.zero;
+
+        float distNormalized = Mathf.Clamp01(dist / attractionRange);
+        direction /= dist;
+
+        float t = currentDamage / maxDamage;
+
+        return Mathf.Lerp(attractionStrength, 0, distNormalized * t) * direction;
     }
 }

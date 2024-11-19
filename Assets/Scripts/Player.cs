@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
     private Tool                currentTool;
     private int                 _score;
     private Animator            animator;
+    private Rigidbody2D         rb;
     private MovementPlatformer  movementPlatformer;
     private bool                _isDead;
 
@@ -58,10 +59,18 @@ public class Player : MonoBehaviour
         }
 
         animator = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
         movementPlatformer = GetComponent<MovementPlatformer>();
     }
 
-    // Update is called once per frame
+    private void FixedUpdate()
+    {
+        Vector2 f = GameManager.GetForce(transform.position);
+        // Project the force in the X axis only
+        f.y = 0.0f;
+        rb.AddForce(f, ForceMode2D.Impulse);
+    }
+
     void Update()
     {
         if (_isDead) return;
