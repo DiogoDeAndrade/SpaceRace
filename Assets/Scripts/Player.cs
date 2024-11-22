@@ -83,7 +83,8 @@ public class Player : MonoBehaviour
             _isDead = true;
         }
 
-        Item interactionItem = null;
+        Item            interactionItem = null;
+        Interactable    interactable = null;
 
         var colliders = Physics2D.OverlapCircleAll(interactPoint.position, interactRadius, interactMask);
         foreach (var collider in colliders)
@@ -98,6 +99,12 @@ public class Player : MonoBehaviour
             if ((item != null) && (item.canInteract))
             {
                 interactionItem = item;
+                break;
+            }
+            Interactable interactableObject = collider.GetComponent<Interactable>();
+            if (interactableObject != null)
+            {
+                interactable = interactableObject;
                 break;
             }
         }
@@ -120,18 +127,19 @@ public class Player : MonoBehaviour
         }
         else
         {
-            if (interactionItem == null)
+            if ((interactionItem == null) && (interactable == null))
             {
                 tooltip.SetText("");
             }
             else
             {
-                tooltip.SetText(interactionItem.displayName);
-                tooltip.SetPosition(interactionItem.tooltipPosition.position);
+                tooltip.SetText((interactable) ? (interactable.displayName) : (interactionItem.displayName));
+                tooltip.SetPosition((interactable) ? (interactable.tooltipPosition.position) : (interactionItem.tooltipPosition.position));
 
                 if (interactControl.IsDown())
                 {
-                    interactionItem.Interact(this);
+                    interactionItem?.Interact(this);
+                    interactable?.Interact(this);
                 }
             }
         }

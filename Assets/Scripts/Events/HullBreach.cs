@@ -21,6 +21,11 @@ public class HullBreach : Accident, GameManager.Force
         GameManager.AddForce(this);
     }
 
+    void OnDestroy()
+    {
+        GameManager.RemoveForce(this);
+    }
+
     protected override void Update()
     {
         base.Update();
