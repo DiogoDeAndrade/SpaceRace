@@ -105,7 +105,7 @@ MonoBehaviour:
   maxDamage: 100
   fixPerSecond: 25
   damagePerSecond: 0
-  _fixTool: {fileID: 11400000, guid: eaa662edbfefaf244bb3f2c1705594ca, type: 2}
+  _fixTool: {fileID: 11400000, guid: 8cde40c60b8b3d24abc199b022a6e920, type: 2}
   score: 100
   oxygenPerSecond: 6
   attractionStrength: 300

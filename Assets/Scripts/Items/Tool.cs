@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Tool : Item
 {
     [SerializeField] ToolDef        _toolDef;
     [SerializeField] LayerMask      accidentMask;
     [SerializeField] ParticleSystem usePS;
+    [SerializeField] Light2D        useLight;
     [SerializeField] Transform      toolPoint;
     [SerializeField] float          toolRadius = 5.0f;
     [SerializeField] float          maxCharge = 5.0f;
@@ -72,6 +74,10 @@ public class Tool : Item
         {
             var emission = usePS.emission;
             emission.enabled = (_toolActive) && (hasCharge);
+        }
+        if (useLight)
+        {
+            useLight.enabled = (_toolActive) && (currentCharge > 0.0f);
         }
         if ((_toolActive) && (currentCharge > 0.0f))
         {
