@@ -1,10 +1,13 @@
 using NaughtyAttributes;
+using System.Runtime.CompilerServices;
 using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
 public class ShipLight : MonoBehaviour
 {
+    [SerializeField] private float emergencyLight = 0.1f;
+
     private Light2D         light2d;
     private float           originalLightIntensity;
     private Color           originalLightColor;
@@ -25,7 +28,7 @@ public class ShipLight : MonoBehaviour
     [Button("Turn Off")]
     public void TurnOff()
     {
-        light2d.intensity = 0.1f;
+        light2d.intensity = emergencyLight;
         light2d.color = Color.red;
         material.SetColor("_EmissiveColor", Color.red * 3.0f);
     }
@@ -33,7 +36,6 @@ public class ShipLight : MonoBehaviour
     [Button("Turn On")]
     public void TurnOn()
     {
-        //light2d.enabled = true;
         light2d.intensity = originalLightIntensity;
         light2d.color = originalLightColor;
         material.SetColor("_EmissiveColor", originalEmissive);

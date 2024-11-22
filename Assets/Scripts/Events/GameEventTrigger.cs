@@ -9,6 +9,8 @@ public class GameEventTrigger : MonoBehaviour
     [SerializeField] 
     private TriggerType     type;
     [SerializeField] 
+    private float           playerTimeMultiplier = 1.0f;
+    [SerializeField] 
     private bool            retrigger = true;
     [SerializeField, MinMaxSlider(1.0f, 240.0f), ShowIf("type", TriggerType.Time)] 
     private Vector2         initialInterval = new Vector2(10.0f, 10.0f);
@@ -46,10 +48,16 @@ public class GameEventTrigger : MonoBehaviour
 
             if (canRun)
             {
+                float deltaTime = Time.deltaTime;
+                if (playerTimeMultiplier > 0.0f)
+                {
+                    var players = FindObjectsByType<Player>(FindObjectsSortMode.None);
+                    deltaTime = playerTimeMultiplier * players.Length * Time.deltaTime;
+                }
                 switch (type)
                 {
                     case TriggerType.Time:
-                        timer -= Time.deltaTime;
+                        timer -= deltaTime;
                         if (timer < 0.0f)
                         {
                             if (TriggerEvent())
