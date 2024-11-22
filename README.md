@@ -25,11 +25,12 @@ Oxygen, two players, extinguisher
   - ~~Fire on board: needs extinguisher, consumes oxygen~~
   - Hull breach: needs fixing (sealant), ~~consumes oxygen~~, ~~pulls players towards it~~
   - Alien: can kill players
-  - Blackout: turns lights off, need to go to the master switch and reset
+  - Blackout: ~~turns lights off~~, need to go to the master switch and reset
   - Fuel: need to add fuel to the ship, so that it can speed up
   - Nitro: need to produce nitro at a station, and then feed it to the engine, for extra boost
   - Short circuit: need to fix (wrench) or it spreads and eventually the ship explodes, reduces integrity over time
   - Predator: can kill players if they pose a threat (if they have torch, wrench or hammer), is invisible
+  - If player dies, the other can revive him with the defribilator
   - Computers acting up: need to fix (hammer) or it spreads and eventually the ship explodes, reduces integrity over time
 - Game modes
   - Single player - Just get to destination
