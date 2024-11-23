@@ -3,15 +3,33 @@ using UnityEngine.Rendering.Universal;
 
 public class GameEvent_Blackout : GameEvent
 {
+    [SerializeField] int score = 50;
+    
+    Fusebox fusebox;
+
     public override bool Init()
     {
         if (!base.Init()) return false;
 
-        var fusebox = FindFirstObjectByType<Fusebox>();
+        fusebox = FindFirstObjectByType<Fusebox>();
         fusebox.Trip();
+
+        fusebox.onToggle += OnToggle;
+
 
         Destroy(gameObject);
 
         return true;
+    }
+
+    void OnToggle(Player player, bool isUp)
+    {
+        if (isUp)
+        {
+            player.AddScore(score);
+
+            fusebox.onToggle -= OnToggle;
+            Destroy(gameObject);
+        }
     }
 }

@@ -14,7 +14,7 @@ public class ToolContainer : MonoBehaviour
     public bool hasTool => containedTool != null;
     public Tool tool => containedTool;
 
-    void Start()
+    protected virtual void Start()
     {
         var ct = GetComponentInChildren<Tool>();
         if (ct != null)
@@ -27,7 +27,7 @@ public class ToolContainer : MonoBehaviour
         }
     }
 
-    void Update()
+    protected virtual void Update()
     {
         if (containedTool != null)
         {
@@ -37,7 +37,7 @@ public class ToolContainer : MonoBehaviour
         }
     }
 
-    public bool HangTool(Tool tool)
+    public virtual bool HangTool(Tool tool)
     {
         if (tool == null)
         {

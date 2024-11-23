@@ -68,7 +68,7 @@ public class Tool : Item
         rb.linearVelocity = direction * 100.0f + Vector2.up * 75.0f;
     }
 
-    private void Update()
+    protected virtual void Update()
     {
         if (usePS)
         {
@@ -97,8 +97,11 @@ public class Tool : Item
             currentCharge = Mathf.Max(0, currentCharge - Time.deltaTime);
         }
 
-        chargeUI.gameObject.SetActive((currentContainer != null) && (chargePercentage < 1.0f));
-        chargeMeter.localScale = new Vector2(chargePercentage, 1);
+        if ((chargeUI) && (chargeMeter))
+        {
+            chargeUI.gameObject.SetActive((currentContainer != null) && (chargePercentage < 1.0f));
+            chargeMeter.localScale = new Vector2(chargePercentage, 1);
+        }
     }
 
     public void Charge(float amount)

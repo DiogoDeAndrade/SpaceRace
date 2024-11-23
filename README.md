@@ -28,10 +28,13 @@ Oxygen, two players, extinguisher
   - ~~Hull breach: needs fixing (blowtorch), consumes oxygen, pulls players towards it~~
   - Alien: can kill players
   - ~~Blackout: turns lights off,  need to go to the master switch and reset~~
-  - Computers acting up: need to fix (hammer) or it spreads and eventually the ship explodes, reduces integrity over time
   - Fuel: need to add fuel to the ship, so that it can speed up
+    - Fuel is unstable, can blow up
   - Nitro: need to produce nitro at a station, and then feed it to the engine, for extra boost
+    - Nitro is produced by adding fuel to it - 3 fuel = 1 nitro, but we have to hurry up, it eventually explodes
+  - Fuel and nitro can provoke hull breach when they explode
   - Short circuit: need to fix (wrench) or it spreads and eventually the ship explodes, reduces integrity over time
+  - Computers acting up: need to fix (hammer) or it spreads and eventually the ship explodes, reduces integrity over time
   - Predator: can kill players if they pose a threat (if they have torch, wrench or hammer), is invisible
   - If player dies, the other can revive him with the defribilator
 - Game modes
@@ -43,7 +46,7 @@ Oxygen, two players, extinguisher
 
 - [Warped Space Marine](https://ansimuz.itch.io/warped-space-marine) by [Ansimuz](https://ansimuz.itch.io/), purchased
 - [Fire Animation - Pixel Art FX Sprites](https://brullov.itch.io/fire-animation) by [Brulov](https://brullov.itch.io/), free to use
-- [Fire Extinguisher](https://opengameart.org/content/fire-extinguisher-3) by [nar](https://opengameart.org/users/nar), licensed through the [CC0] license.
+- [Explosion Pack](https://lorix.itch.io/explosion-pack) by [Lorix](https://lorix.itch.io/), free to use with credits
 - Font [Optimus](https://www.dafont.com/pt/optimus.font) by [Pixel Sagas](https://www.dafont.com/pt/pixel-sagas.d32), free for non-commercial use.
 - O2 icon from [FreePik](https://www.freepik.com/), free for non-commercial use.
 - Everything else done by [Diogo de Andrade], licensed through the [CC0] license.

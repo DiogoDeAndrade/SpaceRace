@@ -9,6 +9,9 @@ public class Fusebox : Interactable
     private bool isOpen = false;
     private bool isUp = true;
 
+    public delegate void OnToggle(Player player, bool isUp);
+    public event OnToggle onToggle;
+
     void Update()
     {
         anim.SetBool("Open", isOpen);
@@ -21,6 +24,8 @@ public class Fusebox : Interactable
         {
             isUp = !isUp;
             UpdateLight();
+
+            onToggle?.Invoke(player, isUp);
         }
         else
         {

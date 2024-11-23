@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -35,6 +36,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D         rb;
     private MovementPlatformer  movementPlatformer;
     private bool                _isDead;
+    private HealthSystem        healthSystem;
 
     public bool hasTool => (currentTool != null);
     public bool hasInventorySpace => inventory.Count < maxInventorySlots;
@@ -61,6 +63,23 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         movementPlatformer = GetComponent<MovementPlatformer>();
+        healthSystem = GetComponent<HealthSystem>();
+        healthSystem.onHit += OnHit;
+        healthSystem.onDead += OnDead;
+    }
+
+    IEnumerator OnHitCR(float damage, Vector3 damagePosition)
+    {
+        movementPlatformer.enabled = false;
+        float s = Mathf.Sign(transform.position.x - damagePosition.x);
+        rb.linearVelocityX = s * 30.0f;
+        transform.rotation = (s < 0) ? (Quaternion.identity) : (Quaternion.Euler(0, 180, 0));
+        animator.SetTrigger("Hit");
+
+        yield return new WaitForSeconds(0.5f);
+
+        animator.SetTrigger("Reset");
+        movementPlatformer.enabled = true;
     }
 
     private void FixedUpdate()
@@ -205,4 +224,16 @@ public class Player : MonoBehaviour
 
     public Sprite toolImage => currentTool.toolDef.sprite;
     public float toolCharge => currentTool.chargePercentage;
+
+
+    private void OnHit(float damage, Vector3 damagePosition)
+    {
+        StartCoroutine(OnHitCR(damage, damagePosition));
+    }
+    private void OnDead()
+    {
+        animator.SetTrigger("Asphyxiate");
+        movementPlatformer.SetActive(false);
+        _isDead = true;
+    }
 }
