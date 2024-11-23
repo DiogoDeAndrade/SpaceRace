@@ -17,8 +17,8 @@ First scenario sprites and lighting
 Oxygen, two players, extinguisher
 
 - Tileset spaceship
-  - Wall
-  - Window
+  - ~~Wall~~
+  - ~~Window~~
 - Meters: ~~oxygen~~, destination, speed
   - Reach destination = finish race (time matters in tournament mode)
   - ~~Oxygen reaches zero = everybody dies~~
