@@ -8,8 +8,11 @@ public class Fire : Accident
     [SerializeField] ParticleSystem         firePS;
     [SerializeField] float                  particlesPerSecond = 10.0f;
     [SerializeField] float                  oxygenPerSecond = 10.0f;
+    [SerializeField] Gradient               fireFlickerColor;
+    [SerializeField] float                  fireFlickerSpeed;
 
     private Light2D         fireLight;
+    private float           fireFlickerTimer;     
     private float           elapsedTime = 0.0f;
     private float           timePerParticle;
     private Color32         color;
@@ -60,6 +63,9 @@ public class Fire : Accident
                 Destroy(gameObject);
             }
         }
+        fireFlickerTimer += Time.deltaTime * fireFlickerSpeed;
+        while (fireFlickerTimer > 1) fireFlickerTimer -= 1.0f;
+        fireLight.color = fireFlickerColor.Evaluate(fireFlickerTimer);
         fireLight.intensity = fireLight.intensity + (t - fireLight.intensity) * 0.05f;
 
         int numberOfActiveFires = Mathf.CeilToInt(t * fires.Count);
