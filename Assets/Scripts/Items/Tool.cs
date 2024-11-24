@@ -43,7 +43,7 @@ public class Tool : Item
         // because otherwise the container can't store the tool
         if (currentContainer)
         {
-            SetContainer(null);
+            SetContainer(player, null);
         }
         if (player.hasTool)
         {
@@ -112,7 +112,7 @@ public class Tool : Item
         }
     }
 
-    public void SetContainer(ToolContainer container)
+    public void SetContainer(Player player, ToolContainer container)
     {
         var prevContainer = currentContainer;
         currentContainer = container;
@@ -124,14 +124,14 @@ public class Tool : Item
             transform.localPosition = Vector3.zero;
             transform.localRotation = Quaternion.identity;
 
-            prevContainer?.HangTool(null);
-            currentContainer.HangTool(this);
+            prevContainer?.HangTool(player, null);
+            currentContainer.HangTool(player, this);
         }
         else
         {
             transform.SetParent(null);
             SetPhysics(true);            
-            prevContainer?.HangTool(null);
+            prevContainer?.HangTool(player,null);
         }
     }
 

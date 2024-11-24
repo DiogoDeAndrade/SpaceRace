@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8239112938095442329}
   - component: {fileID: 8150941130488475348}
   - component: {fileID: 59313762567111743}
-  - component: {fileID: 320158895866090136}
+  - component: {fileID: 5942450493851004039}
   m_Layer: 0
   m_Name: Explosion
   m_TagString: Untagged
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 0.5
   fadeOut: 0
---- !u!114 &320158895866090136
+--- !u!114 &5942450493851004039
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -135,9 +135,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 8247506289555659943}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 91925126f5d1f924a8e3e1e69a565087, type: 3}
+  m_Script: {fileID: 11500000, guid: 0003bf355b358644d8b833bd61f5f4d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damageDelay: 0.05
   damageRadius: 50
   damage: 25
+  eventProbability: 1
+  breachTag: {fileID: 11400000, guid: 4625c96528adc0a468e417c94437bba2, type: 2}
+  breachPrefab: {fileID: 293720230818123816, guid: 67894c93dd071444daaecd2fe7e7ea02, type: 3}
+  fireTag: {fileID: 11400000, guid: e4234a2e0a5e79343888948a2e1449c1, type: 2}
+  firePrefab: {fileID: 2282356607504379163, guid: 611f2b8e0cab87247bf3ee03b647f868, type: 3}

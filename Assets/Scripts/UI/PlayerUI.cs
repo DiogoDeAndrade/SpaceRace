@@ -9,10 +9,18 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] private Image              toolImageMask;
     [SerializeField] private UIImageEffect      portraitImageEffect;
     [SerializeField] private TextMeshProUGUI    scoreText;
-    public Player player { get; set; }
+    [SerializeField] private RectTransform      healthMeter;
+    
+    private Player _player;
+    public Player player 
+    { 
+        get { return _player; } 
+        set { _player = value; healthSystem = _player.GetComponent<HealthSystem>(); }
+    }
 
     private CanvasGroup     playerUICanvas;
     private SpriteEffect    spriteEffect;
+    private HealthSystem    healthSystem;
 
     void Start()
     {
@@ -24,9 +32,9 @@ public class PlayerUI : MonoBehaviour
 
     void Update()
     {
-        if (player != null)
+        if (_player != null)
         {
-            if (spriteEffect == null) spriteEffect = player.GetComponent<SpriteEffect>();
+            if (spriteEffect == null) spriteEffect = _player.GetComponent<SpriteEffect>();
             if (spriteEffect != null)
             {
                 var remap = spriteEffect.GetRemap();
@@ -35,13 +43,13 @@ public class PlayerUI : MonoBehaviour
 
             playerUICanvas.alpha = Mathf.Clamp01(playerUICanvas.alpha + Time.deltaTime * 4.0f);
 
-            if (player.hasTool)
+            if (_player.hasTool)
             {
                 toolCanvasGroup.alpha = Mathf.Clamp01(toolCanvasGroup.alpha + Time.deltaTime * 4.0f);
 
-                toolImage.sprite = player.toolImage;
+                toolImage.sprite = _player.toolImage;
 
-                float charge = player.toolCharge;
+                float charge = _player.toolCharge;
 
                 toolImageMask.fillAmount = 1.0f - charge;
             }
@@ -50,7 +58,11 @@ public class PlayerUI : MonoBehaviour
                 toolCanvasGroup.alpha = Mathf.Clamp01(toolCanvasGroup.alpha - Time.deltaTime * 4.0f);
             }
 
-            scoreText.text = player.score.ToString("D6");
+            scoreText.text = _player.score.ToString("D6");
+
+            float p = healthSystem.normalizedHealth;
+            if (_player.isDead) p = 0.0f;
+            healthMeter.localScale = new Vector3(p, 1.0f, 1.0f);
         }
         else
         {

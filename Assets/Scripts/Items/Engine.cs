@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public class Engine : ToolContainer
 {
+    [SerializeField] int            score;
     [SerializeField] SpriteRenderer reactorSprite;
     [SerializeField] RectTransform  reactorMeter;
 
@@ -62,7 +63,7 @@ public class Engine : ToolContainer
         }
     }
 
-    public override bool HangTool(Tool tool)
+    public override bool HangTool(Player player, Tool tool)
     {
         var fuel = tool.GetComponent<Fuel>();
         if (fuel != null)
@@ -74,6 +75,7 @@ public class Engine : ToolContainer
                 ammount = fuel.ammount,
                 energy = fuel.energy,
             });
+            player.AddScore(score);
             Destroy(tool.gameObject);
             return true;
         }

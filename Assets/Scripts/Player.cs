@@ -68,8 +68,11 @@ public class Player : MonoBehaviour
         healthSystem.onDead += OnDead;
     }
 
+    bool isKnockbackActive = false;
+
     IEnumerator OnHitCR(float damage, Vector3 damagePosition)
     {
+        isKnockbackActive = true;
         movementPlatformer.enabled = false;
         float s = Mathf.Sign(transform.position.x - damagePosition.x);
         rb.linearVelocityX = s * 30.0f;
@@ -78,12 +81,22 @@ public class Player : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        animator.SetTrigger("Reset");
-        movementPlatformer.enabled = true;
+        if (!_isDead)
+        {
+            animator.SetTrigger("Reset");
+            movementPlatformer.enabled = true;
+        }
+        isKnockbackActive = false;
     }
 
     private void FixedUpdate()
     {
+        if (_isDead)
+        {
+            rb.linearVelocityX = 0.0f;
+        }
+        else if (isKnockbackActive) return;
+
         Vector2 f = GameManager.GetForce(transform.position);
         // Project the force in the X axis only
         f.y = 0.0f;
@@ -195,7 +208,7 @@ public class Player : MonoBehaviour
             {
                 if (((container.hasTool) && (container.tool == exchangeTool)) || (!container.hasTool))
                 {
-                    currentTool.SetContainer(container);
+                    currentTool.SetContainer(this, container);
                     currentTool = null;
                     return;
                 }

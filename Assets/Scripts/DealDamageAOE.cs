@@ -19,14 +19,10 @@ public class DealDamageAOE : MonoBehaviour
             yield return new WaitForSeconds(damageDelay);
 
             // Find all damage receivers
-            var healthSystems = FindObjectsByType<HealthSystem>(FindObjectsSortMode.None);
+            var healthSystems = HealthSystem.FindAll(transform.position, damageRadius);
             foreach (var healthSystem in healthSystems)
             {
-                float distance = Vector3.Distance(transform.position, healthSystem.transform.position);
-                if (distance < damageRadius)
-                {
-                    healthSystem.DealDamage(damage, transform.position);
-                }
+                healthSystem.DealDamage(damage, transform.position);
             }
         }
     }

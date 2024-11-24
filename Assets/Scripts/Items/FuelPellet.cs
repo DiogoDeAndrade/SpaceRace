@@ -12,7 +12,6 @@ public class FuelPellet : Tool
 
     float           stability;
     SpriteRenderer  spriteRenderer;
-    Collider2D      mainCollider;
 
     protected override void Start()
     {

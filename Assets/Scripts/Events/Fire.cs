@@ -10,6 +10,8 @@ public class Fire : Accident
     [SerializeField] float                  oxygenPerSecond = 10.0f;
     [SerializeField] Gradient               fireFlickerColor;
     [SerializeField] float                  fireFlickerSpeed;
+    [SerializeField] float                  damageRadius;
+    [SerializeField] float                  damage;
 
     private Light2D         fireLight;
     private float           fireFlickerTimer;     
@@ -17,6 +19,8 @@ public class Fire : Accident
     private float           timePerParticle;
     private Color32         color;
     private List<Animator>  fireAnimators;
+
+    private Dictionary<HealthSystem, float> firstContact = new();
 
     protected override void Start()
     {
@@ -55,6 +59,32 @@ public class Fire : Accident
                 }
                 elapsedTime -= timePerParticle;
             }
+
+            // Find all players that can be hurt
+            var healthSystems = HealthSystem.FindAll(transform.position, damageRadius);
+            foreach (var healthSystem in healthSystems)
+            {
+                if (healthSystem.faction == HealthSystem.Faction.Friendly)   
+                {
+                    if (firstContact.TryGetValue(healthSystem, out float timeOfFirstContact))
+                    {
+                        float elapsedTime = (Time.time - timeOfFirstContact);
+                        if ((elapsedTime > 1.0f) && (elapsedTime < 5.0f))
+                        {
+                            healthSystem.DealDamage(damage, transform.position);
+                            firstContact.Remove(healthSystem);
+                        }
+                        else if (elapsedTime > 5.0f)
+                        {
+                            firstContact[healthSystem] = Time.time;
+                        }
+                    }
+                    else
+                    {
+                        firstContact.Add(healthSystem, Time.time);
+                    }
+                }
+            }
         }
         else
         {
@@ -80,5 +110,11 @@ public class Fire : Accident
     protected override void Complete(Player player)
     {
         base.Complete(player);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, damageRadius);
     }
 }

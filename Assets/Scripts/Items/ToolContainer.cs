@@ -19,7 +19,7 @@ public class ToolContainer : MonoBehaviour
         var ct = GetComponentInChildren<Tool>();
         if (ct != null)
         {
-            ct.SetContainer(this);
+            ct.SetContainer(null, this);
             if (_toolDef == null)
             {
                 _toolDef = ct.toolDef;
@@ -37,7 +37,7 @@ public class ToolContainer : MonoBehaviour
         }
     }
 
-    public virtual bool HangTool(Tool tool)
+    public virtual bool HangTool(Player player, Tool tool)
     {
         if (tool == null)
         {
