@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5851541089500732729}
   - component: {fileID: 2952343548250707264}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ClimbCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1345904651591344655}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GrabPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 3274794896074559717}
   - component: {fileID: 5512339070101972184}
   - component: {fileID: 3313288673637508804}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -842422217
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: dd9ac04ccc57db246b39db931ee1edae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -343,7 +343,7 @@ PlatformEffector2D:
   m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147485687
   m_RotationalOffset: 0
   m_UseOneWay: 0
   m_UseOneWayGrouping: 0
@@ -364,7 +364,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: {x: 300, y: 280}
-  useForces: 1
   playerInput: {fileID: 3274794896074559717}
   horizontalInput:
     _type: 3
@@ -447,7 +446,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effects: 1
   palette: {fileID: 0}
-  inverseFactor: 0.69
+  inverseFactor: 0
 --- !u!114 &7786165041939288459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,7 +551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   faction: 1
   maxHealth: 100
-  invulnerabilityTime: 2
+  invulnerabilityTime: 1
   invulnerabilityBlink: 1
   useAnimatorForBlink: 0
   blinkTime: 0.1
@@ -566,7 +565,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5264028966564768200}
   - component: {fileID: 3683720641169601629}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 0.03
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 559dd03b00000000914e360e37a8c9cd1146c0860f8807d27df6cfe9
+  m_ApplyToSortingLayers: 7df6cfe9559dd03b00000000914e360e1146c086e559243b37a8c9cd0f8807d2
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -155,3 +155,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875e95bb968a1d44aaa52c4ac7fc8585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emergencyLight: 0.01

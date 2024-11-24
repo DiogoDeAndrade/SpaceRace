@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     private MovementPlatformer  movementPlatformer;
     private bool                _isDead;
     private HealthSystem        healthSystem;
+    private SpriteEffect        spriteEffect;
 
     public bool hasTool => (currentTool != null);
     public bool hasInventorySpace => inventory.Count < maxInventorySlots;
@@ -60,6 +61,7 @@ public class Player : MonoBehaviour
             }
         }
 
+        spriteEffect = GetComponent<SpriteEffect>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         movementPlatformer = GetComponent<MovementPlatformer>();
@@ -78,6 +80,8 @@ public class Player : MonoBehaviour
         rb.linearVelocityX = s * 30.0f;
         transform.rotation = (s < 0) ? (Quaternion.identity) : (Quaternion.Euler(0, 180, 0));
         animator.SetTrigger("Hit");
+
+        spriteEffect.FlashInvert(0.25f);
 
         yield return new WaitForSeconds(0.5f);
 
@@ -241,10 +245,12 @@ public class Player : MonoBehaviour
 
     private void OnHit(float damage, Vector3 damagePosition)
     {
-        StartCoroutine(OnHitCR(damage, damagePosition));
+        StartCoroutine(OnHitCR(damage, damagePosition));        
     }
     private void OnDead()
     {
+        spriteEffect.FlashInvert(0.25f);
+
         animator.SetTrigger("Asphyxiate");
         movementPlatformer.SetActive(false);
         _isDead = true;
