@@ -242,7 +242,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprite: {fileID: 21300000, guid: c82d42f202a61b4409d230ac752c7053, type: 3}
-  _energy: 1
+  _energy: 0.5
   _ammount: 15
   _color: {r: 0.72948456, g: 0.9433962, b: 0.7075472, a: 1}
 --- !u!1 &6380320019867314722

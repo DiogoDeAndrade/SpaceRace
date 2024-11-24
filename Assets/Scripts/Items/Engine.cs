@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 public class Engine : ToolContainer
 {
-    [SerializeField] int            score;
     [SerializeField] SpriteRenderer reactorSprite;
     [SerializeField] RectTransform  reactorMeter;
+    [SerializeField] ParticleSystem starfieldPS;
 
     struct FuelData
     {
@@ -44,6 +44,7 @@ public class Engine : ToolContainer
             if (fuelAmmount < 0)
             {
                 reactorSprite.enabled = false;
+                fuelEnergy = 0.0f;
             }
 
             reactorMeter.localScale = new Vector3(1, p, 1);
@@ -61,6 +62,14 @@ public class Engine : ToolContainer
                 fuelEnergy = fuel.energy;
             }
         }
+
+        float deltaRace = 1.0f + fuelEnergy;
+        GameManager.ChangeRace(deltaRace * Time.deltaTime);
+        if (starfieldPS)
+        {
+            var main = starfieldPS.main;
+            main.simulationSpeed = deltaRace;
+        }
     }
 
     public override bool HangTool(Player player, Tool tool)
@@ -75,7 +84,7 @@ public class Engine : ToolContainer
                 ammount = fuel.ammount,
                 energy = fuel.energy,
             });
-            player.AddScore(score);
+            player.AddScore(fuel.score);
             Destroy(tool.gameObject);
             return true;
         }

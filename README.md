@@ -15,11 +15,13 @@ In this game, players will have to be doing maintenance on a starship during a r
 First scenario sprites and lighting
 ![Dev Shot 2](Screenshots/screen03.png)
 Oxygen, two players, extinguisher
+![Dev Shot 2](Screenshots/screen04.png)
+Environemtn work, a lot of the systems in place
 
 - Tileset spaceship
   - ~~Wall~~
   - ~~Window~~
-- Meters: ~~oxygen~~, destination, speed
+- Meters: ~~oxygen, destination, speed~~
   - Reach destination = finish race (time matters in tournament mode)
   - ~~Oxygen reaches zero = everybody dies~~
 - Event system
@@ -28,15 +30,15 @@ Oxygen, two players, extinguisher
   - ~~Hull breach: needs fixing (blowtorch), consumes oxygen, pulls players towards it~~
   - Alien: can kill players
   - ~~Blackout: turns lights off,  need to go to the master switch and reset~~
-  - Fuel: need to add fuel to the ship, so that it can speed up
-    - Fuel is unstable, can blow up
-  - Nitro: need to produce nitro at a station, and then feed it to the engine, for extra boost
-    - Nitro is produced by adding fuel to it - 3 fuel = 1 nitro, but we have to hurry up, it eventually explodes
-  - Fuel and nitro can provoke hull breach when they explode
+  - ~~Fuel: need to add fuel to the ship, so that it can speed up~~
+    - ~~Fuel is unstable, can blow up~~
+  - ~~Nitro: need to produce nitro at a station, and then feed it to the engine, for extra boost~~
+    - ~~Nitro is produced by adding fuel to it - 2 fuel = 1 nitro, but we have to hurry up, it eventually explodes~~
+  - ~~Fuel and nitro can provoke hull breach when they explode~~
   - Short circuit: need to fix (wrench) or it spreads and eventually the ship explodes, reduces integrity over time
   - Computers acting up: need to fix (hammer) or it spreads and eventually the ship explodes, reduces integrity over time
-  - Predator: can kill players if they pose a threat (if they have torch, wrench or hammer), is invisible
   - If player dies, the other can revive him with the defribilator
+  - Adjust events with part of the race (solar flares = more fires, asteroids = more hull breaches)
 - Game modes
   - Single player - Just get to destination
   - Multiplayer - Get to the destination, be the best crewman
@@ -49,6 +51,8 @@ Oxygen, two players, extinguisher
 - [Explosion Pack](https://lorix.itch.io/explosion-pack) by [Lorix](https://lorix.itch.io/), free to use with credits
 - Font [Optimus](https://www.dafont.com/pt/optimus.font) by [Pixel Sagas](https://www.dafont.com/pt/pixel-sagas.d32), free for non-commercial use.
 - O2 icon from [FreePik](https://www.freepik.com/), free for non-commercial use.
+- Rocket icon from [FreePik](https://www.freepik.com/), free for non-commercial use.
+- Checkered flag from [Smashicons](https://smashicons.com/), free for use with attribution.
 - Everything else done by [Diogo de Andrade], licensed through the [CC0] license.
 
 ## Sound

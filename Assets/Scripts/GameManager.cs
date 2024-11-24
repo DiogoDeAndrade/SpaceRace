@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
         public Vector2 GetForce(Vector2 objectPos);
     }
 
+    [SerializeField] private float maxRace = 240.0f;
+
     [SerializeField] private float maxOxygen = 100.0f;
     [SerializeField] private float recoverPerSecond = 5.0f;
 
@@ -17,6 +19,8 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     
     private float oxygen = 100.0f;
+    private float completedRace;
+    private float raceElapsedTime;
     private List<Force> forces;
 
     void Start()
@@ -32,11 +36,14 @@ public class GameManager : MonoBehaviour
         }
         eventTrigger = GetComponents<GameEventTrigger>();
         oxygen = maxOxygen;
+        raceElapsedTime = 0.0f;
     }
 
     private void Update()
     {
         ChangeOxygen(recoverPerSecond * Time.deltaTime);
+
+        raceElapsedTime += Time.deltaTime;
     }
 
     public static void ChangeOxygen(float delta)
@@ -49,6 +56,27 @@ public class GameManager : MonoBehaviour
         get
         {
             return instance.oxygen / instance.maxOxygen;
+        }
+    }
+
+    public static void ChangeRace(float delta)
+    {
+        instance.completedRace = Mathf.Clamp(instance.completedRace + delta, 0, instance.maxRace);
+    }
+
+    public static float raceProgress
+    {
+        get
+        {
+            return Mathf.Clamp01(instance.completedRace / instance.maxRace);
+        }
+    }
+
+    public static float raceTimer
+    {
+        get
+        {
+            return Mathf.Max(0, instance.raceElapsedTime);
         }
     }
 
