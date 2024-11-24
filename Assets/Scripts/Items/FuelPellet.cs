@@ -12,7 +12,7 @@ public class FuelPellet : Tool
 
     float           stability;
     SpriteRenderer  spriteRenderer;
-    Collider2D      collider;
+    Collider2D      mainCollider;
 
     protected override void Start()
     {
@@ -21,15 +21,15 @@ public class FuelPellet : Tool
         stability = maxStability;
         spriteRenderer = gfx.GetComponent<SpriteRenderer>();
 
-        collider = GetComponent<Collider2D>();
+        mainCollider = GetComponent<Collider2D>();
         StartCoroutine(ActivateColliderAfterTime(0.2f));
     }
 
     IEnumerator ActivateColliderAfterTime(float time)
     {
-        collider.enabled = false;
+        mainCollider.enabled = false;
         yield return new WaitForSeconds(time);
-        collider.enabled = true;
+        mainCollider.enabled = true;
     }
 
     protected override void Update()

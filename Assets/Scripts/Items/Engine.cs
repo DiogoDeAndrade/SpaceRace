@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class Engine : ToolContainer
 {
     [SerializeField] SpriteRenderer reactorSprite;
+    [SerializeField] RectTransform  reactorMeter;
 
     struct FuelData
     {
@@ -43,9 +44,12 @@ public class Engine : ToolContainer
             {
                 reactorSprite.enabled = false;
             }
+
+            reactorMeter.localScale = new Vector3(1, p, 1);
         }
         else
         {
+            reactorMeter.localScale = new Vector3(1, 0, 1);
             if (fuelQueue.Count > 0)
             {
                 var fuel = fuelQueue.PopFirst();
