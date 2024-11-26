@@ -3,19 +3,23 @@ using UnityEngine.Rendering.Universal;
 
 public class Tool : Item
 {
-    [SerializeField] ToolDef        _toolDef;
-    [SerializeField] LayerMask      accidentMask;
-    [SerializeField] ParticleSystem usePS;
-    [SerializeField] Light2D        useLight;
-    [SerializeField] Transform      toolPoint;
-    [SerializeField] float          toolRadius = 5.0f;
-    [SerializeField] float          maxCharge = 5.0f;
-    [SerializeField] Canvas         chargeUI;
-    [SerializeField] RectTransform  chargeMeter;
+    public enum UseMode { Hold, Single };
 
-    private bool    _toolActive = false;
-    private ToolContainer currentContainer;
-    private float currentCharge;
+    [SerializeField] protected ToolDef        _toolDef;
+    [SerializeField] protected LayerMask      accidentMask;
+    [SerializeField] protected ParticleSystem usePS;
+    [SerializeField] protected Light2D        useLight;
+    [SerializeField] protected Transform      toolPoint;
+    [SerializeField] protected float          toolRadius = 5.0f;
+    [SerializeField] protected UseMode        _useMode = UseMode.Hold;
+    [SerializeField] protected float          maxCharge = 5.0f;
+    [SerializeField] protected float          chargeCost = 1.0f;
+    [SerializeField] protected Canvas         chargeUI;
+    [SerializeField] protected RectTransform  chargeMeter;
+
+    protected bool    _toolActive = false;
+    protected ToolContainer currentContainer;
+    protected float currentCharge;
 
     public bool activeTool
     {
@@ -23,6 +27,7 @@ public class Tool : Item
         set => _toolActive = value;
     }
     public ToolDef toolDef => _toolDef;
+    public UseMode useMode => _useMode;
 
     public bool hasCharge => chargePercentage > 0.0f;
     public float chargePercentage => (maxCharge > 0.0f) ? (currentCharge / maxCharge) : (1.0f);
@@ -94,7 +99,10 @@ public class Tool : Item
                 }
             }
 
-            currentCharge = Mathf.Max(0, currentCharge - Time.deltaTime);
+            if (_useMode == UseMode.Hold)
+                currentCharge = Mathf.Max(0, currentCharge - Time.deltaTime * chargeCost);
+            else
+                currentCharge = Mathf.Max(0, currentCharge - chargeCost);
         }
 
         if ((chargeUI) && (chargeMeter))

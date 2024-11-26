@@ -16,7 +16,11 @@ First scenario sprites and lighting
 ![Dev Shot 2](Screenshots/screen03.png)
 Oxygen, two players, extinguisher
 ![Dev Shot 3](Screenshots/screen04.png)
-Environemtn work, a lot of the systems in place
+Environment work, a lot of the systems in place
+![Dev Shot 4](Screenshots/screen05.png)
+Blackout event
+![Dev Shot 5](Screenshots/screen06.png)
+The alien attacks!
 
 - Tileset spaceship
   - ~~Wall~~

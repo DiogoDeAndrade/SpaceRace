@@ -149,7 +149,10 @@ public class Player : MonoBehaviour
         {
             tooltip.SetText("");
 
-            currentTool.activeTool = useToolCtrl.IsPressed();
+            if (currentTool.useMode == Tool.UseMode.Hold)
+                currentTool.activeTool = useToolCtrl.IsPressed();
+            else
+                currentTool.activeTool = useToolCtrl.IsDown();
 
             if (dropToolCtrl.IsPressed())
             {
