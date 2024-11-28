@@ -3,7 +3,7 @@ using UnityEngine.Rendering.Universal;
 
 public class Tool : Item
 {
-    public enum UseMode { Hold, Single };
+    public enum UseMode { Hold, Single, SingleIfUsed };
 
     [SerializeField] protected ToolDef        _toolDef;
     [SerializeField] protected LayerMask      accidentMask;
@@ -16,6 +16,8 @@ public class Tool : Item
     [SerializeField] protected float          chargeCost = 1.0f;
     [SerializeField] protected Canvas         chargeUI;
     [SerializeField] protected RectTransform  chargeMeter;
+    [SerializeField] protected bool           destroyWhenNoCharge = false;
+    [SerializeField] protected int            scoreOnNoCharge = 0;
 
     protected bool    _toolActive = false;
     protected ToolContainer currentContainer;
@@ -95,20 +97,29 @@ public class Tool : Item
             Vector3 toolPos = transform.position;
             if (toolPoint) toolPos = toolPoint.position;
 
+            bool toolUsed = false;
             var colliders = Physics2D.OverlapCircleAll(toolPos, toolRadius, accidentMask);
             foreach (var collider in colliders)
             {
-                Accident accident = collider.GetComponent<Accident>();
-                if ((accident != null) && (accident.fixTool == toolDef))
+                if (RunTool(collider))
                 {
-                    accident.Fix(owner, 1.0f);
+                    toolUsed = true;
                 }
             }
 
             if (_useMode == UseMode.Hold)
                 currentCharge = Mathf.Max(0, currentCharge - Time.deltaTime * chargeCost);
-            else
+            else if (_useMode == UseMode.Single)
                 currentCharge = Mathf.Max(0, currentCharge - chargeCost);
+            else if ((_useMode == UseMode.SingleIfUsed) && (toolUsed))
+                currentCharge = Mathf.Max(0, currentCharge - chargeCost);
+
+            if ((currentCharge == 0.0f) && (destroyWhenNoCharge))
+            {
+                owner.AddScore(scoreOnNoCharge);
+                owner.DropTool(this);
+                Destroy(gameObject);
+            }
         }
 
         if ((chargeUI) && (chargeMeter))
@@ -124,6 +135,18 @@ public class Tool : Item
         {
             currentCharge = Mathf.Clamp(currentCharge + amount, 0.0f, maxCharge);
         }
+    }
+
+    protected virtual bool RunTool(Collider2D collider)
+    {
+        Accident accident = collider.GetComponent<Accident>();
+        if ((accident != null) && (accident.fixTool == toolDef))
+        {
+            accident.Fix(owner, 1.0f);
+            return true;
+        }
+
+        return false;
     }
 
     public void SetContainer(Player player, ToolContainer container)

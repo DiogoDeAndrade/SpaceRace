@@ -33,16 +33,15 @@ The alien attacks!
   - ~~Fire on board: needs extinguisher, consumes oxygen~~
   - ~~Hull breach: needs fixing (blowtorch), consumes oxygen, pulls players towards it~~
   - ~~Alien: can kill players~~
-    - LaserGun
+    - ~~LaserGun~~
   - ~~Blackout: turns lights off,  need to go to the master switch and reset~~
   - ~~Fuel: need to add fuel to the ship, so that it can speed up~~
     - ~~Fuel is unstable, can blow up~~
   - ~~Nitro: need to produce nitro at a station, and then feed it to the engine, for extra boost~~
     - ~~Nitro is produced by adding fuel to it - 2 fuel = 1 nitro, but we have to hurry up, it eventually explodes~~
   - ~~Fuel and nitro can provoke hull breach when they explode~~
-  - Computers acting up: need to fix (wrench/hammer) or it spreads and eventually the ship explodes, reduces integrity over time
-    - Short circuit effect
-  - If player dies, the other can revive him with the defribilator
+  - ~~pIPES acting up: need to fix (wrench) or ship slows down~~
+  - ~~If player dies, the other can revive him with the health kit~~
   - Adjust events with part of the race (solar flares = more fires, asteroids = more hull breaches)
 - Game modes
   - Single player - Just get to destination
@@ -59,6 +58,7 @@ The alien attacks!
 - O2 icon from [FreePik](https://www.freepik.com/), free for non-commercial use.
 - Rocket icon from [FreePik](https://www.freepik.com/), free for non-commercial use.
 - Checkered flag from [Smashicons](https://smashicons.com/), free for use with attribution.
+- [UI Pack Sci-Fi](https://kenney.nl/assets/ui-pack-sci-fi) by [Kenney](https://kenney.nl), licensed through the [CC0] license.
 - Everything else done by [Diogo de Andrade], licensed through the [CC0] license.
 
 ## Sound

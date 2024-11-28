@@ -67,7 +67,9 @@ public class Player : MonoBehaviour
         movementPlatformer = GetComponent<MovementPlatformer>();
         healthSystem = GetComponent<HealthSystem>();
         healthSystem.onHit += OnHit;
+        healthSystem.onHeal += OnHeal;
         healthSystem.onDead += OnDead;
+        healthSystem.onRevive += OnRevive;
     }
 
     bool isKnockbackActive = false;
@@ -118,7 +120,7 @@ public class Player : MonoBehaviour
             movementPlatformer.SetActive(false);
             _isDead = true;
         }
-
+        
         Item            interactionItem = null;
         Interactable    interactable = null;
 
@@ -250,6 +252,12 @@ public class Player : MonoBehaviour
     {
         StartCoroutine(OnHitCR(damage, damagePosition));        
     }
+
+    private void OnHeal(float healthGain)
+    {
+        spriteEffect.FlashColor(0.2f, Color.green);
+    }
+
     private void OnDead()
     {
         spriteEffect.FlashInvert(0.25f);
@@ -258,4 +266,12 @@ public class Player : MonoBehaviour
         movementPlatformer.SetActive(false);
         _isDead = true;
     }
+
+    private void OnRevive()
+    {
+        animator.SetTrigger("Reset");
+        movementPlatformer.SetActive(true);
+        _isDead = false;
+    }
+
 }
