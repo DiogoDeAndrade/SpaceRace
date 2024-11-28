@@ -20,6 +20,7 @@ public class Tool : Item
     protected bool    _toolActive = false;
     protected ToolContainer currentContainer;
     protected float currentCharge;
+    protected Animator animator;
 
     public bool activeTool
     {
@@ -38,6 +39,7 @@ public class Tool : Item
 
         currentCharge = maxCharge;
         _toolActive = false;
+        animator = GetComponent<Animator>();
     }
 
     public override bool canInteract => true;
@@ -83,6 +85,10 @@ public class Tool : Item
         if (useLight)
         {
             useLight.enabled = (_toolActive) && (currentCharge > 0.0f);
+        }
+        if (animator)
+        {
+            animator.SetBool("Use", _toolActive);
         }
         if ((_toolActive) && (currentCharge > 0.0f))
         {

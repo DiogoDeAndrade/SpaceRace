@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,6 +12,7 @@ public class Accident : MonoBehaviour
     [SerializeField] protected int      score = 100;
 
     public ToolDef fixTool => _fixTool;
+    public float   damagePercentage => currentDamage / maxDamage;
 
     protected float currentDamage;
 
