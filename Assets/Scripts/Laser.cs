@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem.Android;
 using UnityEngine.Rendering.Universal;
 
 public class Laser : MonoBehaviour
@@ -20,10 +21,24 @@ public class Laser : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        // Check if we hit an enemy
+        var alien = collision.GetComponent<Alien>();
+        if (alien != null)
+        {
+            if (!alien.isVulnerable) return;
+
+            alien.Kill();
+            laserLight.FadeOut(0.1f);
+        }
+        else
+        {
+            // Probably wall
+            Instantiate(hitPrefab, transform.position, transform.rotation);
+            laserLight.FadeOut(1.0f);
+        }
+
         trailRenderer.emitting = false;
         rb.linearVelocity = Vector2.zero;
-        laserLight.FadeOut(1.0f);
-        Instantiate(hitPrefab, transform.position, transform.rotation);
         Destroy(gameObject, 1.0f);
     }
 }

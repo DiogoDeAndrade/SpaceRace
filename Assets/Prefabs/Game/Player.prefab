@@ -363,7 +363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b7869ff1e1153740917dada109c7f62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 300, y: 280}
+  speed: {x: 200, y: 280}
   playerInput: {fileID: 3274794896074559717}
   horizontalInput:
     _type: 3

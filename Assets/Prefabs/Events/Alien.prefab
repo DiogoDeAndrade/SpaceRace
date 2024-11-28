@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 8267868387932177775}
   - component: {fileID: 868789088964547525}
   - component: {fileID: 1718391769780250073}
+  - component: {fileID: 712841110138928247}
   m_Layer: 11
   m_Name: Alien
   m_TagString: Untagged
@@ -66,6 +67,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1275165528416291353}
+  - {fileID: 5441229587240635293}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6804488029634017336
@@ -91,7 +93,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 19d0aae2b125306439101204002324a6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -167,6 +169,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  deathPS: {fileID: 4549007906124007472}
 --- !u!50 &868789088964547525
 Rigidbody2D:
   serializedVersion: 5
@@ -240,3 +243,93 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 30.13229, y: 36}
   m_EdgeRadius: 0
+--- !u!114 &712841110138928247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686960837206587739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fdf1d1ec10f329499fc8ba5a84b6392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects: 2
+  palette: {fileID: 0}
+  inverseFactor: 0
+--- !u!1001 &7275976852154042438
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 7895732799518025489}
+    m_Modifications:
+    - target: {fileID: 3421142656024675291, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 17.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421142656024675291, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -69
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421142656024675291, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421142656024675291, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421142656024675291, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421142656024675291, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421142656024675291, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421142656024675291, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421142656024675291, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3421142656024675291, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618080280503402614, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6618080280503402614, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+      propertyPath: ShapeModule.m_SpriteRenderer
+      value: 
+      objectReference: {fileID: 6804488029634017336}
+    - target: {fileID: 8480712657763935896, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+      propertyPath: m_Name
+      value: AlienDeath
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+--- !u!198 &4549007906124007472 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6618080280503402614, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+  m_PrefabInstance: {fileID: 7275976852154042438}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5441229587240635293 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3421142656024675291, guid: dbc279ba4a575f44e9976b20d0fe0f0c, type: 3}
+  m_PrefabInstance: {fileID: 7275976852154042438}
+  m_PrefabAsset: {fileID: 0}

@@ -311,5 +311,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de304e088d2c5254c81a10d2e1676f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 200
+  speed: 300
   hitPrefab: {fileID: 6140470902129874481, guid: d7af2b11ea2961a40b0bdf9fa3517cff, type: 3}

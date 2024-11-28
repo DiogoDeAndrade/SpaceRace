@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class Alien : MonoBehaviour
 {
-    [SerializeField] private float      initialDelay = 5.0f;
-    [SerializeField] private float      moveSpeed = 100.0f;
-    [SerializeField] private float      attackRange = 40.0f;
-    [SerializeField] private Hypertag   ventTag;
-    [SerializeField] private Transform  attackPos;
-    [SerializeField] private float      attackRadius;
-    [SerializeField] private float      attackDamage;
-    [SerializeField] private LayerMask  groundMask;
+    [SerializeField] private float          initialDelay = 5.0f;
+    [SerializeField] private float          moveSpeed = 100.0f;
+    [SerializeField] private float          attackRange = 40.0f;
+    [SerializeField] private Hypertag       ventTag;
+    [SerializeField] private Transform      attackPos;
+    [SerializeField] private float          attackRadius;
+    [SerializeField] private float          attackDamage;
+    [SerializeField] private LayerMask      groundMask;
+    [SerializeField] private ParticleSystem deathPS;
 
     bool canMove = false;
 
@@ -21,6 +22,10 @@ public class Alien : MonoBehaviour
     Rigidbody2D     rb;
     Animator        animator;
     Collider2D      mainCollider;
+    SpriteEffect    spriteEffect;
+    bool            dead;
+
+    public bool isVulnerable => canMove;
 
     void Start()
     {
@@ -28,6 +33,7 @@ public class Alien : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         mainCollider = GetComponent<Collider2D>();
+        spriteEffect = GetComponent<SpriteEffect>();
 
         SelectTargetVent();
         SnapToFloor();
@@ -72,6 +78,8 @@ public class Alien : MonoBehaviour
 
     void Update()
     {
+        if (dead) return;
+
         Transform runToTarget = null;
         bool targetIsVent = false;
 
@@ -196,6 +204,29 @@ public class Alien : MonoBehaviour
     void RestartMovement()
     {
         canMove = true;
+    }
+
+    public void Kill()
+    {
+        if (dead) return;
+
+        StartCoroutine(KillCR());
+    }
+
+    IEnumerator KillCR()
+    { 
+        // Kill alien
+        animator.SetTrigger("Hit");
+        spriteEffect.FlashInvert(0.2f);
+        dead = true;
+        rb.linearVelocityX = 0;
+        deathPS.Play();
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.FadeTo(new Color(1.0f, 1.0f, 1.0f, 0.0f), 0.1f).Done(() => spriteRenderer.enabled = false);
+
+        yield return new WaitForSeconds(2.0f);
+
+        Destroy(gameObject);
     }
 
     private void OnDrawGizmosSelected()
