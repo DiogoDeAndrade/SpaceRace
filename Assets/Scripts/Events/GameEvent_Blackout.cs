@@ -28,7 +28,10 @@ public class GameEvent_Blackout : GameEvent
         {
             player.AddScore(score);
 
-            fusebox.onToggle -= OnToggle;
+            if (fusebox)
+            {
+                fusebox.onToggle -= OnToggle;
+            }
             Destroy(gameObject);
         }
     }
