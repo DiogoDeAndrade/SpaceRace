@@ -104,7 +104,7 @@ public class Fire : Accident
             fireAnimators[i].SetBool("Burning", (i < numberOfActiveFires));
         }
 
-        GameManager.ChangeOxygen(-t * oxygenPerSecond * Time.deltaTime);
+        LevelManager.ChangeOxygen(-t * oxygenPerSecond * Time.deltaTime);
     }
 
     protected override void Complete(Player player)

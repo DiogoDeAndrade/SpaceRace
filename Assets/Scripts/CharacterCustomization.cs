@@ -24,7 +24,24 @@ public class CharacterCustomization : MonoBehaviour
     [Button("Update Character")]    
     void UpdateCharacter()
     {
-        modifiedPalette = originalPalette.Clone();
+        modifiedPalette = BuildPalette(originalPalette, hairColor, flightsuitColor);
+
+        SpriteEffect effect = GetComponent<SpriteEffect>();
+        effect.SetRemap(modifiedPalette);
+    }
+
+    public void SetColors(Color hairColor, Color flightsuitColor)
+    {
+        this.hairColor = hairColor;
+        this.flightsuitColor = flightsuitColor;
+        randomizeAtStart = false;
+
+        UpdateCharacter();
+    }
+
+    public static ColorPalette BuildPalette(ColorPalette originalPalette, Color hairColor, Color flightsuitColor)
+    {
+        var modifiedPalette = originalPalette.Clone();
 
         Color.RGBToHSV(hairColor, out float h, out float s, out float v);
         modifiedPalette.SetColor(13, Color.HSVToRGB(h, s, v * 0.3f));
@@ -40,7 +57,6 @@ public class CharacterCustomization : MonoBehaviour
 
         modifiedPalette.RefreshCache();
 
-        SpriteEffect effect = GetComponent<SpriteEffect>();
-        effect.SetRemap(modifiedPalette);
+        return modifiedPalette;
     }
 }

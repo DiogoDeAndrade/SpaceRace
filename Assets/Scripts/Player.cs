@@ -1,8 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.XR;
+using InputDevice = UnityEngine.InputSystem.InputDevice;
 
 public class Player : MonoBehaviour
 {
@@ -46,6 +49,33 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        if (_playerId >= GameManager.Instance.numPlayers)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        var pd = GameManager.Instance.GetPlayerData(_playerId);
+
+        CharacterCustomization playerCustomization = GetComponent<CharacterCustomization>();
+        if (playerCustomization)
+        {
+            playerCustomization.SetColors(pd.hairColor, pd.bodyColor);
+        }
+        InputDevice inputDevice = null;
+        foreach (var device in InputSystem.devices)
+        {
+            if (device.deviceId == pd.deviceId)
+            {
+                inputDevice = device;
+                break;
+            }
+        }
+        if (inputDevice != null)
+        {
+            playerInput.SwitchCurrentControlScheme(playerInput.currentControlScheme, inputDevice);
+        }
+
         tooltip = TooltipManager.CreateTooltip();
         interactControl.playerInput = playerInput;
         dropToolCtrl.playerInput = playerInput;
@@ -103,7 +133,7 @@ public class Player : MonoBehaviour
         }
         else if (isKnockbackActive) return;
 
-        Vector2 f = GameManager.GetForce(transform.position);
+        Vector2 f = LevelManager.GetForce(transform.position);
         // Project the force in the X axis only
         f.y = 0.0f;
         rb.AddForce(f, ForceMode2D.Impulse);
@@ -113,7 +143,7 @@ public class Player : MonoBehaviour
     {
         if (_isDead) return;
 
-        if (GameManager.oxygenPercentage <= 0.0f)
+        if (LevelManager.oxygenPercentage <= 0.0f)
         {
             // Asphyxiate
             animator.SetTrigger("Asphyxiate");

@@ -216,17 +216,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hair
+  m_text: Body
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 73c7cb1bd295dd0489a0e6c3829fe7d0, type: 2}
-  m_sharedMaterial: {fileID: 87713088143973709, guid: 73c7cb1bd295dd0489a0e6c3829fe7d0, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: 40595133df5bd3443b8c0b64319a8ac5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
     rgba: 4281545523
-  m_fontColor: {r: 0.1981132, g: 0.1981132, b: 0.1981132, a: 1}
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -519,3 +519,18 @@ MonoBehaviour:
   highlighterImage: {fileID: 8154252822303796463}
   _navUp: {fileID: 0}
   _navDown: {fileID: 0}
+  leftArrow: {fileID: 3309478150738844954}
+  rightArrow: {fileID: 6884483160768096204}
+  colors:
+  - {r: 0.10366257, g: 0.103773594, b: 0.09936811, a: 1}
+  - {r: 0.7169812, g: 0.29315937, b: 0.13866144, a: 1}
+  - {r: 0.8584906, g: 0.80228794, b: 0.125534, a: 1}
+  - {r: 0.9150943, g: 0.12996475, b: 0.09927912, a: 1}
+  - {r: 0.26683807, g: 0.8396226, b: 0.19406372, a: 1}
+  - {r: 0.07262372, g: 0.9056604, b: 0.75300944, a: 1}
+  - {r: 0.07450979, g: 0.28549108, b: 0.90588236, a: 1}
+  - {r: 0.5450064, g: 0.07450979, b: 0.90588236, a: 1}
+  - {r: 0.9528302, g: 0.30113026, b: 0.7702593, a: 1}
+  colorIndicator: {fileID: 7248290358646917783}
+  randomInitialSelection: 0
+  initialSelection: 0

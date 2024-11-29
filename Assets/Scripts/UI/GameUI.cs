@@ -21,18 +21,18 @@ public class GameUI : MonoBehaviour
     void Update()
     {
         // Race meter
-        float raceProgress = GameManager.raceProgress;
+        float raceProgress = LevelManager.raceProgress;
         rocketImage.anchoredPosition = new Vector2(raceProgress * rocketBarWidth, 0.0f);
 
-        float raceTime = GameManager.raceTimer;
+        float raceTime = LevelManager.raceTimer;
         int minutes = Mathf.FloorToInt(raceTime / 60);
         int seconds = Mathf.FloorToInt(raceTime) % 60;
         clockTimer.text = $"{minutes.ToString("D2")}:{seconds.ToString("D2")}";
 
         // Oxygen meter
-        if (GameManager.oxygenPercentage < 1.0f)
+        if (LevelManager.oxygenPercentage < 1.0f)
         {
-            oxygenMeter.fillAmount = GameManager.oxygenPercentage;
+            oxygenMeter.fillAmount = LevelManager.oxygenPercentage;
             oxygenGroup.alpha = Mathf.Clamp01(oxygenGroup.alpha + Time.deltaTime * 2.0f);
         }
         else

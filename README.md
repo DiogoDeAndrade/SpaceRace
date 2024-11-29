@@ -67,6 +67,7 @@ The alien attacks!
 
 ## Code
 
+- Some code was adapted/refactored from [Okapi Kit], [MIT] license.
 - All remaining game source code by Diogo de Andrade is licensed under the [MIT] license.
 
 ## Metadata
@@ -78,4 +79,5 @@ The alien attacks!
 [CC-BY 3.0]:https://creativecommons.org/licenses/by/3.0/
 [CC-BY-SA 4.0]:http://creativecommons.org/licenses/by-sa/4.0/
 [CC-BY 4.0]:https://creativecommons.org/licenses/by/4.0/
+[OkapiKit]:https://github.com/VideojogosLusofona/OkapiKit
 [MIT]:LICENSE

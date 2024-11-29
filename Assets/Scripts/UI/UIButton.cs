@@ -1,5 +1,5 @@
 using UnityEngine;
 
-public class UIButton : UIControl
-{
+public class UIButton : BaseUIControl
+{ 
 }

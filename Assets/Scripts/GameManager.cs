@@ -4,104 +4,62 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public interface Force
+    [Serializable]
+    public struct PlayerData
     {
-        public Vector2 GetForce(Vector2 objectPos);
+        public Color    hairColor;
+        public Color    bodyColor;
+        public int      deviceId;
     }
 
-    [SerializeField] private float maxRace = 240.0f;
+    [SerializeField] private int                _numPlayers = 1;
+    [SerializeField] private List<PlayerData>   _playerData;
 
-    [SerializeField] private float maxOxygen = 100.0f;
-    [SerializeField] private float recoverPerSecond = 5.0f;
+    static GameManager _Instance;
 
-    GameEventTrigger[] eventTrigger;
+    public static GameManager Instance => _Instance;
 
-    private static GameManager instance;
-    
-    private float oxygen = 100.0f;
-    private float completedRace;
-    private float raceElapsedTime;
-    private List<Force> forces;
-
-    void Start()
+    void Awake()
     {
-        if (instance == null)
+        if (_Instance == null)
         {
-            instance = this;
+            _Instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
             return;
         }
-        eventTrigger = GetComponents<GameEventTrigger>();
-        oxygen = maxOxygen;
-        raceElapsedTime = 0.0f;
     }
 
-    private void Update()
+    public PlayerData GetPlayerData(int playerId)
     {
-        ChangeOxygen(recoverPerSecond * Time.deltaTime);
+        if (_playerData == null) _playerData = new();
 
-        raceElapsedTime += Time.deltaTime;
-    }
-
-    public static void ChangeOxygen(float delta)
-    {
-        instance.oxygen = Mathf.Clamp(instance.oxygen + delta, 0, instance.maxOxygen);
-    }
-
-    public static float oxygenPercentage
-    {
-        get
+        for (int i = _playerData.Count; i <= playerId; i++)
         {
-            return instance.oxygen / instance.maxOxygen;
-        }
-    }
-
-    public static void ChangeRace(float delta)
-    {
-        instance.completedRace = Mathf.Clamp(instance.completedRace + delta, 0, instance.maxRace);
-    }
-
-    public static float raceProgress
-    {
-        get
-        {
-            return Mathf.Clamp01(instance.completedRace / instance.maxRace);
-        }
-    }
-
-    public static float raceTimer
-    {
-        get
-        {
-            return Mathf.Max(0, instance.raceElapsedTime);
-        }
-    }
-
-    public static void AddForce(Force force)
-    {
-        if (instance.forces == null) instance.forces = new();
-        instance.forces.Add(force);
-    }
-    public static void RemoveForce(Force force)
-    {
-        if (instance.forces == null) return;
-        instance.forces.Remove(force);
-    }
-    public static Vector2 GetForce(Vector3 currentPos)
-    {
-        if (instance.forces == null) return Vector2.zero;
-
-        instance.forces.RemoveAll((x) => x == null);
-
-        Vector2 ret = Vector2.zero;
-        foreach (var force in instance.forces)
-        {
-            ret = ret + force.GetForce(currentPos);
+            _playerData.Add(new PlayerData());
         }
 
-        return ret;
+        return _playerData[playerId];
+    }
+
+    public void SetPlayerData(int playerId, PlayerData pd)
+    {
+        if (_playerData == null) _playerData = new();
+
+        for (int i = _playerData.Count; i <= playerId; i++)
+        {
+            _playerData.Add(new PlayerData());
+        }
+
+        _playerData[playerId] = pd;
+    }
+
+    public int numPlayers
+    {
+        get { return _numPlayers; }
+        set { _numPlayers = value; }
     }
 }

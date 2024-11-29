@@ -1,54 +1,61 @@
-using NaughtyAttributes;
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput))]
-public class Customizer : MonoBehaviour
+public class Customizer : UIGroup
 {
-    [SerializeField] private float       moveCooldown = 0.1f;
-    [SerializeField] private PlayerInput playerInput;
+    [SerializeField] int                        playerId;
+    [SerializeField] UIImageEffect              uiEffect;
+    [SerializeField] ColorPalette               originalPalette;
+    [SerializeField] UIDiscreteColorSelector    hairColorSelector;
+    [SerializeField] UIDiscreteColorSelector    bodyColorSelector;
+    [SerializeField] UIButton                   continueButton;
 
-    [SerializeField, InputPlayer(nameof(playerInput))]
-    InputControl horizontalControl;
-    [SerializeField, InputPlayer(nameof(playerInput))]
-    InputControl verticalControl;
+    ColorPalette palette;
 
-
-    [SerializeField] UIControl initialControl;
-
-    float cooldownTimer;
-
-    void Start()
+    protected override void Start()
     {
-        horizontalControl.playerInput = playerInput;
-        verticalControl.playerInput = playerInput;
+        base.Start();
 
-        if (initialControl)
+        palette = originalPalette.Clone();
+
+        hairColorSelector.onChange += OnColorChange;
+        bodyColorSelector.onChange += OnColorChange;
+        continueButton.onInteract += OnContinue;
+
+        OnColorChange(null);
+
+        if (GameManager.Instance.numPlayers <= playerId)
         {
-            initialControl.Select();
+            gameObject.SetActive(false);
         }
     }
 
-    void Update()
+    private void OnColorChange(BaseUIControl control)
     {
-        if (UIControl.currentlySelected)
-        {
-            if (cooldownTimer > 0) cooldownTimer -= Time.deltaTime;
+        palette = CharacterCustomization.BuildPalette(originalPalette, hairColorSelector.value, bodyColorSelector.value);
 
-            if (cooldownTimer <= 0.0f)
-            {
-                if (verticalControl.GetAxis() < 0.0f)
-                {
-                    UIControl.currentlySelected.navDown?.Select();
-                    cooldownTimer = moveCooldown;
-                }
-                else if (verticalControl.GetAxis() > 0.0f)
-                {
-                    UIControl.currentlySelected.navUp?.Select();
-                    cooldownTimer = moveCooldown;
-                }
-            }
-        }
+        uiEffect.SetRemap(palette);
+    }
+
+    void OnContinue(BaseUIControl control)
+    {
+        selectedControl = null;
+        SetUI(false);
+        continueButton.gameObject.SetActive(false);
+
+        PlayerInput playerInput = GetComponent<PlayerInput>();
+        var devices = playerInput.devices[0];        
+
+        var pd = new GameManager.PlayerData
+        {
+            hairColor = hairColorSelector.value,
+            bodyColor = bodyColorSelector.value,
+            deviceId = devices.deviceId,
+        };
+
+        GameManager.Instance.SetPlayerData(playerId, pd);
     }
 }

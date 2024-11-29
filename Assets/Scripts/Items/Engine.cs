@@ -85,7 +85,7 @@ public class Engine : ToolContainer
         totalPipe /= pipes.Length;
         deltaRace *= totalPipe;
 
-        GameManager.ChangeRace(deltaRace * Time.deltaTime);
+        LevelManager.ChangeRace(deltaRace * Time.deltaTime);
         if (starfieldPS)
         {
             var main = starfieldPS.main;
