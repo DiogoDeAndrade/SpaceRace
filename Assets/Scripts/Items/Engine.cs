@@ -2,12 +2,12 @@ using UnityEngine;
 using System.Collections.Generic;
 using UnityEngine.Rendering.Universal;
 using UnityEditor.ShaderKeywordFilter;
+using UnityEngine.UIElements;
 
 public class Engine : ToolContainer
 {
     [SerializeField] SpriteRenderer reactorSprite;
     [SerializeField] RectTransform  reactorMeter;
-    [SerializeField] ParticleSystem starfieldPS;
 
     struct FuelData
     {
@@ -24,6 +24,7 @@ public class Engine : ToolContainer
     Pipe[] pipes;
     float lightIntensity;
     Light2D reactorLight;
+    Background background;
 
     protected override void Start()
     {
@@ -35,6 +36,8 @@ public class Engine : ToolContainer
 
         reactorLight = GetComponentInChildren<Light2D>();
         if (reactorLight) lightIntensity = reactorLight.intensity;
+
+        background = FindFirstObjectByType<Background>();
     }
 
     protected override void Update()
@@ -86,10 +89,9 @@ public class Engine : ToolContainer
         deltaRace *= totalPipe;
 
         LevelManager.ChangeRace(deltaRace * Time.deltaTime);
-        if (starfieldPS)
+        if (background)
         {
-            var main = starfieldPS.main;
-            main.simulationSpeed = deltaRace;
+            background.SetSpeedScale(deltaRace);
         }
     }
 

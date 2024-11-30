@@ -108,7 +108,7 @@ MonoBehaviour:
   _fixTool: {fileID: 11400000, guid: 8cde40c60b8b3d24abc199b022a6e920, type: 2}
   score: 100
   oxygenPerSecond: 6
-  attractionStrength: 300
+  attractionStrength: 150
   attractionRange: 400
 --- !u!58 &2876832077218248218
 CircleCollider2D:

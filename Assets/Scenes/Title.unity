@@ -718,8 +718,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -1200, y: 0}
-  m_SizeDelta: {x: 1000, y: 1000}
+  m_AnchoredPosition: {x: -796, y: 0}
+  m_SizeDelta: {x: 256, y: 256}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1569069572
 MonoBehaviour:
@@ -733,8 +733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d329f359353b86488d448ef976c1961, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bounds: {x: -1200, y: 1200}
-  speed: 20
+  bounds: {x: -800, y: 800}
+  speed: 30
 --- !u!114 &1569069573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -773,63 +773,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1569069570}
   m_CullTransparentMesh: 1
---- !u!1001 &1580736086
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 5007565578557080829, guid: 2acaf7081bb88444da7eb60f44a0e1ff, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 320
-      objectReference: {fileID: 0}
-    - target: {fileID: 5007565578557080829, guid: 2acaf7081bb88444da7eb60f44a0e1ff, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5007565578557080829, guid: 2acaf7081bb88444da7eb60f44a0e1ff, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5007565578557080829, guid: 2acaf7081bb88444da7eb60f44a0e1ff, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5007565578557080829, guid: 2acaf7081bb88444da7eb60f44a0e1ff, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5007565578557080829, guid: 2acaf7081bb88444da7eb60f44a0e1ff, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5007565578557080829, guid: 2acaf7081bb88444da7eb60f44a0e1ff, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5007565578557080829, guid: 2acaf7081bb88444da7eb60f44a0e1ff, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5007565578557080829, guid: 2acaf7081bb88444da7eb60f44a0e1ff, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5007565578557080829, guid: 2acaf7081bb88444da7eb60f44a0e1ff, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9089406700914795274, guid: 2acaf7081bb88444da7eb60f44a0e1ff, type: 3}
-      propertyPath: m_Name
-      value: BackgroundStars
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2acaf7081bb88444da7eb60f44a0e1ff, type: 3}
 --- !u!1 &1679557728
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,20 +845,22 @@ MonoBehaviour:
     <size=60%>Font
     Optimus by Pixel Sagas, free for non-commercial use.
 
-    <size=60%>O2 icon
-    from FreePik, free for non-commercial use.
+    <size=60%>O2 icon from
+    FreePik, free for non-commercial use.
 
     <size=60%>Rocket icon from FreePik,
     free for non-commercial use.
 
-    <size=60%>Checkered flag from Smashicons,
-    free for use with attribution.
+    <size=60%>Checkered flag from Smashicons, free
+    for use with attribution.
 
-    <size=60%>UI Pack Sci-Fi by Kenney, licensed
-    through the [CC0] license.
+    <size=60%>UI Pack Sci-Fi by Kenney, licensed through
+    the [CC0] license.
 
-    <size=60%>Everything else done by Diogo de Andrade,
-    licensed through the [CC0] license.
+    <size=60%>Planets created with Pixel Planet Generator
+
+    <size=60%>Everything
+    else done by Diogo de Andrade, licensed through the [CC0] license.
 
 
     Sound
@@ -1295,7 +1240,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 90
+  orthographic size: 180
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1574,12 +1519,69 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4723894577510993000, guid: ea842270931f85a48935c9a41b4d615a, type: 3}
   m_PrefabInstance: {fileID: 382709101}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6022754697807811957
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1155863827760875151, guid: d8ace6e0aa1d0924c993b9cde16c352e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 320
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155863827760875151, guid: d8ace6e0aa1d0924c993b9cde16c352e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155863827760875151, guid: d8ace6e0aa1d0924c993b9cde16c352e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155863827760875151, guid: d8ace6e0aa1d0924c993b9cde16c352e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155863827760875151, guid: d8ace6e0aa1d0924c993b9cde16c352e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155863827760875151, guid: d8ace6e0aa1d0924c993b9cde16c352e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155863827760875151, guid: d8ace6e0aa1d0924c993b9cde16c352e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155863827760875151, guid: d8ace6e0aa1d0924c993b9cde16c352e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155863827760875151, guid: d8ace6e0aa1d0924c993b9cde16c352e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155863827760875151, guid: d8ace6e0aa1d0924c993b9cde16c352e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6244042882859133158, guid: d8ace6e0aa1d0924c993b9cde16c352e, type: 3}
+      propertyPath: m_Name
+      value: Background
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d8ace6e0aa1d0924c993b9cde16c352e, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1898712384}
-  - {fileID: 1580736086}
+  - {fileID: 6022754697807811957}
   - {fileID: 659327196}
   - {fileID: 2134640708}
   - {fileID: 171280865}
