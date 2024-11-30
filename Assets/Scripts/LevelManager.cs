@@ -17,7 +17,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float recoverPerSecond = 5.0f;
     [SerializeField] private CanvasGroup gameOverPanel;
     [SerializeField, Scene] private string titleScene;
+    [SerializeField] private CanvasGroup raceOverPanel;
     [SerializeField, Scene] private string raceEndScene;
+    [SerializeField] private KeyCode endRaceCheatKey = KeyCode.None;
 
     GameEventTrigger[] eventTrigger;
 
@@ -28,6 +30,7 @@ public class LevelManager : MonoBehaviour
     private float raceElapsedTime;
     private List<Force> forces;
     private bool isGameOver = false;
+    private bool isRaceOver = false;
 
     void Start()
     {
@@ -49,29 +52,41 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        if (!isGameOver)
+        if ((!isGameOver) && (!isRaceOver))
         {
             ChangeOxygen(recoverPerSecond * Time.deltaTime);
 
             raceElapsedTime += Time.deltaTime;
 
-            // Check if players
-            var players = FindObjectsByType<Player>(FindObjectsSortMode.None);
-            var isAlive = false;
-            foreach (var  player in players)
+            if ((endRaceCheatKey != KeyCode.None) && (Input.GetKeyDown(endRaceCheatKey)))
             {
-                var hs = player.GetComponent<HealthSystem>();
-                if (hs.isAlive)
-                {
-                    isAlive = true;
-                    break;
-                }
+                completedRace = maxRace;
             }
-
-            if (!isAlive)
+            if (completedRace >= maxRace)
             {
-                gameOverPanel.FadeIn(0.5f);
-                isGameOver = true;
+                raceOverPanel.FadeIn(0.5f);
+                isRaceOver = true;
+            }
+            else
+            {
+                // Check if players
+                var players = FindObjectsByType<Player>(FindObjectsSortMode.None);
+                var isAlive = false;
+                foreach (var player in players)
+                {
+                    var hs = player.GetComponent<HealthSystem>();
+                    if (hs.isAlive)
+                    {
+                        isAlive = true;
+                        break;
+                    }
+                }
+
+                if (!isAlive)
+                {
+                    gameOverPanel.FadeIn(0.5f);
+                    isGameOver = true;
+                }
             }
         }
         else

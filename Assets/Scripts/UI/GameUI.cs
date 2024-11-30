@@ -15,7 +15,7 @@ public class GameUI : MonoBehaviour
     {
         rocketImage.anchoredPosition = Vector2.zero;
 
-        rocketBarWidth = (rocketImage.parent as RectTransform).sizeDelta.x;
+        rocketBarWidth = (rocketImage.parent as RectTransform).sizeDelta.x - rocketImage.sizeDelta.x;
     }
 
     void Update()

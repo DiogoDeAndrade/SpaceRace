@@ -5,15 +5,17 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [Serializable]
-    public struct PlayerData
+    public class PlayerData
     {
         public Color    hairColor;
         public Color    bodyColor;
         public int      deviceId;
+        public int      score;
     }
 
     [SerializeField] private int                _numPlayers = 1;
     [SerializeField] private List<PlayerData>   _playerData;
+    [SerializeField] private float              _raceTime;
 
     static GameManager _Instance;
 
@@ -61,5 +63,11 @@ public class GameManager : MonoBehaviour
     {
         get { return _numPlayers; }
         set { _numPlayers = value; }
+    }
+
+    public float raceTime
+    {
+        get { return _raceTime; }
+        set { _raceTime = value; }
     }
 }

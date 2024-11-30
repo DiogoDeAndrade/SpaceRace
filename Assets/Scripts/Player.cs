@@ -278,6 +278,9 @@ public class Player : MonoBehaviour
     public void AddScore(int delta)
     {
         _score += delta;
+
+        var pd = GameManager.Instance.GetPlayerData(_playerId);
+        pd.score = _score;
     }
 
     public Sprite toolImage => currentTool.toolDef.sprite;
