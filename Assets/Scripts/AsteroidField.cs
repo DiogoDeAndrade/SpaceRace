@@ -11,6 +11,7 @@ public class AsteroidField : MonoBehaviour
     [SerializeField,SortingLayer] 
     private int            layerId;
     [SerializeField] private List<Sprite>   sprites;
+    [SerializeField] private Gradient       colorByScale;
 
     struct Asteroid
     {
@@ -38,6 +39,7 @@ public class AsteroidField : MonoBehaviour
             go.transform.localPosition = new Vector3(Random.Range(-extents.x, extents.x), Random.Range(-extents.y, extents.y), -speed);
             go.transform.localScale = new Vector3(speed, speed, speed);
             SpriteRenderer sr = go.AddComponent<SpriteRenderer>();
+            sr.color = colorByScale.Evaluate((speed - relativeSpeed.x) / (relativeSpeed.y - relativeSpeed.x));
             sr.sortingLayerID = layerId;
             sr.sprite = sprites.Random();
 

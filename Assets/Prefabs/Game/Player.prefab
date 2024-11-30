@@ -447,6 +447,7 @@ MonoBehaviour:
   effects: 1
   palette: {fileID: 0}
   inverseFactor: 0
+  flashColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!114 &7786165041939288459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -470,7 +471,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6683781890077311939}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -505,7 +506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811ab25fd41cc5f458d40fbb12952c12, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _playerId: 1
+  _playerId: 0
   maxInventorySlots: 0
   playerInput: {fileID: 3274794896074559717}
   interactPoint: {fileID: 1345904651591344655}
@@ -536,7 +537,7 @@ MonoBehaviour:
     buttonNegative: Left
     keyPositive: 275
     keyNegative: 276
-    inputAction: Crouch
+    inputAction: Drop
 --- !u!114 &3313288673637508804
 MonoBehaviour:
   m_ObjectHideFlags: 0

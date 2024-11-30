@@ -1099,7 +1099,7 @@ MonoBehaviour:
     buttonNegative: Left
     keyPositive: 275
     keyNegative: 276
-    inputAction: Attack
+    inputAction: Interact
   initialControl: {fileID: 827205145}
   onePlayerButton: {fileID: 827205145}
   twoPlayerButton: {fileID: 2142856261}

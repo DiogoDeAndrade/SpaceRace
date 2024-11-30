@@ -51,8 +51,8 @@ public class GameEventTrigger : MonoBehaviour
                 float deltaTime = Time.deltaTime;
                 if (playerTimeMultiplier > 0.0f)
                 {
-                    var players = FindObjectsByType<Player>(FindObjectsSortMode.None);
-                    deltaTime = playerTimeMultiplier * players.Length * Time.deltaTime;
+                    var nPlayers = GameManager.Instance.numPlayers;
+                    deltaTime = playerTimeMultiplier * nPlayers * Time.deltaTime;
                 }
                 switch (type)
                 {

@@ -45,7 +45,7 @@ public class Player : MonoBehaviour
     public bool hasTool => (currentTool != null);
     public bool hasInventorySpace => inventory.Count < maxInventorySlots;
     public int  score => _score;
-    public bool isDead => _isDead;
+    public bool isDead => healthSystem.isDead;
 
     void Start()
     {
@@ -63,18 +63,23 @@ public class Player : MonoBehaviour
             playerCustomization.SetColors(pd.hairColor, pd.bodyColor);
         }
         InputDevice inputDevice = null;
-        foreach (var device in InputSystem.devices)
+        if (pd.deviceId != -1)
         {
-            if (device.deviceId == pd.deviceId)
+            Debug.Log("Player device set");
+            foreach (var device in InputSystem.devices)
             {
-                inputDevice = device;
-                break;
+                if (device.deviceId == pd.deviceId)
+                {
+                    inputDevice = device;
+                    break;
+                }
+            }
+            if (inputDevice != null)
+            {
+                playerInput.SwitchCurrentControlScheme(playerInput.currentControlScheme, inputDevice);
             }
         }
-        if (inputDevice != null)
-        {
-            playerInput.SwitchCurrentControlScheme(playerInput.currentControlScheme, inputDevice);
-        }
+        playerInput.enabled = true;
 
         tooltip = TooltipManager.CreateTooltip();
         interactControl.playerInput = playerInput;
@@ -148,6 +153,7 @@ public class Player : MonoBehaviour
             // Asphyxiate
             animator.SetTrigger("Asphyxiate");
             movementPlatformer.SetActive(false);
+            healthSystem.SetHealth(0.0f);
             _isDead = true;
         }
         
@@ -304,4 +310,5 @@ public class Player : MonoBehaviour
         _isDead = false;
     }
 
+    public InputControl GetInteractControl() => interactControl;
 }

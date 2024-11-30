@@ -1,6 +1,8 @@
+using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -13,6 +15,9 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private float maxOxygen = 100.0f;
     [SerializeField] private float recoverPerSecond = 5.0f;
+    [SerializeField] private CanvasGroup gameOverPanel;
+    [SerializeField, Scene] private string titleScene;
+    [SerializeField, Scene] private string raceEndScene;
 
     GameEventTrigger[] eventTrigger;
 
@@ -22,6 +27,7 @@ public class LevelManager : MonoBehaviour
     private float completedRace;
     private float raceElapsedTime;
     private List<Force> forces;
+    private bool isGameOver = false;
 
     void Start()
     {
@@ -43,9 +49,63 @@ public class LevelManager : MonoBehaviour
 
     private void Update()
     {
-        ChangeOxygen(recoverPerSecond * Time.deltaTime);
+        if (!isGameOver)
+        {
+            ChangeOxygen(recoverPerSecond * Time.deltaTime);
 
-        raceElapsedTime += Time.deltaTime;
+            raceElapsedTime += Time.deltaTime;
+
+            // Check if players
+            var players = FindObjectsByType<Player>(FindObjectsSortMode.None);
+            var isAlive = false;
+            foreach (var  player in players)
+            {
+                var hs = player.GetComponent<HealthSystem>();
+                if (hs.isAlive)
+                {
+                    isAlive = true;
+                    break;
+                }
+            }
+
+            if (!isAlive)
+            {
+                gameOverPanel.FadeIn(0.5f);
+                isGameOver = true;
+            }
+        }
+        else
+        {
+            // Check inputs
+            var players = FindObjectsByType<Player>(FindObjectsSortMode.None);
+            foreach (var player in players)
+            {
+                if (player.GetInteractControl().IsDown())
+                {
+                    OnContinue();
+                }
+            }
+            
+        }
+    }
+
+    private void OnContinue()
+    {
+        // Pressed interact, next screen
+        if (isGameOver)
+        {
+            FullscreenFader.FadeOut(0.5f, Color.black, () =>
+            {
+                SceneManager.LoadScene(titleScene);
+            });
+        }
+        else
+        {
+            FullscreenFader.FadeOut(0.5f, Color.black, () =>
+            {
+                SceneManager.LoadScene(raceEndScene);
+            });
+        }
     }
 
     public static void ChangeOxygen(float delta)
