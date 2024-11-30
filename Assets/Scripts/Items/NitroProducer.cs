@@ -14,6 +14,8 @@ public class NitroProducer : ToolContainer
     [SerializeField] GameObject     explosionPrefab;
     [SerializeField] float          maxNitroEnergy = 10.0f;
     [SerializeField] GameObject     nitroPrefab;
+    [SerializeField] AudioSource    activeAudioSource;
+    [SerializeField] AudioClip      pelletCreateSnd;
 
     ParticleSystem leftPS;
     ParticleSystem rightPS;
@@ -43,6 +45,8 @@ public class NitroProducer : ToolContainer
     {
         base.Update();
 
+        float volume = 0.0f;
+
         purpleLight.intensity = 0.0f;
         if (leftSide.enabled)
         {
@@ -61,6 +65,7 @@ public class NitroProducer : ToolContainer
             }
 
             purpleLight.intensity += 2.5f;
+            volume = 0.5f;
         }
         if (rightSide.enabled)
         {
@@ -79,6 +84,7 @@ public class NitroProducer : ToolContainer
             }
 
             purpleLight.intensity += 2.5f;
+            volume = 0.5f;
         }
 
         if ((leftSide.enabled) && (rightSide.enabled))
@@ -94,6 +100,24 @@ public class NitroProducer : ToolContainer
                 EnableEmitter(leftPS, false);
 
                 Instantiate(nitroPrefab, transform.position, transform.rotation);
+
+                if (pelletCreateSnd)
+                {
+                    SoundManager.PlaySound(SoundType.PrimaryFX, pelletCreateSnd, 1.0f, 0.5f);
+                }
+            }
+        }
+
+        if (activeAudioSource)
+        {
+            if (volume > 0.0f)
+            {
+                if (!activeAudioSource.isPlaying) activeAudioSource.Play();
+                activeAudioSource.volume = volume;
+            }
+            else
+            {
+                if (activeAudioSource.isPlaying) activeAudioSource.Stop();
             }
         }
 

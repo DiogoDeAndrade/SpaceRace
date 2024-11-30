@@ -248,13 +248,92 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e7cd0e1467e07b4886902911cc91fa9, type: 3}
+--- !u!1 &273489452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 273489453}
+  - component: {fileID: 273489455}
+  - component: {fileID: 273489454}
+  m_Layer: 5
+  m_Name: ButtonContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &273489453
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273489452}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 827205148}
+  - {fileID: 2142856264}
+  - {fileID: 99038438}
+  - {fileID: 41545277}
+  m_Father: {fileID: 1854110203}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &273489454
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273489452}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &273489455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 273489452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 15
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1001 &382709101
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1854110203}
+    m_TransformParent: {fileID: 273489453}
     m_Modifications:
     - target: {fileID: 4723894577510993000, guid: ea842270931f85a48935c9a41b4d615a, type: 3}
       propertyPath: m_Pivot.x
@@ -392,7 +471,6 @@ RectTransform:
   - {fileID: 1569069571}
   - {fileID: 884781530}
   - {fileID: 1854110203}
-  - {fileID: 1679557729}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -604,7 +682,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1854110203}
+    m_TransformParent: {fileID: 273489453}
     m_Modifications:
     - target: {fileID: 4723894577510993000, guid: ea842270931f85a48935c9a41b4d615a, type: 3}
       propertyPath: m_Pivot.x
@@ -741,9 +819,12 @@ MonoBehaviour:
   - hairColor: {r: 0, g: 0, b: 0, a: 0}
     bodyColor: {r: 0, g: 0, b: 0, a: 0}
     deviceId: 0
+    score: 0
   - hairColor: {r: 0, g: 0, b: 0, a: 0}
     bodyColor: {r: 0, g: 0, b: 0, a: 0}
     deviceId: 0
+    score: 0
+  _raceTime: 0
 --- !u!4 &1436228396
 Transform:
   m_ObjectHideFlags: 0
@@ -875,16 +956,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1679557728}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 659327196}
+  m_Father: {fileID: 1854110203}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -720}
+  m_AnchoredPosition: {x: 0, y: -653}
   m_SizeDelta: {x: 1280, y: 720}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &1679557730
@@ -899,58 +980,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e551daac347a884cb84d6b27620927a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: '<color="yellow"><size=200%>Space Race</size></color>
-
-    A Game By Diogo
-    de Andrade
-
-
-    Art
-
-    <size=60%>Warped Space Marine by Ansimuz, purchased
-
-    <size=60%>Fire
-    Animation - Pixel Art FX Sprites by Brulov, free to use
-
-    <size=60%>Explosion
-    Pack by Lorix, free to use with attribution
-
-    <size=60%>Alien from the game
-    ''Alien vs Predator'', ripped by Baselz, no rights awarded
-
-    <size=60%>Font
-    Optimus by Pixel Sagas, free for non-commercial use.
-
-    <size=60%>O2 icon from
-    FreePik, free for non-commercial use.
-
-    <size=60%>Rocket icon from FreePik,
-    free for non-commercial use.
-
-    <size=60%>Checkered flag from Smashicons, free
-    for use with attribution.
-
-    <size=60%>UI Pack Sci-Fi by Kenney, licensed through
-    the [CC0] license.
-
-    <size=60%>Planets created with Pixel Planet Generator
-
-    <size=60%>Everything
-    else done by Diogo de Andrade, licensed through the [CC0] license.
-
-
-    Sound
-
-
-    Code
-
-    <size=60%>Some
-    code was adapted/refactored from [Okapi Kit], [MIT] license.
-
-    <size=60%>All
-    remaining game source code by Diogo de Andrade, [MIT] license'
+  text: "<color=\"yellow\"><size=200%>Space Race</size></color>\r\nA Game By Diogo
+    de Andrade\r\n\r\nArt\r\n<size=60%>Warped Space Marine by Ansimuz, purchased\r\n<size=60%>Fire
+    Animation - Pixel Art FX Sprites by Brulov, free to use\r\n<size=60%>Explosion
+    Pack by Lorix, free to use with attribution\r\n<size=60%>Alien from the game
+    'Alien vs Predator', ripped by Baselz, no rights awarded\r\n<size=60%>Font Optimus
+    by Pixel Sagas, free for non-commercial use.\r\n<size=60%>O2 icon from FreePik,
+    free for non-commercial use.\r\n<size=60%>Rocket icon from FreePik, free for
+    non-commercial use.\r\n<size=60%>Checkered flag from Smashicons, free for use
+    with attribution.\r\n<size=60%>UI Pack Sci-Fi by Kenney, licensed through the
+    [CC0] license.\r\n<size=60%>Planets created with Pixel Planet Generator\r\n<size=60%>Everything
+    else done by Diogo de Andrade, licensed through the [CC0] license.\r\n\r\nSound\r\n<size=60%>
+    Game Start Sound by plasterbrain, [CC0] license.\r\n<size=60%> metal mesh stairs
+    steps sound effect by Garuda1982, [CC-BY 4.0] license.\r\n<size=60%> grab-item
+    by 1bob, [CC0] license.\r\n<size=60%> ghost gun cock by martian, [CC0] license.\r\n<size=60%>
+    Metal Drop bar resonance by jorickhoofd, [CC-BY 4.0] license.\r\n<size=60%> Rifle
+    dropped on floor by ser\xF8t\u014Dnin, [CC0] license.\r\n<size=60%> 2022-01-14-crystal-bell-14
+    by arseniiv, [CC0] license.\r\n<size=60%> Metal wheel by manuelaurreaf, [CC-BY
+    4.0] license.\r\n<size=60%> Another magic wand by kneekoo, [CC0] license.\r\n<size=60%>
+    Unstable Nuclear Reactor by antwerpsounddesign, [CC0] license.\r\n<size=60%>
+    Explosion (Close/Near) by EvanBoyerman, [CC-BY 3.0] license.\r\n<size=60%> Hull
+    breach by jobro, [CC0] license.\r\n<size=60%> Blowtorch by HugoBozz, [CC-BY-NC
+    3.0] license.\r\n<size=60%> Fire Extinguisher by tranzfusion, [CC0] license.\r\n<size=60%>
+    Gun Charge Up by Bird_man, [CC0] license.\r\n<size=60%> WarpDriver by shimsewn,
+    [CC-BY 4.0] license.\r\n<size=60%> Light Electric Flow by Wakerone, [CC0] license.\r\n<size=60%>
+    Breaker-1 by Deathscyp, [CC0] license.\r\n<size=60%> Vent Footstep by h2p34,
+    [CC0] license.\r\n<size=60%> Alien Xenomorph Hissing and Growling (with and without
+    FX) by MSEpitaph, [CC0] license.\r\n<size=60%> Laser Shots by Iwan Gabovitch, 
+    [CC-BY 4.0] license.\r\n<size=60%> Deflector Shield by Metzik, [CC0] license.\r\n<size=60%>
+    Squish impact by Bertsz, [CC0] license.\r\n<size=60%> Male_Death_02 by Artmasterrich,
+    [CC0] license.\r\n<size=60%> health_1 by zandernoriega, [CC-BY 3.0] license.\r\n<size=60%>
+    Pick-up Health by juancamiloorjuela, [CC0] license.\r\n<size=60%> male_hurt1
+    by micahlg, [CC0] license.\r\n<size=60%> BottleRocket07-Misfire by kingsrow,
+    [CC0] license.\r\n<size=60%> Gas furnace by ldezem, [CC0] license.\r\n<size=60%>
+    SteamLoopBody by kingof_thelab, [CC-BY 3.0] license.\r\n<size=60%> Ratchet Wrench
+    by Groovy_Studio, [CC0] license.\r\n<size=60%> Music is AI generated with Soundful.\r\n<size=60%>
+    Everything else done by Diogo de Andrade, licensed through the [CC0] license.\r\n\r\nCode\r\n<size=60%>Some
+    code was adapted/refactored from Okapi Kit and UnityCommon library, [MIT] license.\r\n<size=60%>All
+    remaining game source code by Diogo de Andrade, [MIT] license\n"
   textPrefab: {fileID: 837308065931609482, guid: 10e0f989eeab50946908629c88a5930f, type: 3}
   scrollSpeed: 50
+  playerInput: {fileID: 1854110204}
+  backControl:
+    _type: 3
+    axis: Horizontal
+    buttonPositive: Right
+    buttonNegative: Left
+    keyPositive: 275
+    keyNegative: 276
+    inputAction: Drop
 --- !u!225 &1679557731
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -998,10 +1076,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1854110203}
-  - component: {fileID: 1854110206}
   - component: {fileID: 1854110205}
   - component: {fileID: 1854110204}
-  - component: {fileID: 1854110207}
   m_Layer: 5
   m_Name: Menu
   m_TagString: Untagged
@@ -1021,10 +1097,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 827205148}
-  - {fileID: 2142856264}
-  - {fileID: 99038438}
-  - {fileID: 41545277}
+  - {fileID: 273489453}
+  - {fileID: 1679557729}
   m_Father: {fileID: 659327196}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1100,58 +1174,23 @@ MonoBehaviour:
     keyPositive: 275
     keyNegative: 276
     inputAction: Interact
+  moveSnd: {fileID: 8300000, guid: 34613125421c21b4592e539801c94af8, type: 3}
+  selectSnd: {fileID: 8300000, guid: 884b9176429277e40b79f09d08d76676, type: 3}
   initialControl: {fileID: 827205145}
   onePlayerButton: {fileID: 827205145}
   twoPlayerButton: {fileID: 2142856261}
   creditsButton: {fileID: 99038435}
   quitButton: {fileID: 41545278}
   characterSelectScene: CharacterSelect
+  buttonCanvas: {fileID: 273489454}
   creditsScroll: {fileID: 1679557730}
---- !u!114 &1854110206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1854110202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59f8146938fff824cb5fd77236b75775, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 4
-  m_Spacing: 15
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
-  m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
-  m_ReverseArrangement: 0
---- !u!225 &1854110207
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1854110202}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1001 &1885969341
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1854110203}
+    m_TransformParent: {fileID: 273489453}
     m_Modifications:
     - target: {fileID: 4723894577510993000, guid: ea842270931f85a48935c9a41b4d615a, type: 3}
       propertyPath: m_Pivot.x
@@ -1397,7 +1436,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1854110203}
+    m_TransformParent: {fileID: 273489453}
     m_Modifications:
     - target: {fileID: 4723894577510993000, guid: ea842270931f85a48935c9a41b4d615a, type: 3}
       propertyPath: m_Pivot.x
@@ -1652,6 +1691,63 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8ace6e0aa1d0924c993b9cde16c352e, type: 3}
+--- !u!1001 &8368046383857280659
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 796297860981506490, guid: ffe4b548126647f418f8f581318f0d8b, type: 3}
+      propertyPath: m_Name
+      value: SoundManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062741671449663517, guid: ffe4b548126647f418f8f581318f0d8b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062741671449663517, guid: ffe4b548126647f418f8f581318f0d8b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062741671449663517, guid: ffe4b548126647f418f8f581318f0d8b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062741671449663517, guid: ffe4b548126647f418f8f581318f0d8b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062741671449663517, guid: ffe4b548126647f418f8f581318f0d8b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062741671449663517, guid: ffe4b548126647f418f8f581318f0d8b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062741671449663517, guid: ffe4b548126647f418f8f581318f0d8b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062741671449663517, guid: ffe4b548126647f418f8f581318f0d8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062741671449663517, guid: ffe4b548126647f418f8f581318f0d8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9062741671449663517, guid: ffe4b548126647f418f8f581318f0d8b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ffe4b548126647f418f8f581318f0d8b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1662,3 +1758,4 @@ SceneRoots:
   - {fileID: 2134640708}
   - {fileID: 171280865}
   - {fileID: 1436228396}
+  - {fileID: 8368046383857280659}

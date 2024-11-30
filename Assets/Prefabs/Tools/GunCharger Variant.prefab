@@ -118,6 +118,10 @@ PrefabInstance:
       propertyPath: chargeSpeed
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3016564155820940410, guid: dab117cffddc653418079fe3ba51d05c, type: 3}
+      propertyPath: grabItemSnd
+      value: 
+      objectReference: {fileID: 8300000, guid: 5d1e66c9027c96e4eacb58c651d79d65, type: 3}
     - target: {fileID: 5310226245531971129, guid: dab117cffddc653418079fe3ba51d05c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 122

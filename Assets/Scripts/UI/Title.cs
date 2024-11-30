@@ -2,6 +2,8 @@ using NaughtyAttributes;
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
+
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -13,7 +15,9 @@ public class Title : UIGroup
     [SerializeField] UIButton creditsButton;
     [SerializeField] UIButton quitButton;
     [SerializeField, Scene] string characterSelectScene;
+    [SerializeField] CanvasGroup buttonCanvas;
     [SerializeField] BigTextScroll creditsScroll;
+    [SerializeField] AudioClip titleMusic;
 
     protected override void Start()
     {
@@ -23,15 +27,17 @@ public class Title : UIGroup
         twoPlayerButton.onInteract += StartTwoPlayers;
         creditsButton.onInteract += ShowCredits;
         quitButton.onInteract += QuitGame;
+
+        SoundManager.PlayMusic(titleMusic);
     }
 
     private void ShowCredits(BaseUIControl control)
     {
         _uiEnable = false;
-        var canvasGroup = GetComponent<CanvasGroup>();
-        canvasGroup.FadeOut(0.5f);
 
-        canvasGroup = creditsScroll.GetComponent<CanvasGroup>();
+        buttonCanvas.FadeOut(0.5f);
+
+        var canvasGroup = creditsScroll.GetComponent<CanvasGroup>();
         canvasGroup.FadeIn(0.5f);
 
         creditsScroll.Reset();
@@ -41,10 +47,9 @@ public class Title : UIGroup
 
     private void BackToOptions()
     {
-        var canvasGroup = GetComponent<CanvasGroup>();
-        canvasGroup.FadeIn(0.5f);
+        buttonCanvas.FadeIn(0.5f);
 
-        canvasGroup = creditsScroll.GetComponent<CanvasGroup>();
+        var canvasGroup = creditsScroll.GetComponent<CanvasGroup>();
         canvasGroup.FadeOut(0.5f);
 
         _uiEnable = true;
@@ -66,6 +71,10 @@ public class Title : UIGroup
     {
         _uiEnable = false;
         GameManager.Instance.numPlayers = nPlayers;
+
+        var pd = GameManager.Instance.GetPlayerData(0);
+        pd.deviceId = GetComponent<PlayerInput>().devices[0].deviceId;
+
         FullscreenFader.FadeOut(0.5f, Color.black, () =>
         {
             SceneManager.LoadScene(characterSelectScene);

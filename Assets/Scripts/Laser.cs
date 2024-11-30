@@ -1,6 +1,4 @@
-using TMPro;
 using UnityEngine;
-using UnityEngine.InputSystem.Android;
 using UnityEngine.Rendering.Universal;
 
 public class Laser : MonoBehaviour
@@ -9,6 +7,9 @@ public class Laser : MonoBehaviour
     [SerializeField] private GameObject hitPrefab;
     [SerializeField] private float      laserDamage = 50.0f;
     [SerializeField] private int        friendlyFireScore = 100;
+    [SerializeField] private AudioClip  wallHitSnd;
+    [SerializeField] private AudioClip  alienHitSnd;
+    [SerializeField] private AudioClip  playerHitSnd;
 
     Rigidbody2D     rb;
     TrailRenderer   trailRenderer;
@@ -40,6 +41,8 @@ public class Laser : MonoBehaviour
             alien.Kill();
             laserLight.FadeOut(0.1f);
             owner.AddScore(alien.killScore);
+
+            if (alienHitSnd) SoundManager.PlaySound(SoundType.PrimaryFX, alienHitSnd, 1.0f, Random.Range(0.75f, 1.25f));
         }
         else
         {
@@ -49,6 +52,8 @@ public class Laser : MonoBehaviour
                 var hs = player.GetComponent<HealthSystem>();
                 hs.DealDamage(laserDamage, transform.position);
                 laserLight.FadeOut(0.1f);
+
+                if (playerHitSnd) SoundManager.PlaySound(SoundType.PrimaryFX, playerHitSnd, 1.0f, Random.Range(0.75f, 1.25f));
 
                 if (!hs.isAlive)
                 {
@@ -60,6 +65,8 @@ public class Laser : MonoBehaviour
                 // Probably wall
                 Instantiate(hitPrefab, transform.position, transform.rotation);
                 laserLight.FadeOut(1.0f);
+
+                if (wallHitSnd) SoundManager.PlaySound(SoundType.PrimaryFX, wallHitSnd, 1.0f, Random.Range(0.75f, 1.25f));
             }
         }
 

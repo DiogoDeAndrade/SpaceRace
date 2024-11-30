@@ -15,6 +15,8 @@ public class UIGroup : MonoBehaviour
     protected InputControl verticalControl;
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
     protected InputControl interactControl;
+    [SerializeField] AudioClip moveSnd;
+    [SerializeField] AudioClip selectSnd;
 
     [SerializeField] protected BaseUIControl initialControl;
 
@@ -76,12 +78,14 @@ public class UIGroup : MonoBehaviour
                             _selectedControl = _selectedControl.navDown;
                             cooldownTimer = moveCooldown;
                             _verticalReset = false;
+                            if (moveSnd) SoundManager.PlaySound(SoundType.SecondaryFX, moveSnd);
                         }
                         else if (dy > 0.5f)
                         {
                             _selectedControl = _selectedControl.navUp;
                             cooldownTimer = moveCooldown;
                             _verticalReset = false;
+                            if (moveSnd) SoundManager.PlaySound(SoundType.SecondaryFX, moveSnd);
                         }
                     }
                     else
@@ -99,6 +103,7 @@ public class UIGroup : MonoBehaviour
 
                 if (interactControl.IsDown())
                 {
+                    if (selectSnd) SoundManager.PlaySound(SoundType.SecondaryFX, selectSnd);
                     _selectedControl?.Interact();
                 }
             }

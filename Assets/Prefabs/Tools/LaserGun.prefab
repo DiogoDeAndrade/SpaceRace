@@ -43,7 +43,8 @@ GameObject:
   - component: {fileID: 4980526200846607154}
   - component: {fileID: 8264916296905661923}
   - component: {fileID: 1251997212742674622}
-  - component: {fileID: 6055882807512879}
+  - component: {fileID: 8460306027617621806}
+  - component: {fileID: -1808978093764607952}
   m_Layer: 8
   m_Name: LaserGun
   m_TagString: Untagged
@@ -152,8 +153,13 @@ MonoBehaviour:
   chargeCost: 1
   chargeUI: {fileID: 3763575914811926799}
   chargeMeter: {fileID: 1430547076770912774}
+  destroyWhenNoCharge: 0
+  scoreOnNoCharge: 0
+  activeToolAudioSource: {fileID: 0}
   muzzleFlash: {fileID: 4188507537537396754}
   laserPrefab: {fileID: -6133170490233707784, guid: 4739c531c2f6bdc40bd5ad40b03d6229, type: 3}
+  laserSnd: {fileID: 8300000, guid: 537c2e31bc2e34f4b95e95e8083eb89e, type: 3}
+  noChargeSnd: {fileID: 8300000, guid: 7b26ab95c49b27c4fa5181c0b04d0cc1, type: 3}
 --- !u!50 &1251997212742674622
 Rigidbody2D:
   serializedVersion: 5
@@ -181,8 +187,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!70 &6055882807512879
-CapsuleCollider2D:
+--- !u!60 &8460306027617621806
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -216,8 +222,41 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 21.9, y: 10.9}
-  m_Direction: 1
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 16, y: 16}
+    newSize: {x: 16, y: 16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -7.9606323, y: 2.197403}
+      - {x: -8, y: -5.9529877}
+      - {x: -3.0076408, y: -5.8348923}
+      - {x: 2.0298004, y: 1.9757462}
+      - {x: 7.9212685, y: 2.1651077}
+      - {x: 7.960636, y: 6.0710907}
+      - {x: -5.039364, y: 5.9529953}
+  m_UseDelaunayMesh: 0
+--- !u!114 &-1808978093764607952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1574934044047361293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84046b95e7a1e84b8d3c38a1c29923d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropSnd: {fileID: 8300000, guid: c6dfbf46010791643a3a70a0403fbdc4, type: 3}
+  cooldown: 0.3
+  volumeVariance: {x: 0.7179104, y: 0.9328358}
+  pitchVariance: {x: 0.79801, y: 1.0696518}
 --- !u!1 &1641756462489717623
 GameObject:
   m_ObjectHideFlags: 0

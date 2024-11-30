@@ -8,6 +8,8 @@ public class Engine : ToolContainer
 {
     [SerializeField] SpriteRenderer reactorSprite;
     [SerializeField] RectTransform  reactorMeter;
+    [SerializeField] AudioClip chargeSnd;
+    [SerializeField] AudioSource engineThrumAudioSource;
 
     struct FuelData
     {
@@ -61,6 +63,12 @@ public class Engine : ToolContainer
             }
 
             reactorMeter.localScale = new Vector3(1, p, 1);
+
+            if (engineThrumAudioSource)
+            {
+                if (!engineThrumAudioSource.isPlaying) engineThrumAudioSource.Play();
+                engineThrumAudioSource.volume = p;
+            }
         }
         else
         {
@@ -75,9 +83,11 @@ public class Engine : ToolContainer
                 fuelAmmount = maxFuelAmmount = fuel.ammount;
                 fuelEnergy = fuel.energy;
             }
+
+            if ((engineThrumAudioSource) && (engineThrumAudioSource.isPlaying)) engineThrumAudioSource.Stop();
         }
 
-        float deltaRace = 1.0f + fuelEnergy;
+            float deltaRace = 1.0f + fuelEnergy;
 
         // Account for pipe breaks
         float totalPipe = 0.0f;
@@ -109,6 +119,9 @@ public class Engine : ToolContainer
             });
             player.AddScore(fuel.score);
             Destroy(tool.gameObject);
+
+            if (chargeSnd) SoundManager.PlaySound(SoundType.PrimaryFX, chargeSnd);
+
             return true;
         }
 

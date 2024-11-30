@@ -1,5 +1,4 @@
-using System;
-using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -29,8 +28,41 @@ public class Customizer : UIGroup
 
         if (GameManager.Instance.numPlayers <= playerId)
         {
-            gameObject.SetActive(false);
+            Destroy(gameObject);
         }
+        else
+        {
+            var pd = GameManager.Instance.GetPlayerData(playerId);
+
+            InputDevice inputDevice = null;
+            if (pd.deviceId != -1)
+            {
+                foreach (var device in InputSystem.devices)
+                {
+                    if (device.deviceId == pd.deviceId)
+                    {
+                        inputDevice = device;
+                        break;
+                    }
+                }
+                if (inputDevice != null)
+                {
+                    StartCoroutine(SwitchCurrentControlSchemeCR(inputDevice));
+                }
+            }
+            playerInput.enabled = true;
+        }
+    }
+
+    private IEnumerator SwitchCurrentControlSchemeCR(InputDevice inputDevice)
+    {
+        yield return null;
+        yield return null;
+
+        string scheme = playerInput.currentControlScheme;
+        if (string.IsNullOrEmpty(scheme)) scheme = "Gamepad";
+
+        playerInput.SwitchCurrentControlScheme(scheme, inputDevice);
     }
 
     private void OnColorChange(BaseUIControl control)

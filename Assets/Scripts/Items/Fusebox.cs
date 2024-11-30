@@ -5,6 +5,8 @@ public class Fusebox : Interactable
 {
     [SerializeField] private ShipLight[]    shipLights;
     [SerializeField] private Light2D        globalLight;
+    [SerializeField] private AudioClip      breakerSnd;
+    [SerializeField] private AudioClip      activateSnd;
 
     private bool isOpen = false;
     private bool isUp = true;
@@ -23,6 +25,12 @@ public class Fusebox : Interactable
         if (isOpen)
         {
             isUp = !isUp;
+            if (breakerSnd)
+            {
+                if (!isUp) SoundManager.PlaySound(SoundType.PrimaryFX, breakerSnd);
+                else SoundManager.PlaySound(SoundType.PrimaryFX, activateSnd);
+            }
+
             UpdateLight();
 
             onToggle?.Invoke(player, isUp);
@@ -47,6 +55,7 @@ public class Fusebox : Interactable
     public void Trip()
     {
         isUp = false;
+        if (breakerSnd) SoundManager.PlaySound(SoundType.PrimaryFX, breakerSnd);
         UpdateLight();
     }
 }

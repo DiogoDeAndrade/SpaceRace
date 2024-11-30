@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7020915033545342350}
   - component: {fileID: 1981513700518074330}
   - component: {fileID: 6336393423565562945}
+  - component: {fileID: -9101676990261162561}
   m_Layer: 8
   m_Name: Medikit
   m_TagString: Untagged
@@ -194,6 +195,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 12, y: 12}
   m_EdgeRadius: 0
+--- !u!114 &-9101676990261162561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2221738587571315168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84046b95e7a1e84b8d3c38a1c29923d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropSnd: {fileID: 8300000, guid: 3de9c023b55784d41bad9ba290a6a641, type: 3}
+  cooldown: 0.1
+  volumeVariance: {x: 1, y: 1}
+  pitchVariance: {x: 1, y: 1.1950248}
 --- !u!1 &2676301532587998377
 GameObject:
   m_ObjectHideFlags: 0

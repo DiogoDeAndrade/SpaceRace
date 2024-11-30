@@ -46,7 +46,6 @@ public class PlayerReport : MonoBehaviour
         InputDevice inputDevice = null;
         if (pd.deviceId != -1)
         {
-            Debug.Log("Player device set");
             foreach (var device in InputSystem.devices)
             {
                 if (device.deviceId == pd.deviceId)
@@ -57,7 +56,7 @@ public class PlayerReport : MonoBehaviour
             }
             if (inputDevice != null)
             {
-                playerInput.SwitchCurrentControlScheme(playerInput.currentControlScheme, inputDevice);
+                StartCoroutine(SwitchCurrentControlSchemeCR(inputDevice));
             }
         }
         playerInput.enabled = true;
@@ -83,6 +82,17 @@ public class PlayerReport : MonoBehaviour
         canvasGroup = GetComponent<CanvasGroup>();
 
         StartCoroutine(GrowScoreCR());
+    }
+
+    private IEnumerator SwitchCurrentControlSchemeCR(InputDevice inputDevice)
+    {
+        yield return null;
+        yield return null;
+
+        string scheme = playerInput.currentControlScheme;
+        if (string.IsNullOrEmpty(scheme)) scheme = "Gamepad";
+
+        playerInput.SwitchCurrentControlScheme(scheme, inputDevice);
     }
 
     IEnumerator GrowScoreCR()

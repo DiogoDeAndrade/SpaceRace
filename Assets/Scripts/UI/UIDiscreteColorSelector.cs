@@ -10,7 +10,7 @@ public class UIDiscreteColorSelector : UIControl<Color>
     [SerializeField] protected Image   colorIndicator;
     [SerializeField] protected bool    randomInitialSelection;
     [SerializeField, HideIf(nameof(randomInitialSelection))] 
-    protected int     initialSelection = 0;  
+    protected int     initialSelection = 0;
 
     int selectedColor = 0;
 
@@ -58,12 +58,14 @@ public class UIDiscreteColorSelector : UIControl<Color>
         {
             selectedColor = (selectedColor + 1) % colors.Length;
             ChangeValue(colors[selectedColor]);
+            if (changeSnd) SoundManager.PlaySound(SoundType.SecondaryFX, changeSnd);
         }
         else if (dz < 0.0f) 
         { 
             selectedColor--; 
             if (selectedColor < 0) selectedColor = colors.Length - 1;
             ChangeValue(colors[selectedColor]);
+            if (changeSnd) SoundManager.PlaySound(SoundType.SecondaryFX, changeSnd);
         }
     }
 }

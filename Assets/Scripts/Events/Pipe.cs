@@ -1,8 +1,10 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class Pipe : Accident
 {
     [SerializeField] private ParticleSystem steamPS;
+    [SerializeField] private AudioSource audioSource;
 
     float emissionRate;
 
@@ -20,6 +22,16 @@ public class Pipe : Accident
         base.Update();
 
         float t = currentDamage / maxDamage;
+
+        if (t > 0.0f)
+        {
+            if (!audioSource.isPlaying) audioSource.Play();
+            audioSource.volume = t;
+        }
+        else
+        {
+            if (audioSource.isPlaying) audioSource.Stop();
+        }
 
         var emission = steamPS.emission;
         emission.rateOverTime = t * emissionRate;

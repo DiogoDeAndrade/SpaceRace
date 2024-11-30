@@ -181,6 +181,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   globalLight: {fileID: 0}
+  breakerSnd: {fileID: 8300000, guid: 36cdad6db40589745b1e02f58b8ab0a5, type: 3}
+  activateSnd: {fileID: 8300000, guid: 4c2f0d584e790874aaf99b5b4de4bde5, type: 3}
 --- !u!1 &7858179001072559183
 GameObject:
   m_ObjectHideFlags: 0

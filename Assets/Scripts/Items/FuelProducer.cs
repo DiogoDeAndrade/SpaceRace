@@ -14,6 +14,8 @@ public class FuelProducer : Interactable
     [SerializeField] private Rigidbody2D    pelletPrefab;
     [SerializeField] private Transform      spawnPoint;
     [SerializeField] private int            scorePellet = 25;
+    [SerializeField] private AudioSource    wheelAudioSource;
+    [SerializeField] private AudioClip      pelletGenerationSnd;
 
     float angularSpeed = 0.0f;
     float wheelAngle;
@@ -66,9 +68,23 @@ public class FuelProducer : Interactable
             {
                 lastPlayerTouch.AddScore(scorePellet);
             }
+            if (pelletGenerationSnd) SoundManager.PlaySound(SoundType.PrimaryFX, pelletGenerationSnd);
         }
 
         angularSpeed = Mathf.Max(0, angularSpeed - angularDrag * Time.deltaTime);
+
+        if (Mathf.Abs(angularSpeed) > 0.0f)
+        {
+            if (!wheelAudioSource.isPlaying)
+            {
+                wheelAudioSource.Play();
+            }
+            wheelAudioSource.volume = angularSpeed / maxAngularSpeed;
+        }
+        else
+        {
+            wheelAudioSource.Stop();
+        }
     }
 
     public override void Interact(Player player)

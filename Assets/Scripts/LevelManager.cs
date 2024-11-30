@@ -20,6 +20,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private CanvasGroup raceOverPanel;
     [SerializeField, Scene] private string raceEndScene;
     [SerializeField] private KeyCode endRaceCheatKey = KeyCode.None;
+    [SerializeField] private AudioClip musicClip;
 
     GameEventTrigger[] eventTrigger;
 
@@ -48,6 +49,11 @@ public class LevelManager : MonoBehaviour
         raceElapsedTime = 0.0f;
 
         FullscreenFader.FadeIn(0.5f);
+
+        if (musicClip)
+        {
+            SoundManager.PlayMusic(musicClip);
+        }
     }
 
     private void Update()
@@ -57,6 +63,7 @@ public class LevelManager : MonoBehaviour
             ChangeOxygen(recoverPerSecond * Time.deltaTime);
 
             raceElapsedTime += Time.deltaTime;
+            GameManager.Instance.raceTime = raceElapsedTime;
 
             if ((endRaceCheatKey != KeyCode.None) && (Input.GetKeyDown(endRaceCheatKey)))
             {

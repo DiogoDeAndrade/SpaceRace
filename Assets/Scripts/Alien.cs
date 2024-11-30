@@ -14,6 +14,8 @@ public class Alien : MonoBehaviour
     [SerializeField] private LayerMask      groundMask;
     [SerializeField] private ParticleSystem deathPS;
     [SerializeField] private int            _killScore;
+    [SerializeField] private AudioClip      ventSnd;
+    [SerializeField] private AudioClip      attackSnd;
 
     bool canMove = false;
 
@@ -50,6 +52,8 @@ public class Alien : MonoBehaviour
         canMove = false;
 
         // Do sound to warn an alien is coming and shake the vent
+        if (ventSnd) SoundManager.PlaySound(SoundType.PrimaryFX, ventSnd, 1.0f, Random.Range(0.7f, 1.3f));
+
         currentVent.Shake2d(1.0f, 1.0f);
         yield return new WaitForSeconds(initialDelay);
 
@@ -67,6 +71,8 @@ public class Alien : MonoBehaviour
         spriteRenderer.FadeTo(Color.white.ChangeAlpha(0.0f), 1.0f, "SpriteFade");
 
         yield return new WaitForSeconds(1.0f);
+
+        if (ventSnd) SoundManager.PlaySound(SoundType.PrimaryFX, ventSnd, 1.0f, Random.Range(0.7f, 1.3f));
 
         var allVents = gameObject.FindObjectsOfTypeWithHypertag<Transform>(ventTag);
         var newVent = allVents.Random();
@@ -104,6 +110,7 @@ public class Alien : MonoBehaviour
                         TurnTo(Mathf.Sign(dist));
                         canMove = false;
                         animator.SetTrigger("Attack");
+                        SoundManager.PlaySound(SoundType.PrimaryFX, attackSnd, 1.0f, Random.Range(0.75f, 1.25f));
                     }
 
                     break;

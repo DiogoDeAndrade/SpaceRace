@@ -5,6 +5,7 @@ public class ToolContainer : MonoBehaviour
     [SerializeField] private ToolDef    _toolDef;
     [SerializeField] private Transform  _toolPos;
     [SerializeField] private float      chargeSpeed = 2.0f;
+    [SerializeField] private AudioClip  grabItemSnd;
 
     public Transform toolPos => _toolPos;
     public ToolDef toolDef => _toolDef;
@@ -39,8 +40,9 @@ public class ToolContainer : MonoBehaviour
 
     public virtual bool HangTool(Player player, Tool tool)
     {
-        if (tool == null)
+        if ((tool == null) && (containedTool != null))
         {
+            if (grabItemSnd) SoundManager.PlaySound(SoundType.PrimaryFX, grabItemSnd);
             containedTool = null;
             return true;
         }
@@ -48,6 +50,7 @@ public class ToolContainer : MonoBehaviour
         if (tool.toolDef != _toolDef) return false;
 
         containedTool = tool;
+        if (grabItemSnd) SoundManager.PlaySound(SoundType.PrimaryFX, grabItemSnd);
 
         return true;
     }

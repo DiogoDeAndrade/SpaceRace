@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class CharacterSelect : MonoBehaviour
 {
     [SerializeField, Scene] private string gameScene;
+    [SerializeField] private AudioClip musicClip;
 
     Customizer[] customizers;
 
@@ -13,6 +14,8 @@ public class CharacterSelect : MonoBehaviour
         customizers = FindObjectsByType<Customizer>(FindObjectsSortMode.None);
 
         FullscreenFader.FadeIn(0.5f);
+
+        SoundManager.PlayMusic(musicClip);
     }
 
     void Update()
@@ -20,6 +23,7 @@ public class CharacterSelect : MonoBehaviour
         bool noActive = true;
         foreach (var customizer in customizers)
         {
+            if (customizer == null) continue;
             if (customizer.uiEnable)
             {
                 noActive = false;

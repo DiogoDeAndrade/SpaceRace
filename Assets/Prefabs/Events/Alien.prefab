@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 868789088964547525}
   - component: {fileID: 1718391769780250073}
   - component: {fileID: 712841110138928247}
+  - component: {fileID: 4233317798945187952}
   m_Layer: 11
   m_Name: Alien
   m_TagString: Untagged
@@ -171,6 +172,8 @@ MonoBehaviour:
     m_Bits: 64
   deathPS: {fileID: 4549007906124007472}
   _killScore: 30
+  ventSnd: {fileID: 8300000, guid: b42ebdedecc3e9b49ae3684033f7cac6, type: 3}
+  attackSnd: {fileID: 8300000, guid: f364280124470d84fb161f69c9fd559b, type: 3}
 --- !u!50 &868789088964547525
 Rigidbody2D:
   serializedVersion: 5
@@ -260,6 +263,24 @@ MonoBehaviour:
   palette: {fileID: 0}
   inverseFactor: 0
   flashColor: {r: 1, g: 1, b: 1, a: 0}
+--- !u!114 &4233317798945187952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8686960837206587739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41faa618a9bb6214f983e186d15b3652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distancePerStep: 50
+  teleportDistance: 50
+  stepCooldown: 0.5
+  footstepSnd: {fileID: 8300000, guid: 07b07716093aeb84da362255364cf0d2, type: 3}
+  volumeVariance: {x: 0.8835821, y: 1}
+  pitchVariance: {x: 1.2716417, y: 1.327363}
 --- !u!1001 &7275976852154042438
 PrefabInstance:
   m_ObjectHideFlags: 0

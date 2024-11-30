@@ -10,6 +10,8 @@ public class ReportScreen : MonoBehaviour
     [SerializeField, Scene] private string titleScene;
     [SerializeField] private TextMeshProUGUI labelWinner;
     [SerializeField] private TextMeshProUGUI winner;
+    [SerializeField] AudioClip reportMusic;
+
 
     List<bool> playerContinue;
 
@@ -22,6 +24,8 @@ public class ReportScreen : MonoBehaviour
 
         playerContinue = new();
         for (int i = 0; i < GameManager.Instance.numPlayers; i++) playerContinue.Add(false);
+
+        if (reportMusic) SoundManager.PlayMusic(reportMusic);
     }
 
     void Update()

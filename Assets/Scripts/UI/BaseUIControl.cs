@@ -10,9 +10,10 @@ public class BaseUIControl : MonoBehaviour
     public delegate void OnInteract(BaseUIControl control);
     public delegate void OnUIEnableToggle(bool value, BaseUIControl control);
 
-    [SerializeField] Image      highlighterImage;
-    [SerializeField] BaseUIControl  _navUp;
-    [SerializeField] BaseUIControl  _navDown;
+    [SerializeField] protected Image            highlighterImage;
+    [SerializeField] protected BaseUIControl    _navUp;
+    [SerializeField] protected BaseUIControl    _navDown;
+    [SerializeField] protected AudioClip        changeSnd;
 
     UIGroup parentGroup;
 

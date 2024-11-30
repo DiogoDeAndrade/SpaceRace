@@ -268,7 +268,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1659688939983387517}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
@@ -328,7 +328,9 @@ MonoBehaviour:
     buttonNegative: Left
     keyPositive: 275
     keyNegative: 276
-    inputAction: Attack
+    inputAction: Interact
+  moveSnd: {fileID: 8300000, guid: 34613125421c21b4592e539801c94af8, type: 3}
+  selectSnd: {fileID: 8300000, guid: 884b9176429277e40b79f09d08d76676, type: 3}
   initialControl: {fileID: 5637858393905321332}
   playerId: 0
   uiEffect: {fileID: 2077624801756361993}
@@ -754,6 +756,7 @@ MonoBehaviour:
   highlighterImage: {fileID: 8185126800647624812}
   _navUp: {fileID: 5830562519863320201}
   _navDown: {fileID: 5637858393905321332}
+  changeSnd: {fileID: 8300000, guid: 94c4c214af8ca334cb0a62b3fc7fd95f, type: 3}
 --- !u!1 &8498647062872021450
 GameObject:
   m_ObjectHideFlags: 0

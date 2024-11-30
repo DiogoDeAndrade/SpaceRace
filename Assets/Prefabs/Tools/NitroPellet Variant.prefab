@@ -8,6 +8,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9041801266511883920, guid: 5b69c1734c2d1bf43893d8a1aca2424d, type: 3}
+      propertyPath: pitchVariance.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -9041801266511883920, guid: 5b69c1734c2d1bf43893d8a1aca2424d, type: 3}
+      propertyPath: pitchVariance.y
+      value: 1.1741295
+      objectReference: {fileID: 0}
     - target: {fileID: 2763030505828975115, guid: 5b69c1734c2d1bf43893d8a1aca2424d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.7

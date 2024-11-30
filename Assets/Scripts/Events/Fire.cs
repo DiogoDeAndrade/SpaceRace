@@ -12,6 +12,7 @@ public class Fire : Accident
     [SerializeField] float                  fireFlickerSpeed;
     [SerializeField] float                  damageRadius;
     [SerializeField] float                  damage;
+    [SerializeField] AudioSource            fireAudioSource;
 
     private Light2D         fireLight;
     private float           fireFlickerTimer;     
@@ -45,6 +46,12 @@ public class Fire : Accident
 
         if (t > 0.05f)
         {
+            if (fireAudioSource)
+            {
+                if (!fireAudioSource.isPlaying) fireAudioSource.Play();
+                fireAudioSource.volume = t;
+            }
+
             elapsedTime += Time.deltaTime;
 
             while (elapsedTime > timePerParticle)
@@ -92,7 +99,9 @@ public class Fire : Accident
             {
                 Destroy(gameObject);
             }
+            if (fireAudioSource.isPlaying) fireAudioSource.Stop();
         }
+
         fireFlickerTimer += Time.deltaTime * fireFlickerSpeed;
         while (fireFlickerTimer > 1) fireFlickerTimer -= 1.0f;
         fireLight.color = fireFlickerColor.Evaluate(fireFlickerTimer);

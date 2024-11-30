@@ -16,9 +16,6 @@ public class GameEvent_Blackout : GameEvent
 
         fusebox.onToggle += OnToggle;
 
-
-        Destroy(gameObject);
-
         return true;
     }
 

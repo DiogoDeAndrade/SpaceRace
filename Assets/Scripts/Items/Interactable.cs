@@ -3,8 +3,8 @@ using UnityEngine;
 
 public abstract class Interactable : MonoBehaviour
 {
-    [SerializeField] private string     _displayName;
-    [SerializeField] private Transform  _tooltipPosition;
+    [SerializeField] private string         _displayName;
+    [SerializeField] private Transform      _tooltipPosition;
 
     public string displayName => _displayName;
     public Transform tooltipPosition => (_tooltipPosition != null) ? (_tooltipPosition) : (transform);

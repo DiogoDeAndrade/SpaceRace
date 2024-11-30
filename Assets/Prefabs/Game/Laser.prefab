@@ -313,3 +313,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 300
   hitPrefab: {fileID: 6140470902129874481, guid: d7af2b11ea2961a40b0bdf9fa3517cff, type: 3}
+  laserDamage: 50
+  friendlyFireScore: 100
+  wallHitSnd: {fileID: 8300000, guid: c087197d8f253fe44a188ee4424ec513, type: 3}
+  alienHitSnd: {fileID: 8300000, guid: 8744c2be2d4496b4f811706148927b6e, type: 3}
+  playerHitSnd: {fileID: 8300000, guid: 8744c2be2d4496b4f811706148927b6e, type: 3}

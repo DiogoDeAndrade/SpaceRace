@@ -5,6 +5,7 @@ public class HullBreach : Accident, LevelManager.Force
     [SerializeField] float oxygenPerSecond = 10.0f;
     [SerializeField] float attractionStrength = 25;
     [SerializeField] float attractionRange = 200;
+    [SerializeField] AudioSource breachAudioSource;
 
     SpriteRenderer spriteRenderer;
     ParticleSystem ps;
@@ -31,6 +32,8 @@ public class HullBreach : Accident, LevelManager.Force
         base.Update();
 
         float t = currentDamage / maxDamage;
+
+        if (breachAudioSource) breachAudioSource.volume = t;
 
         var emission = ps.emission;
         emission.rateOverTimeMultiplier = defaultEmissionRate * t;

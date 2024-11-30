@@ -76,6 +76,10 @@ PrefabInstance:
       propertyPath: _toolDef
       value: 
       objectReference: {fileID: 11400000, guid: 378a195a3afd2cf4eb28f950122eee22, type: 2}
+    - target: {fileID: 9003443920421911132, guid: 272ff4d0bfe3f6f4f9d3bc77709d1748, type: 3}
+      propertyPath: grabItemSnd
+      value: 
+      objectReference: {fileID: 8300000, guid: 3de9c023b55784d41bad9ba290a6a641, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 5010141457249853089, guid: 272ff4d0bfe3f6f4f9d3bc77709d1748, type: 3}

@@ -27,6 +27,14 @@ public class Player : MonoBehaviour
     private InputControl   useToolCtrl;
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton] 
     private InputControl   dropToolCtrl;
+    [SerializeField]
+    private AudioClip      hurtSnd;
+    [SerializeField] 
+    private AudioClip      deathSnd;
+    [SerializeField]
+    private AudioClip      reviveSnd;
+    [SerializeField]
+    private AudioClip      healthSnd;
 
     public int  playerId => _playerId;
 
@@ -65,7 +73,6 @@ public class Player : MonoBehaviour
         InputDevice inputDevice = null;
         if (pd.deviceId != -1)
         {
-            Debug.Log("Player device set");
             foreach (var device in InputSystem.devices)
             {
                 if (device.deviceId == pd.deviceId)
@@ -76,7 +83,7 @@ public class Player : MonoBehaviour
             }
             if (inputDevice != null)
             {
-                playerInput.SwitchCurrentControlScheme(playerInput.currentControlScheme, inputDevice);
+                StartCoroutine(SwitchCurrentControlSchemeCR(inputDevice));
             }
         }
         playerInput.enabled = true;
@@ -107,10 +114,23 @@ public class Player : MonoBehaviour
         healthSystem.onRevive += OnRevive;
     }
 
+    private IEnumerator SwitchCurrentControlSchemeCR(InputDevice inputDevice)
+    {
+        yield return null;
+        yield return null;
+
+        string scheme = playerInput.currentControlScheme;
+        if (string.IsNullOrEmpty(scheme)) scheme = "Gamepad";
+
+        playerInput.SwitchCurrentControlScheme(scheme, inputDevice);
+    }
+
     bool isKnockbackActive = false;
 
     IEnumerator OnHitCR(float damage, Vector3 damagePosition)
     {
+        if (hurtSnd) SoundManager.PlaySound(SoundType.PrimaryFX, hurtSnd, 1.0f, 1.0f);
+
         isKnockbackActive = true;
         movementPlatformer.enabled = false;
         float s = Mathf.Sign(transform.position.x - damagePosition.x);
@@ -295,6 +315,8 @@ public class Player : MonoBehaviour
     private void OnHeal(float healthGain)
     {
         spriteEffect.FlashColor(0.2f, Color.green);
+
+        if (healthSnd) SoundManager.PlaySound(SoundType.PrimaryFX, healthSnd, 1.0f, 1.0f);
     }
 
     private void OnDead()
@@ -304,6 +326,8 @@ public class Player : MonoBehaviour
         animator.SetTrigger("Asphyxiate");
         movementPlatformer.SetActive(false);
         _isDead = true;
+
+        if (deathSnd) SoundManager.PlaySound(SoundType.PrimaryFX, deathSnd, 1.0f, 1.0f);
     }
 
     private void OnRevive()
@@ -311,6 +335,8 @@ public class Player : MonoBehaviour
         animator.SetTrigger("Reset");
         movementPlatformer.SetActive(true);
         _isDead = false;
+
+        if (reviveSnd) SoundManager.PlaySound(SoundType.PrimaryFX, reviveSnd, 1.0f, 1.0f);
     }
 
     public InputControl GetInteractControl() => interactControl;

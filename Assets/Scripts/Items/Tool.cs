@@ -1,3 +1,4 @@
+using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 
@@ -18,11 +19,14 @@ public class Tool : Item
     [SerializeField] protected RectTransform  chargeMeter;
     [SerializeField] protected bool           destroyWhenNoCharge = false;
     [SerializeField] protected int            scoreOnNoCharge = 0;
+    [SerializeField] protected AudioSource    activeToolAudioSource;
+    [SerializeField] protected AudioClip      noChargeSnd;
 
     protected bool    _toolActive = false;
     protected ToolContainer currentContainer;
     protected float currentCharge;
     protected Animator animator;
+    protected float noChargeSoundTimer;
 
     public bool activeTool
     {
@@ -92,34 +96,59 @@ public class Tool : Item
         {
             animator.SetBool("Use", _toolActive);
         }
-        if ((_toolActive) && (currentCharge > 0.0f))
+        if (_toolActive)
         {
-            Vector3 toolPos = transform.position;
-            if (toolPoint) toolPos = toolPoint.position;
-
-            bool toolUsed = false;
-            var colliders = Physics2D.OverlapCircleAll(toolPos, toolRadius, accidentMask);
-            foreach (var collider in colliders)
+            if (currentCharge > 0.0f)
             {
-                if (RunTool(collider))
+                if ((activeToolAudioSource) && (!activeToolAudioSource.isPlaying))
                 {
-                    toolUsed = true;
+                    activeToolAudioSource.Play();
+                }
+
+                Vector3 toolPos = transform.position;
+                if (toolPoint) toolPos = toolPoint.position;
+
+                bool toolUsed = false;
+                var colliders = Physics2D.OverlapCircleAll(toolPos, toolRadius, accidentMask);
+                foreach (var collider in colliders)
+                {
+                    if (RunTool(collider))
+                    {
+                        toolUsed = true;
+                    }
+                }
+
+                if (_useMode == UseMode.Hold)
+                    currentCharge = Mathf.Max(0, currentCharge - Time.deltaTime * chargeCost);
+                else if (_useMode == UseMode.Single)
+                    currentCharge = Mathf.Max(0, currentCharge - chargeCost);
+                else if ((_useMode == UseMode.SingleIfUsed) && (toolUsed))
+                    currentCharge = Mathf.Max(0, currentCharge - chargeCost);
+
+                if ((currentCharge == 0.0f) && (destroyWhenNoCharge))
+                {
+                    owner.AddScore(scoreOnNoCharge);
+                    owner.DropTool(this);
+                    Destroy(gameObject);
                 }
             }
-
-            if (_useMode == UseMode.Hold)
-                currentCharge = Mathf.Max(0, currentCharge - Time.deltaTime * chargeCost);
-            else if (_useMode == UseMode.Single)
-                currentCharge = Mathf.Max(0, currentCharge - chargeCost);
-            else if ((_useMode == UseMode.SingleIfUsed) && (toolUsed))
-                currentCharge = Mathf.Max(0, currentCharge - chargeCost);
-
-            if ((currentCharge == 0.0f) && (destroyWhenNoCharge))
+            else
             {
-                owner.AddScore(scoreOnNoCharge);
-                owner.DropTool(this);
-                Destroy(gameObject);
+                if ((activeToolAudioSource) && (activeToolAudioSource.isPlaying)) activeToolAudioSource.Stop();
+
+                if (noChargeSnd)
+                {
+                    if ((Time.time - noChargeSoundTimer) > 1.0f)
+                    {
+                        SoundManager.PlaySound(SoundType.PrimaryFX, noChargeSnd, 1.0f, Random.Range(0.75f, 1.25f));
+                        noChargeSoundTimer = Time.time;
+                    }
+                }
             }
+        }
+        else
+        {
+            if ((activeToolAudioSource) && (activeToolAudioSource.isPlaying)) activeToolAudioSource.Stop();
         }
 
         if ((chargeUI) && (chargeMeter))

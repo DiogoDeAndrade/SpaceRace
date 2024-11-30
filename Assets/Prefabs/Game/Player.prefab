@@ -121,6 +121,8 @@ GameObject:
   - component: {fileID: 5512339070101972184}
   - component: {fileID: 3313288673637508804}
   - component: {fileID: 8260049011632979788}
+  - component: {fileID: 4286072787585888998}
+  - component: {fileID: 9112251765242970727}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -539,6 +541,10 @@ MonoBehaviour:
     keyPositive: 275
     keyNegative: 276
     inputAction: Drop
+  hurtSnd: {fileID: 8300000, guid: b169858cc1385d84b8f79162247e5759, type: 3}
+  deathSnd: {fileID: 8300000, guid: 1952ee788cbd73243ae52802ae268165, type: 3}
+  reviveSnd: {fileID: 8300000, guid: 70c47a9d70cd3dd409c3e7cfbf176396, type: 3}
+  healthSnd: {fileID: 8300000, guid: d5d0e9dd346b06d49b50fc88188f6f91, type: 3}
 --- !u!114 &3313288673637508804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -603,6 +609,42 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 12, y: 29.4}
   m_EdgeRadius: 0
+--- !u!114 &4286072787585888998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683781890077311939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41faa618a9bb6214f983e186d15b3652, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distancePerStep: 50
+  teleportDistance: 100
+  stepCooldown: 0.4
+  footstepSnd: {fileID: 8300000, guid: 07b07716093aeb84da362255364cf0d2, type: 3}
+  volumeVariance: {x: 0.861194, y: 1}
+  pitchVariance: {x: 1, y: 1}
+--- !u!114 &9112251765242970727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6683781890077311939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aaca575ecdf8b7c46b3807a42647b2f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distancePerStep: 50
+  teleportDistance: 100
+  stepCooldown: 0.2
+  climbSnd: {fileID: 8300000, guid: 049bb8a94d6c98a4da31ac2c8e946a5b, type: 3}
+  volumeVariance: {x: 0.8746269, y: 1}
+  pitchVariance: {x: 1, y: 1}
 --- !u!1 &6937122829356048063
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class FuelPellet : Tool
     [SerializeField] float          maxShake = 2.0f;
     [SerializeField] Transform      gfx;
     [SerializeField] GameObject     explosionPrefab;
+    [SerializeField] AudioSource    instabilitySoundSource;
 
     float           stability;
     SpriteRenderer  spriteRenderer;
@@ -40,6 +41,13 @@ public class FuelPellet : Tool
             stability -= Time.deltaTime;
 
             float p = Mathf.Clamp01(stability / maxStability);
+
+            if ((p < 0.5f) && (instabilitySoundSource))
+            {
+                if (!instabilitySoundSource.isPlaying) instabilitySoundSource.Play();
+                instabilitySoundSource.volume = 1.0f - p * 2.0f;
+            }
+
             float shakeStrength = shakeStabilityControl.Evaluate(p);
             gfx.localPosition = Random.insideUnitCircle * shakeStrength * maxShake;
             Color color = colorStabilityControl.Evaluate(p);
