@@ -498,7 +498,7 @@ Transform:
   m_GameObject: {fileID: 195660933}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -177, y: 98, z: 0}
+  m_LocalPosition: {x: -171, y: 98, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1186,7 +1186,7 @@ Transform:
   m_GameObject: {fileID: 414937768}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -199, y: -16, z: 0}
+  m_LocalPosition: {x: 242, y: -16, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2346,7 +2346,7 @@ MonoBehaviour:
   type: 0
   playerTimeMultiplier: 1
   retrigger: 1
-  initialInterval: {x: 74.93526, y: 174.66187}
+  initialInterval: {x: 86.825806, y: 174.66187}
   repeatInterval: {x: 56.42446, y: 106.28777}
   eventPrefab: {fileID: 2954027264837460169, guid: 66ad08d725103274c9298cec05a84f66, type: 3}
   cheatKey: 283
@@ -2365,7 +2365,7 @@ MonoBehaviour:
   type: 0
   playerTimeMultiplier: 1
   retrigger: 1
-  initialInterval: {x: 68.460434, y: 118.323746}
+  initialInterval: {x: 68.460434, y: 188.47797}
   repeatInterval: {x: 85.65468, y: 180.22302}
   eventPrefab: {fileID: 6434085191867271627, guid: 39dcfe5060a321140828106dd3025ddd, type: 3}
   cheatKey: 284
@@ -2384,7 +2384,7 @@ MonoBehaviour:
   type: 0
   playerTimeMultiplier: 1
   retrigger: 1
-  initialInterval: {x: 164.12149, y: 223.31308}
+  initialInterval: {x: 155.7981, y: 197.15387}
   repeatInterval: {x: 59.140186, y: 113.864494}
   eventPrefab: {fileID: 4631249160504185639, guid: e8a206bae59913f499652c0dee62bf27, type: 3}
   cheatKey: 285
@@ -2403,8 +2403,8 @@ MonoBehaviour:
   type: 0
   playerTimeMultiplier: 1
   retrigger: 1
-  initialInterval: {x: 44.482586, y: 134.85074}
-  repeatInterval: {x: 10, y: 77.776115}
+  initialInterval: {x: 44.482586, y: 126.52736}
+  repeatInterval: {x: 29.537315, y: 86.61194}
   eventPrefab: {fileID: 7095036977029143614, guid: 3c4ba30d9ec4af04c8bbdf336b55e0bb, type: 3}
   cheatKey: 286
 --- !u!114 &664341778
@@ -5465,7 +5465,7 @@ Transform:
   m_GameObject: {fileID: 1287037209}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 226, y: -77, z: 0}
+  m_LocalPosition: {x: 217, y: -77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5857,7 +5857,7 @@ Transform:
   m_GameObject: {fileID: 1346348330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -77, y: -78, z: 0}
+  m_LocalPosition: {x: -45, y: -78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5959,9 +5959,12 @@ MonoBehaviour:
   - hairColor: {r: 0.8018868, g: 0.7945202, b: 0.17021184, a: 1}
     bodyColor: {r: 0.13950695, g: 0.2631747, b: 0.8962264, a: 1}
     deviceId: -1
+    score: 0
   - hairColor: {r: 0.8, g: 0.16862746, b: 0.20494033, a: 1}
     bodyColor: {r: 0.14826734, g: 0.4716981, b: 0.12682448, a: 1}
     deviceId: -1
+    score: 0
+  _raceTime: 0
 --- !u!4 &1354181156
 Transform:
   m_ObjectHideFlags: 0
@@ -7323,7 +7326,7 @@ Transform:
   m_GameObject: {fileID: 1822929210}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 163, y: 91, z: 0}
+  m_LocalPosition: {x: 130, y: 91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

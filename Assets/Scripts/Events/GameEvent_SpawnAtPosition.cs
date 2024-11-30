@@ -1,3 +1,4 @@
+using NaughtyAttributes;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,8 @@ public class GameEvent_SpawnAtPosition : GameEvent
     [SerializeField] private Hypertag   locationTag;
     [SerializeField] private int        instanceCount = 1;
     [SerializeField] private GameObject prefab;
+    [SerializeField, MinMaxSlider(0.0f, 360.0f)] 
+    private Vector2    rotation;
 
     List<GameObject> instanceList = new();
 
@@ -18,7 +21,9 @@ public class GameEvent_SpawnAtPosition : GameEvent
         {
             var target = targets.Random(false);
 
-            instanceList.Add(Instantiate(prefab, target.position, target.rotation));
+            var rot = target.rotation * Quaternion.Euler(0, 0, rotation.Random());            
+
+            instanceList.Add(Instantiate(prefab, target.position, rot));
         }
 
         return true;

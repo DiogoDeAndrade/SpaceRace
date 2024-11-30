@@ -34,7 +34,8 @@ public class LaserGun : Tool
             // Shoot
             muzzleFlash.Flash(4.0f, 0.1f, false);
 
-            Instantiate(laserPrefab, toolPoint.position, toolPoint.rotation);
+            var laser = Instantiate(laserPrefab, toolPoint.position, toolPoint.rotation);
+            laser.owner = owner;
         }
     }
 }

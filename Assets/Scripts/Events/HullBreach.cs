@@ -52,7 +52,7 @@ public class HullBreach : Accident, LevelManager.Force
     {
         Vector2 direction = transform.position.xy() - pos;
         float dist = direction.magnitude;
-        if (dist < 5.0f) return Vector2.zero;
+        if (dist < 40.0f) return Vector2.zero;
 
         float distNormalized = Mathf.Clamp01(dist / attractionRange);
         direction /= dist;

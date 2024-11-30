@@ -170,6 +170,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   deathPS: {fileID: 4549007906124007472}
+  _killScore: 30
 --- !u!50 &868789088964547525
 Rigidbody2D:
   serializedVersion: 5
@@ -258,6 +259,7 @@ MonoBehaviour:
   effects: 2
   palette: {fileID: 0}
   inverseFactor: 0
+  flashColor: {r: 1, g: 1, b: 1, a: 0}
 --- !u!1001 &7275976852154042438
 PrefabInstance:
   m_ObjectHideFlags: 0

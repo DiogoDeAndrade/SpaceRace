@@ -13,6 +13,7 @@ public class Alien : MonoBehaviour
     [SerializeField] private float          attackDamage;
     [SerializeField] private LayerMask      groundMask;
     [SerializeField] private ParticleSystem deathPS;
+    [SerializeField] private int            _killScore;
 
     bool canMove = false;
 
@@ -26,6 +27,7 @@ public class Alien : MonoBehaviour
     bool            dead;
 
     public bool isVulnerable => canMove;
+    public int killScore => _killScore;
 
     void Start()
     {

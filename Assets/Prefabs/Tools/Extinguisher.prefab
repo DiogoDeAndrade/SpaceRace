@@ -5401,8 +5401,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   usePS: {fileID: 6017195995216190716}
+  useLight: {fileID: 0}
   toolPoint: {fileID: 4368896970146165148}
   toolRadius: 10
-  maxCharge: 5
+  _useMode: 0
+  maxCharge: 7
+  chargeCost: 1
   chargeUI: {fileID: 5078186990183565050}
   chargeMeter: {fileID: 5352054905111822114}
+  destroyWhenNoCharge: 0
+  scoreOnNoCharge: 0

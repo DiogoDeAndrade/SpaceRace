@@ -168,10 +168,14 @@ MonoBehaviour:
   useLight: {fileID: 0}
   toolPoint: {fileID: 0}
   toolRadius: 5
+  _useMode: 0
   maxCharge: 5
+  chargeCost: 1
   chargeUI: {fileID: 0}
   chargeMeter: {fileID: 0}
-  maxStability: 10
+  destroyWhenNoCharge: 0
+  scoreOnNoCharge: 0
+  maxStability: 15
   shakeStabilityControl:
     serializedVersion: 2
     m_Curve:
@@ -244,6 +248,7 @@ MonoBehaviour:
   _sprite: {fileID: 21300000, guid: c82d42f202a61b4409d230ac752c7053, type: 3}
   _energy: 0.5
   _ammount: 15
+  _score: 50
   _color: {r: 0.72948456, g: 0.9433962, b: 0.7075472, a: 1}
 --- !u!1 &6380320019867314722
 GameObject:

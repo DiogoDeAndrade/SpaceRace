@@ -47,3 +47,4 @@ MonoBehaviour:
   locationTag: {fileID: 11400000, guid: 4625c96528adc0a468e417c94437bba2, type: 2}
   instanceCount: 1
   prefab: {fileID: 293720230818123816, guid: 67894c93dd071444daaecd2fe7e7ea02, type: 3}
+  rotation: {x: 0, y: 360}

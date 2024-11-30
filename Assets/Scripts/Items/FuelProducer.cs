@@ -13,6 +13,7 @@ public class FuelProducer : Interactable
     [SerializeField] private float          turnsToPellet = 10;
     [SerializeField] private Rigidbody2D    pelletPrefab;
     [SerializeField] private Transform      spawnPoint;
+    [SerializeField] private int            scorePellet = 25;
 
     float angularSpeed = 0.0f;
     float wheelAngle;
@@ -20,6 +21,7 @@ public class FuelProducer : Interactable
     float shakeTimer;
     float progress;
     Vector3 wheelPos;
+    Player lastPlayerTouch;
 
     protected override void Start()
     {
@@ -59,6 +61,11 @@ public class FuelProducer : Interactable
 
             var newPellet = Instantiate(pelletPrefab, spawnPoint.position, spawnPoint.rotation);
             newPellet.linearVelocity = -transform.right * 10.0f - transform.up * 10.0f;
+
+            if (lastPlayerTouch)
+            {
+                lastPlayerTouch.AddScore(scorePellet);
+            }
         }
 
         angularSpeed = Mathf.Max(0, angularSpeed - angularDrag * Time.deltaTime);
@@ -72,5 +79,7 @@ public class FuelProducer : Interactable
 
         cooldownTimer = cooldown;
         shakeTimer = shakeDuration;
+
+        lastPlayerTouch = player;
     }
 }
