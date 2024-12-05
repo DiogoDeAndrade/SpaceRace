@@ -121,14 +121,15 @@ public class PlayerReport : MonoBehaviour
         currentScore = thisScore;
         UpdateScoreDisplay();
 
-        audioSource.FadeTo(0.0f, 0.2f);
-        yield return new WaitForSeconds(0.2f);
+        if (audioSource.isPlaying)
+        {
+            audioSource.FadeTo(0.0f, 0.2f);
+        }
 
         if (isWinner)
         {
             fireworksPS.Play();
             if (victorySnd != null) SoundManager.PlaySound(SoundType.PrimaryFX, victorySnd, 1.0f, 1.0f);
-
         }
         else
         {

@@ -1,6 +1,8 @@
-# SPEED
+# SPACE RACE
 
-Developed for the Game Creator's Club at Lusofona University.
+![Customization](Screenshots/title.jpg)
+
+Developed for the [Game Creator's Club] at Lusofona University.
 This month, the theme is "Speed". 
 
 ## Game
@@ -9,7 +11,7 @@ In this game, players will have to be doing maintenance on a starship during a r
 
 ![Customization](Screenshots/screen01.jpg)
 
-## Todo
+## Dev shots
 
 ![Dev Shot 1](Screenshots/screen02.png)
 First scenario sprites and lighting
@@ -22,8 +24,8 @@ Blackout event
 ![Dev Shot 5](Screenshots/screen06.png)
 The alien attacks!
 
-- Todo
-  - Adjust events with part of the race (solar flares = more fires, asteroids = more hull breaches)
+## Future work
+- Adjust events with part of the race (solar flares = more fires, asteroids = more hull breaches)
 - Game modes
   - Tournament Mode - Get to the destination, as fast as possible, set names to players
   - Campaign Mode - Story/Tutorial mode for the game
@@ -99,5 +101,6 @@ The alien attacks!
 [CC-BY 4.0]:https://creativecommons.org/licenses/by/4.0/
 [OkapiKit]:https://github.com/VideojogosLusofona/OkapiKit
 [Unity Common]:https://github.com/DiogoDeAndrade/UnityCommon
-[Soundful]:
+[Game Creator's Club]:https://game-creators-club.itch.io/
+[Soundful]:https://soundful.com/
 [MIT]:LICENSE
