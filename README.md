@@ -1,6 +1,6 @@
 # SPACE RACE
 
-![Customization](Screenshots/title.jpg)
+![Customization](Screenshots/title.png)
 
 Developed for the [Game Creator's Club] at Lusofona University.
 This month, the theme is "Speed". 
