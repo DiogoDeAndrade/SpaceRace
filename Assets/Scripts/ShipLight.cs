@@ -1,6 +1,4 @@
 using NaughtyAttributes;
-using System.Runtime.CompilerServices;
-using UnityEditor.Rendering;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 

@@ -6016,7 +6016,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a2359a4ec2e3074080de8483ac3c8ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _numPlayers: 2
+  _numPlayers: 1
   _playerData:
   - hairColor: {r: 0.8018868, g: 0.7945202, b: 0.17021184, a: 1}
     bodyColor: {r: 0.13950695, g: 0.2631747, b: 0.8962264, a: 1}

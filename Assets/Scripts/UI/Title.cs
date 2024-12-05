@@ -23,6 +23,8 @@ public class Title : UIGroup
     {
         base.Start();
 
+        Cursor.visible = false;
+
         onePlayerButton.onInteract += StartOnePlayer;
         twoPlayerButton.onInteract += StartTwoPlayers;
         creditsButton.onInteract += ShowCredits;

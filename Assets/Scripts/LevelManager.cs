@@ -1,6 +1,7 @@
 using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
+using System.Xml;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -60,7 +61,10 @@ public class LevelManager : MonoBehaviour
     {
         if ((!isGameOver) && (!isRaceOver))
         {
-            ChangeOxygen(recoverPerSecond * Time.deltaTime);
+            if (LevelManager.oxygenPercentage > 0.0f)
+            {
+                ChangeOxygen(recoverPerSecond * Time.deltaTime);
+            }
 
             raceElapsedTime += Time.deltaTime;
             GameManager.Instance.raceTime = raceElapsedTime;

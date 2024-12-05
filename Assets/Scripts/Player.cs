@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Build.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.XR;
 using InputDevice = UnityEngine.InputSystem.InputDevice;
 
 public class Player : MonoBehaviour
@@ -175,6 +172,7 @@ public class Player : MonoBehaviour
             movementPlatformer.SetActive(false);
             healthSystem.SetHealth(0.0f);
             _isDead = true;
+            DropTool();
         }
         
         Item            interactionItem = null;
@@ -326,6 +324,7 @@ public class Player : MonoBehaviour
         animator.SetTrigger("Asphyxiate");
         movementPlatformer.SetActive(false);
         _isDead = true;
+        DropTool();
 
         if (deathSnd) SoundManager.PlaySound(SoundType.PrimaryFX, deathSnd, 1.0f, 1.0f);
     }
