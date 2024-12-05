@@ -149,6 +149,9 @@ MonoBehaviour:
     keyPositive: 275
     keyNegative: 276
     inputAction: Interact
+  fireworksPS: {fileID: 0}
+  victorySnd: {fileID: 8300000, guid: 6e76baad9e0457141be864663ebc24db, type: 3}
+  scoreUpSnd: {fileID: 8300000, guid: fc948941464ea8c41af3303a026c8a92, type: 3}
 --- !u!225 &4601441230917167210
 CanvasGroup:
   m_ObjectHideFlags: 0

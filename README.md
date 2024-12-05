@@ -75,6 +75,9 @@ The alien attacks!
 - [Gas furnace](https://freesound.org/people/ldezem/sounds/386164/) by [ldezem](https://freesound.org/people/ldezem/), [CC0] license.
 - [SteamLoopBody](https://freesound.org/people/kingof_thelab/sounds/340255/) by [kingof_thelab](https://freesound.org/people/kingof_thelab/), [CC-BY 3.0] license.
 - [Ratchet Wrench](https://freesound.org/people/Groovy_Studio/sounds/717429/) by [Groovy_Studio](https://freesound.org/people/Groovy_Studio/), [CC0] license.
+- [Whistle and Explosion Single_Firework](https://freesound.org/people/Rudmer_Rotteveel/sounds/336008/) by [Rudmer_Rotteveel](https://freesound.org/people/Rudmer_Rotteveel/), [CC0] license.
+- [High Score Fill - Ascending Faster](https://freesound.org/people/TheAtomicBrain/sounds/194178/) by [TheAtomicBrain](https://freesound.org/people/TheAtomicBrain/), [CC0] license.
+- [Victory sting 1](https://freesound.org/people/Victor_Natas/sounds/741118/) by [Victor_Natas](https://freesound.org/people/Victor_Natas/), [CC-BY 4.0] license.
 - Music is AI generated with [Soundful](soundful.com).
 - Everything else done by [Diogo de Andrade], licensed through the [CC0] license.
 

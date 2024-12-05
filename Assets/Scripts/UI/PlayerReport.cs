@@ -18,6 +18,8 @@ public class PlayerReport : MonoBehaviour
     [SerializeField, InputPlayer(nameof(playerInput)), InputButton]
     private InputControl interactControl;
     [SerializeField] private ParticleSystem fireworksPS;
+    [SerializeField] private AudioClip      victorySnd;
+    [SerializeField] private AudioClip      scoreUpSnd;
 
     float maxScore;
     float       thisScore;
@@ -99,6 +101,8 @@ public class PlayerReport : MonoBehaviour
     {
         yield return new WaitForSeconds(timeToStart);
 
+        var audioSource = SoundManager.PlaySound(SoundType.PrimaryFX, scoreUpSnd, 0.5f, 1.0f);
+
         float t = 0.0f;
         float tInc = 1.0f / scoreGrowTime;
 
@@ -117,9 +121,14 @@ public class PlayerReport : MonoBehaviour
         currentScore = thisScore;
         UpdateScoreDisplay();
 
+        audioSource.FadeTo(0.0f, 0.2f);
+        yield return new WaitForSeconds(0.2f);
+
         if (isWinner)
         {
             fireworksPS.Play();
+            if (victorySnd != null) SoundManager.PlaySound(SoundType.PrimaryFX, victorySnd, 1.0f, 1.0f);
+
         }
         else
         {
