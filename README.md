@@ -25,6 +25,9 @@ Blackout event
 The alien attacks!
 
 ## Future work
+- Gamma control
+- Disable rigidbody interaction between tools and players
+- Move UI to top of screen + increase size
 - Adjust events with part of the race (solar flares = more fires, asteroids = more hull breaches)
 - Game modes
   - Tournament Mode - Get to the destination, as fast as possible, set names to players
