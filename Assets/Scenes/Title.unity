@@ -819,11 +819,11 @@ MonoBehaviour:
   _playerData:
   - hairColor: {r: 0, g: 0, b: 0, a: 0}
     bodyColor: {r: 0, g: 0, b: 0, a: 0}
-    deviceId: 0
+    deviceId: -1
     score: 0
   - hairColor: {r: 0, g: 0, b: 0, a: 0}
     bodyColor: {r: 0, g: 0, b: 0, a: 0}
-    deviceId: 0
+    deviceId: -1
     score: 0
   _raceTime: 0
 --- !u!4 &1436228396
@@ -1056,6 +1056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e551daac347a884cb84d6b27620927a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textFile: {fileID: 0}
   text: "<color=\"yellow\"><size=200%>Space Race</size></color>\r\nA Game By Diogo
     de Andrade\r\n\r\nArt\r\n<size=60%>Warped Space Marine by Ansimuz, purchased\r\n<size=60%>Fire
     Animation - Pixel Art FX Sprites by Brulov, free to use\r\n<size=60%>Explosion

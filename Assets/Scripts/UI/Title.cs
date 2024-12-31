@@ -74,8 +74,32 @@ public class Title : UIGroup
         _uiEnable = false;
         GameManager.Instance.numPlayers = nPlayers;
 
+        var playerInput = GetComponent<PlayerInput>();
         var pd = GameManager.Instance.GetPlayerData(0);
-        pd.deviceId = GetComponent<PlayerInput>().devices[0].deviceId;
+        pd.deviceId = playerInput.devices[0].deviceId;
+
+        // Assign devices
+        for (int i = 1; i < nPlayers; i++)
+        {
+            for (int j = 0; j < Gamepad.all.Count; j++)
+            {
+                var device = Gamepad.all[j];
+                bool inUse = false;
+                for (int k = 0; k < i; k++)
+                {
+                    if (GameManager.Instance.GetPlayerData(k).deviceId == device.deviceId)
+                    {
+                        inUse = true;
+                        break;
+                    }
+                }
+                if (!inUse)
+                {
+                    GameManager.Instance.GetPlayerData(i).deviceId = device.deviceId;
+                    break;
+                }
+            }
+        }
 
         FullscreenFader.FadeOut(0.5f, Color.black, () =>
         {

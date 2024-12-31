@@ -68,6 +68,7 @@ public class Customizer : UIGroup
     private void OnColorChange(BaseUIControl control)
     {
         palette = CharacterCustomization.BuildPalette(originalPalette, hairColorSelector.value, bodyColorSelector.value);
+        palette.name = $"Palette Player {playerId}";
 
         uiEffect.SetRemap(palette);
     }
