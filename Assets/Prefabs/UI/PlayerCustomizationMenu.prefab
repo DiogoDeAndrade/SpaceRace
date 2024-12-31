@@ -754,6 +754,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   highlighterImage: {fileID: 8185126800647624812}
+  highlighterText: {fileID: 0}
+  highlightColor: {r: 0, g: 0, b: 0, a: 0}
   _navUp: {fileID: 5830562519863320201}
   _navDown: {fileID: 5637858393905321332}
   changeSnd: {fileID: 8300000, guid: 94c4c214af8ca334cb0a62b3fc7fd95f, type: 3}

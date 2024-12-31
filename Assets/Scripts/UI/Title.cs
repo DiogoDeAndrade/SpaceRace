@@ -15,7 +15,7 @@ public class Title : UIGroup
     [SerializeField] UIButton creditsButton;
     [SerializeField] UIButton quitButton;
     [SerializeField, Scene] string characterSelectScene;
-    [SerializeField] CanvasGroup buttonCanvas;
+    [SerializeField] CanvasGroup mainMenuCanvas;
     [SerializeField] BigTextScroll creditsScroll;
     [SerializeField] AudioClip titleMusic;
 
@@ -37,19 +37,19 @@ public class Title : UIGroup
     {
         _uiEnable = false;
 
-        buttonCanvas.FadeOut(0.5f);
+        mainMenuCanvas.FadeOut(0.5f);
 
         var canvasGroup = creditsScroll.GetComponent<CanvasGroup>();
         canvasGroup.FadeIn(0.5f);
 
         creditsScroll.Reset();
 
-        creditsScroll.onEndScroll += BackToOptions;
+        creditsScroll.onEndScroll += BackToMenu;
     }
 
-    private void BackToOptions()
+    private void BackToMenu()
     {
-        buttonCanvas.FadeIn(0.5f);
+        mainMenuCanvas.FadeIn(0.5f);
 
         var canvasGroup = creditsScroll.GetComponent<CanvasGroup>();
         canvasGroup.FadeOut(0.5f);
@@ -57,7 +57,7 @@ public class Title : UIGroup
         _uiEnable = true;
         selectedControl = onePlayerButton;
 
-        creditsScroll.onEndScroll -= BackToOptions;
+        creditsScroll.onEndScroll -= BackToMenu;
     }
 
     private void StartOnePlayer(BaseUIControl control)
