@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,6 +9,8 @@ public class GameUI : MonoBehaviour
     [SerializeField] private Image              oxygenMeter;
     [SerializeField] private RectTransform      rocketImage;
     [SerializeField] private TextMeshProUGUI    clockTimer;
+    [SerializeField] private Transform          raceProgressBar;
+    [SerializeField] private HazardDisplay      hazardDisplayPrefab; 
 
     float rocketBarWidth;
 
@@ -15,7 +18,51 @@ public class GameUI : MonoBehaviour
     {
         rocketImage.anchoredPosition = Vector2.zero;
 
-        rocketBarWidth = (rocketImage.parent as RectTransform).sizeDelta.x - rocketImage.sizeDelta.x;
+        float barWidth = (rocketImage.parent as RectTransform).sizeDelta.x;
+        rocketBarWidth = barWidth - rocketImage.sizeDelta.x;
+
+        var hazards = LevelManager.GetDisplayHazards();
+        var displays = new List<HazardDisplay>();
+        foreach (var hazard in hazards)
+        {
+            float x1 = hazard.interval.x * barWidth;
+            float x2 = hazard.interval.y* barWidth;
+
+            // Check if we can extend
+            bool extended = false;
+            foreach (var display in displays)
+            {
+                if ((display.sprite == hazard.sprite) &&
+                    (display.IsOverlap(x1, x2)))
+                {
+                    extended = true;
+                    display.Add(x1, x2);
+                    break;
+                }
+            }
+            if (extended) continue;
+
+            float offsetY = 0.0f;
+            bool  allowed = false;
+            while (!allowed)
+            {
+                allowed = true;
+                foreach (var display in displays)
+                {
+                    if (display.IsOccupied(offsetY, x1, x2))
+                    {
+                        allowed = false;
+                        offsetY += 2.0f;
+                        break;
+                    }
+                }
+            }            
+
+            var hDisplay = Instantiate(hazardDisplayPrefab, raceProgressBar);
+            hDisplay.SetDisplay(x1, x2, offsetY, hazard.sprite, hazard.color);
+
+            displays.Add(hDisplay);
+        }
     }
 
     void Update()

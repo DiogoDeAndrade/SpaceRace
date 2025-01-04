@@ -25,13 +25,25 @@ Blackout event
 The alien attacks!
 
 ## Future work
-- Gamma control
-- Disable rigidbody interaction between tools and players
-- Move UI to top of screen + increase size
-- Adjust events with part of the race (solar flares = more fires, asteroids = more hull breaches)
 - Game modes
   - Tournament Mode - Get to the destination, as fast as possible, set names to players
   - Campaign Mode - Story/Tutorial mode for the game
+- Maps
+  - Level selector
+  - Spaceship with a main shaft in the middle and rooms right/left
+  - Spaceship with command center (scroll+zoom)
+  - Research lab
+  - Cave/Mine
+  - Underwater - submarine or base
+- Tasks
+  - Navigation console - steer the ship in some way to avoid asteroids (or else there will be more damage)
+  - Laser turret - shoot down enemies or else damage on ship
+  - Virus/Antivirus - Some sort of "blob organism" is taking over, need to take a sample with a tool and take it to a machine that creates an antivirus
+  - Mining with pickaxe (get resources)
+  - Move resources to cart
+  - Carry cart with resources
+  - Doors with keycards (coop only)
+  - Make health dispenser coop only
 
 ## Art
 

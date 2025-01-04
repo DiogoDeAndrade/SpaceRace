@@ -1,7 +1,6 @@
 using NaughtyAttributes;
 using System;
 using System.Collections.Generic;
-using System.Xml;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -34,7 +33,7 @@ public class LevelManager : MonoBehaviour
     private bool isGameOver = false;
     private bool isRaceOver = false;
 
-    void Start()
+    void Awake()
     {
         if (instance == null)
         {
@@ -48,7 +47,10 @@ public class LevelManager : MonoBehaviour
         eventTrigger = GetComponents<GameEventTrigger>();
         oxygen = maxOxygen;
         raceElapsedTime = 0.0f;
+    }
 
+    private void Start()
+    {
         FullscreenFader.FadeIn(0.5f);
 
         if (musicClip)
@@ -188,6 +190,21 @@ public class LevelManager : MonoBehaviour
         foreach (var force in instance.forces)
         {
             ret = ret + force.GetForce(currentPos);
+        }
+
+        return ret;
+    }
+
+    public static List<GameEventTrigger> GetDisplayHazards()
+    {
+        List<GameEventTrigger> ret = new();
+
+        foreach (var evt in instance.eventTrigger)
+        {
+            if (evt.canDisplay)
+            {
+                ret.Add(evt);
+            }
         }
 
         return ret;
