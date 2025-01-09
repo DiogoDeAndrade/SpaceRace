@@ -7443,13 +7443,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5512339070101972184, guid: 2c4decd21143ce74eb39fb8947aa1b4c, type: 3}
+      propertyPath: _playerId
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6683781890077311939, guid: 2c4decd21143ce74eb39fb8947aa1b4c, type: 3}
       propertyPath: m_Name
       value: Player2
       objectReference: {fileID: 0}
     - target: {fileID: 6683781890077311939, guid: 2c4decd21143ce74eb39fb8947aa1b4c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8236,13 +8240,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027393167}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: 0.55143017, w: 0.8342211}
-  m_LocalPosition: {x: -173.22205, y: -46.413857, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0.2708499, w: 0.96262157}
+  m_LocalPosition: {x: -186.5, y: -31.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 948267559}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 66.93}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -31.43}
 --- !u!212 &2027393169
 SpriteRenderer:
   m_ObjectHideFlags: 0

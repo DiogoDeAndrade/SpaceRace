@@ -25,6 +25,29 @@ Blackout event
 The alien attacks!
 
 ## Future work
+- Polish
+  - Use dpad on menus
+  - Keyboard controls
+  - Add gamma control to game
+  - Player shouldn't fall on ladder, you should have to explicitely go down
+  - Display total score at end
+    - Consider trip duration in combined score
+  - Add light on fusebox when it's down
+  - Improved display of tool/hazard combo (maybe place the player/tool automatically in the right position when near)
+- Balance
+  - Hull breach pull is too strong (?)
+  - Faster max crank on fuel producer
+  - Minigame on fuel producer (?)
+- Bugs
+  - Controller (re)connection - if player connects controllers after game is running, it doesn't work)
+  - Only player 2 can continue on final screen
+  - Health pack is not restoring life
+  - Music seems to sometimes play twice (overlap music)
+- Customization
+  - More sprite types for players
+  - Skin color on default sprite
+  - Add perk system
+    - Players can choose a perk like "Fireman - Improve use of fire extinguisher" or "Chemist - Improve output of fuel producer"
 - Game modes
   - Tournament Mode - Get to the destination, as fast as possible, set names to players
   - Campaign Mode - Story/Tutorial mode for the game

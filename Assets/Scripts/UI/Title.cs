@@ -75,6 +75,14 @@ public class Title : UIGroup
         GameManager.Instance.numPlayers = nPlayers;
 
         var playerInput = GetComponent<PlayerInput>();
+        if (playerInput == null)
+        {
+            playerInput = GetComponentInParent<PlayerInput>();
+            if (playerInput == null)
+            {
+                playerInput = GetComponentInChildren<PlayerInput>();
+            }
+        }
         var pd = GameManager.Instance.GetPlayerData(0);
         pd.deviceId = playerInput.devices[0].deviceId;
 

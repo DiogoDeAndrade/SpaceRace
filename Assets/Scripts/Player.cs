@@ -279,7 +279,7 @@ public class Player : MonoBehaviour
         }
 
         // Didn't find, throw it
-        currentTool.Throw(transform.right);
+        currentTool?.Throw(transform.right);
 
         currentTool = null;
     }
